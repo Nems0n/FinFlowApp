@@ -34,7 +34,7 @@ final class FFTabBarController: UITabBarController {
         navPromo.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "note.text"), tag: 2)
         navAdmin.tabBarItem = UITabBarItem(title: "Admin", image: UIImage(systemName: "person.circle"), tag: 3)
         
-        setViewControllers([navStorage, navFinance, navPromo, navAdmin], animated: true) 
+        setViewControllers([navStorage, navFinance, navPromo, navAdmin], animated: true)
     }
 
 }
