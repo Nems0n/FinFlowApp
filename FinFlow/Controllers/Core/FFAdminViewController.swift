@@ -1,6 +1,6 @@
 //
 //  FFAdminViewController.swift
-//  FinanceFlow
+//  FinFlow
 //
 //  Created by Vlad Todorov on 21.02.23.
 //
