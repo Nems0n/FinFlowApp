@@ -17,6 +17,7 @@
 		4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */; };
 		4EBEC3E829A4338D00CB72C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */; };
 		4EBEC3EB29A4338D00CB72C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */; };
+		4EF93F4429A6877100BF9AB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF93F4329A6877100BF9AB3 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EBEC3EA29A4338D00CB72C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBEC3EC29A4338D00CB72C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF93F4329A6877100BF9AB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		4EBEC3F329A4345900CB72C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4EF93F4329A6877100BF9AB3 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				4E83D5DF29A4364E00D68939 /* FFStorageViewController.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Colors.swift in Sources */,
 				4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */,
+				4EF93F4429A6877100BF9AB3 /* User.swift in Sources */,
 				4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */,
 				4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */,
 				4E83D5E129A4365D00D68939 /* FFFinanceViewController.swift in Sources */,
