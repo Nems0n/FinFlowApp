@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */; };
+		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
+		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
+		4E4AE6C829A966BA009DAC64 /* FFStorageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AE6C729A966BA009DAC64 /* FFStorageMainView.swift */; };
 		4E83D5DF29A4364E00D68939 /* FFStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5DE29A4364E00D68939 /* FFStorageViewController.swift */; };
 		4E83D5E129A4365D00D68939 /* FFFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E029A4365D00D68939 /* FFFinanceViewController.swift */; };
 		4E83D5E329A4367200D68939 /* FFPromoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E229A4367200D68939 /* FFPromoViewController.swift */; };
 		4E83D5E529A4368A00D68939 /* FFAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E429A4368A00D68939 /* FFAdminViewController.swift */; };
-		4E83D5E729A44E0600D68939 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E629A44E0600D68939 /* Colors.swift */; };
+		4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E629A44E0600D68939 /* Extensions.swift */; };
+		4E90E33A29AADE0700311C14 /* FFStorageMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90E33929AADE0700311C14 /* FFStorageMainViewModel.swift */; };
+		4E90E33C29AADE7900311C14 /* FFStorageSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90E33B29AADE7900311C14 /* FFStorageSearchViewController.swift */; };
 		4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */; };
 		4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */; };
 		4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */; };
@@ -21,11 +27,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		4E4AE6C729A966BA009DAC64 /* FFStorageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageMainView.swift; sourceTree = "<group>"; };
 		4E83D5DE29A4364E00D68939 /* FFStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageViewController.swift; sourceTree = "<group>"; };
 		4E83D5E029A4365D00D68939 /* FFFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceViewController.swift; sourceTree = "<group>"; };
 		4E83D5E229A4367200D68939 /* FFPromoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFPromoViewController.swift; sourceTree = "<group>"; };
 		4E83D5E429A4368A00D68939 /* FFAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAdminViewController.swift; sourceTree = "<group>"; };
-		4E83D5E629A44E0600D68939 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4E83D5E629A44E0600D68939 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4E90E33929AADE0700311C14 /* FFStorageMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageMainViewModel.swift; sourceTree = "<group>"; };
+		4E90E33B29AADE7900311C14 /* FFStorageSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageSearchViewController.swift; sourceTree = "<group>"; };
 		4EBEC3DB29A4338C00CB72C5 /* FinFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +59,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E0DDD6429ABC05C00A5894E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4E90E33B29AADE7900311C14 /* FFStorageSearchViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4E0DDD6529AC2F9000A5894E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */,
+				4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */,
+				4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		4E83D5DD29A435FE00D68939 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +123,7 @@
 		4EBEC3F229A4344900CB72C5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E0DDD6429ABC05C00A5894E /* Other */,
 				4E83D5DD29A435FE00D68939 /* Core */,
 			);
 			path = Controllers;
@@ -109,6 +140,7 @@
 		4EBEC3F429A4346800CB72C5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E4AE6C729A966BA009DAC64 /* FFStorageMainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +148,7 @@
 		4EBEC3F529A4346C00CB72C5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4E90E33929AADE0700311C14 /* FFStorageMainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -137,11 +170,12 @@
 		4EBEC3F829A4349E00CB72C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E0DDD6529AC2F9000A5894E /* Fonts */,
 				4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */,
 				4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */,
 				4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */,
 				4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */,
-				4E83D5E629A44E0600D68939 /* Colors.swift */,
+				4E83D5E629A44E0600D68939 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -205,7 +239,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EBEC3EB29A4338D00CB72C5 /* LaunchScreen.storyboard in Resources */,
+				4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */,
 				4EBEC3E829A4338D00CB72C5 /* Assets.xcassets in Resources */,
+				4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */,
+				4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,12 +256,15 @@
 				4E83D5E529A4368A00D68939 /* FFAdminViewController.swift in Sources */,
 				4E83D5E329A4367200D68939 /* FFPromoViewController.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageViewController.swift in Sources */,
-				4E83D5E729A44E0600D68939 /* Colors.swift in Sources */,
+				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */,
+				4E90E33C29AADE7900311C14 /* FFStorageSearchViewController.swift in Sources */,
 				4EF93F4429A6877100BF9AB3 /* User.swift in Sources */,
 				4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */,
 				4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */,
 				4E83D5E129A4365D00D68939 /* FFFinanceViewController.swift in Sources */,
+				4E4AE6C829A966BA009DAC64 /* FFStorageMainView.swift in Sources */,
+				4E90E33A29AADE0700311C14 /* FFStorageMainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
