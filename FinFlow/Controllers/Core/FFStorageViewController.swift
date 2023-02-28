@@ -9,7 +9,11 @@ import UIKit
 
 final class FFStorageViewController: UIViewController {
 
-    let searchController = UISearchController()
+    let searchController: UISearchController = {
+        let resultVC = FFStorageSearchResultViewController()
+        let sc = UISearchController(searchResultsController: resultVC)
+        return sc
+    }()
     
     var mainView = FFStorageMainView()
     
@@ -20,15 +24,13 @@ final class FFStorageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.searchController = searchController
         view.backgroundColor = .white
         mainView.delegate = self
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
         addSubviews()
         createConstraints()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.navigationBar.isHidden = false
     }
     
     private func addSubviews() {
@@ -48,8 +50,21 @@ final class FFStorageViewController: UIViewController {
 
 extension FFStorageViewController: FFStorageMainViewDelegate {
     func searchBarTouched() {
-        let resultVC = FFStorageSearchViewController()
-        navigationController?.pushViewController(resultVC, animated: false)
+        navigationController?.navigationBar.isHidden = false
+        DispatchQueue.main.async {
+            self.searchController.searchBar.becomeFirstResponder()
+        }
+    }
+    
+}
+
+extension FFStorageViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        searchController.searchResultsController?.view.isHidden = false
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
 }

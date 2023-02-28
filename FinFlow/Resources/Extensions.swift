@@ -12,11 +12,7 @@ enum AssetsColor: String {
     case systemBG = "systemBG"
 }
 
-enum poppinsType: String {
-    case bold = "Poppins-Bold"
-    case medium = "Poppins-Medium"
-    case regular = "Poppins-Regular"
-}
+
 
 extension UIColor {
     static func appColor(_ name: AssetsColor) -> UIColor? {
@@ -25,6 +21,13 @@ extension UIColor {
 }
 
 extension UIFont {
+    
+    enum poppinsType: String {
+        case bold = "Poppins-Bold"
+        case medium = "Poppins-Medium"
+        case regular = "Poppins-Regular"
+    }
+    
     static func poppins(_ type: poppinsType, size: CGFloat) -> UIFont {
         guard let font = UIFont(name: type.rawValue, size: size) else { return UIFont.systemFont(ofSize: size) }
         return font

@@ -103,4 +103,5 @@ extension FFStorageMainView: FFStorageMainViewModelDelegate {
             self.searchTextField.resignFirstResponder()
         }
     }
+
 }
