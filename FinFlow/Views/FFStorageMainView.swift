@@ -18,8 +18,12 @@ final class FFStorageMainView: UIView {
     
     private let viewModel = FFStorageMainViewModel()
     
-    let searchController = UISearchController()
-    
+    let searchController: UISearchController = {
+        let resultVC = FFStorageSearchResultViewController()
+        let sc = UISearchController(searchResultsController: resultVC)
+        return sc
+    }()
+
     let searchTextField: UITextField = {
         let tf = UITextField()
         let imageContainer =  UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
@@ -45,23 +49,24 @@ final class FFStorageMainView: UIView {
         return view
     }()
     
-    let searchBar: UISearchBar = {
-        let bar = UISearchBar()
-        let textField = UITextField()
-        bar.placeholder = "Test example"
-        bar.searchBarStyle = .default
-        bar.backgroundImage = UIImage()
-        bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.searchTextField.autocorrectionType = .no
-        
-        return bar
+    let userButton: UIButton = {
+        let button = UIButton()
+        if let image = UIImage(named: "testAvatar") {
+            button.setImage(image, for: .normal)
+        }
+        button.contentMode = .scaleAspectFit
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 12
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
+  
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        searchTextField.delegate = viewModel
         viewModel.delegate = self
         backgroundColor = .white
-        searchController.searchResultsController?.view.backgroundColor = .black
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews()
         createConstraints()
@@ -72,9 +77,9 @@ final class FFStorageMainView: UIView {
     }
     
     private func addSubviews() {
-        searchTextField.delegate = viewModel
         searchTextField.addSubview(underlineBorder)
         addSubview(searchTextField)
+        addSubview(userButton)
     }
     
     private func createConstraints() {
@@ -90,6 +95,12 @@ final class FFStorageMainView: UIView {
             underlineBorder.widthAnchor.constraint(equalTo: searchTextField.widthAnchor),
             underlineBorder.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: -1),
             underlineBorder.leftAnchor.constraint(equalTo: searchTextField.leftAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            userButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            userButton.topAnchor.constraint(equalTo: topAnchor),
+            userButton.heightAnchor.constraint(equalTo: searchTextField.heightAnchor),
+            userButton.widthAnchor.constraint(equalTo: searchTextField.heightAnchor)
         ])
     }
 }

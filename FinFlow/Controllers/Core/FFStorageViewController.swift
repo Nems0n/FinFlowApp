@@ -8,12 +8,6 @@
 import UIKit
 
 final class FFStorageViewController: UIViewController {
-
-    let searchController: UISearchController = {
-        let resultVC = FFStorageSearchResultViewController()
-        let sc = UISearchController(searchResultsController: resultVC)
-        return sc
-    }()
     
     var mainView = FFStorageMainView()
     
@@ -24,11 +18,11 @@ final class FFStorageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.searchController = searchController
+        navigationItem.searchController = mainView.searchController
         view.backgroundColor = .white
         mainView.delegate = self
-        searchController.delegate = self
-        searchController.searchResultsUpdater = self
+        navigationItem.searchController?.delegate = self
+        navigationItem.searchController?.searchResultsUpdater = self
         addSubviews()
         createConstraints()
     }
@@ -52,7 +46,7 @@ extension FFStorageViewController: FFStorageMainViewDelegate {
     func searchBarTouched() {
         navigationController?.navigationBar.isHidden = false
         DispatchQueue.main.async {
-            self.searchController.searchBar.becomeFirstResponder()
+            self.navigationItem.searchController?.searchBar.becomeFirstResponder()
         }
     }
     
