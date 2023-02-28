@@ -9,12 +9,15 @@ import Foundation
 import UIKit
 
 protocol FFStorageMainViewModelDelegate: AnyObject {
-    func didTapSearhBar()
-    
+    func didTapSearhBar() 
 }
 
 final class FFStorageMainViewModel: NSObject {
     public weak var delegate: FFStorageMainViewModelDelegate?
+    public var userAvatarAction = UIAction { _ in
+        print("button touched")
+    }
+
 }
 
 extension FFStorageMainViewModel: UITextFieldDelegate {

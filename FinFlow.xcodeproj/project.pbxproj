@@ -23,6 +23,7 @@
 		4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */; };
 		4EBEC3E829A4338D00CB72C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */; };
 		4EBEC3EB29A4338D00CB72C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */; };
+		4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardView.swift */; };
 		4EF93F4429A6877100BF9AB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF93F4329A6877100BF9AB3 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EBEC3EA29A4338D00CB72C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBEC3EC29A4338D00CB72C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFMainViewCardView.swift; sourceTree = "<group>"; };
 		4EF93F4329A6877100BF9AB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +142,8 @@
 		4EBEC3F429A4346800CB72C5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4E4AE6C729A966BA009DAC64 /* FFStorageMainView.swift */,
+				4ECD52B529AEA04C003EC3C6 /* Subviews */,
+				4ECD52B429AEA039003EC3C6 /* Core */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,22 @@
 				4E83D5E629A44E0600D68939 /* Extensions.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4ECD52B429AEA039003EC3C6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4E4AE6C729A966BA009DAC64 /* FFStorageMainView.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4ECD52B529AEA04C003EC3C6 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +283,7 @@
 				4E83D5E129A4365D00D68939 /* FFFinanceViewController.swift in Sources */,
 				4EB7E82829AD8177009C902B /* FFStorageSearchResultViewController.swift in Sources */,
 				4E4AE6C829A966BA009DAC64 /* FFStorageMainView.swift in Sources */,
+				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardView.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageMainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

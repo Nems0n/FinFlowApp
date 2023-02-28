@@ -4,16 +4,16 @@
 //
 //  Created by Vlad Todorov on 24.02.23.
 //
-
 import Foundation
 import UIKit
 
+//MARK: - Protocols
 protocol FFStorageMainViewDelegate: AnyObject {
     func searchBarTouched()
 }
 
 final class FFStorageMainView: UIView {
-    
+    //MARK: - UI Objects
     public weak var delegate: FFStorageMainViewDelegate?
     
     private let viewModel = FFStorageMainViewModel()
@@ -60,14 +60,15 @@ final class FFStorageMainView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-  
     
+    var cardView = FFMainViewCardView()
+  
+    //MARK: - UIView Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        searchTextField.delegate = viewModel
-        viewModel.delegate = self
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
+        setupElements()
         addSubviews()
         createConstraints()
     }
@@ -76,14 +77,22 @@ final class FFStorageMainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions to setup UI
     private func addSubviews() {
         searchTextField.addSubview(underlineBorder)
         addSubview(searchTextField)
         addSubview(userButton)
+        addSubview(cardView)
     }
     
+    private func setupElements() {
+        searchTextField.delegate = viewModel
+        viewModel.delegate = self
+        userButton.addAction(viewModel.userAvatarAction, for: .touchUpInside)
+    }
+    
+    //MARK: - Add constraints
     private func createConstraints() {
-
         NSLayoutConstraint.activate([
             searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.75),
@@ -102,11 +111,16 @@ final class FFStorageMainView: UIView {
             userButton.heightAnchor.constraint(equalTo: searchTextField.heightAnchor),
             userButton.widthAnchor.constraint(equalTo: searchTextField.heightAnchor)
         ])
+        NSLayoutConstraint.activate([
+            cardView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 24),
+            cardView.widthAnchor.constraint(equalTo: widthAnchor),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cardView.heightAnchor.constraint(equalToConstant: 84)
+        ])
     }
 }
 
-
-
+//MARK: - Extensions
 extension FFStorageMainView: FFStorageMainViewModelDelegate {
     func didTapSearhBar() {
         delegate?.searchBarTouched()

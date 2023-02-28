@@ -11,6 +11,7 @@ final class FFStorageViewController: UIViewController {
     
     var mainView = FFStorageMainView()
     
+    //MARK: - VC Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.navigationBar.isHidden = true
@@ -27,10 +28,12 @@ final class FFStorageViewController: UIViewController {
         createConstraints()
     }
     
+    //MARK: - Setup view
     private func addSubviews() {
         view.addSubview(mainView)
     }
    
+    //MARK: - Add constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
             mainView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -39,9 +42,9 @@ final class FFStorageViewController: UIViewController {
             mainView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
 }
 
+//MARK: - Extensions
 extension FFStorageViewController: FFStorageMainViewDelegate {
     func searchBarTouched() {
         navigationController?.navigationBar.isHidden = false
@@ -49,7 +52,6 @@ extension FFStorageViewController: FFStorageMainViewDelegate {
             self.navigationItem.searchController?.searchBar.becomeFirstResponder()
         }
     }
-    
 }
 
 extension FFStorageViewController: UISearchControllerDelegate, UISearchResultsUpdating {

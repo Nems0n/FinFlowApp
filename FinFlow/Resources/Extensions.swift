@@ -8,20 +8,20 @@
 import Foundation
 import UIKit
 
-enum AssetsColor: String {
-    case systemBG = "systemBG"
-}
-
-
-
+//MARK: - Add main app colors
 extension UIColor {
+    enum AssetsColor: String {
+        case systemBG = "systemBG"
+        case systemGradientPurple = "systemGradientPurple"
+        case systemGradientBlue = "systemGradientBlue"
+        case systemBorder = "systemBorder"
+    }
     static func appColor(_ name: AssetsColor) -> UIColor? {
         return UIColor(named: name.rawValue)
     }
 }
-
+//MARK: - Setup Poppins Font
 extension UIFont {
-    
     enum poppinsType: String {
         case bold = "Poppins-Bold"
         case medium = "Poppins-Medium"
@@ -33,4 +33,38 @@ extension UIFont {
         return font
     }
     
+}
+//MARK: - Quick way to create CAGradientLayer for UIView
+extension UIView {
+    func setGradient(colors: [CGColor], angle: Float) {
+        let gradientLayerView: UIView = UIView(frame: CGRect(x:0, y: 0, width: bounds.width, height: bounds.height))
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = gradientLayerView.bounds
+        gradient.colors = colors
+
+        let alpha: Float = angle / 360
+        let startPointX = powf(
+            sinf(2 * Float.pi * ((alpha + 0.75) / 2)),
+            2
+        )
+        let startPointY = powf(
+            sinf(2 * Float.pi * ((alpha + 0) / 2)),
+            2
+        )
+        let endPointX = powf(
+            sinf(2 * Float.pi * ((alpha + 0.25) / 2)),
+            2
+        )
+        let endPointY = powf(
+            sinf(2 * Float.pi * ((alpha + 0.5) / 2)),
+            2
+        )
+
+        gradient.endPoint = CGPoint(x: CGFloat(endPointX),y: CGFloat(endPointY))
+        gradient.startPoint = CGPoint(x: CGFloat(startPointX), y: CGFloat(startPointY))
+
+        gradientLayerView.layer.insertSublayer(gradient, at: 0)
+        layer.insertSublayer(gradientLayerView.layer, at: 0)
+    }
+
 }
