@@ -15,6 +15,7 @@ extension UIColor {
         case systemGradientPurple = "systemGradientPurple"
         case systemGradientBlue = "systemGradientBlue"
         case systemBorder = "systemBorder"
+        case systemAccentThree = "systemAccentThree"
     }
     static func appColor(_ name: AssetsColor) -> UIColor? {
         return UIColor(named: name.rawValue)
@@ -68,3 +69,4 @@ extension UIView {
     }
 
 }
+

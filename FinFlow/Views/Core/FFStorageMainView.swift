@@ -62,6 +62,16 @@ final class FFStorageMainView: UIView {
     }()
     
     var cardView = FFMainViewCardView()
+    
+    var addProductButton: ActualGradientButton = {
+        var button = ActualGradientButton(isGradient: true, title: "Add new product", UIImage(systemName: "plus"))
+        return button
+    }()
+    
+    var bestSellerButton: ActualGradientButton = {
+        var button = ActualGradientButton(isGradient: false, title: "Best sellers", nil)
+        return button
+    }()
   
     //MARK: - UIView Lifecycle
     override init(frame: CGRect) {
@@ -77,18 +87,23 @@ final class FFStorageMainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     //MARK: - Functions to setup UI
     private func addSubviews() {
         searchTextField.addSubview(underlineBorder)
         addSubview(searchTextField)
         addSubview(userButton)
         addSubview(cardView)
+        addSubview(addProductButton)
+        addSubview(bestSellerButton)
     }
     
     private func setupElements() {
         searchTextField.delegate = viewModel
         viewModel.delegate = self
         userButton.addAction(viewModel.userAvatarAction, for: .touchUpInside)
+
+ 
     }
     
     //MARK: - Add constraints
@@ -116,6 +131,18 @@ final class FFStorageMainView: UIView {
             cardView.widthAnchor.constraint(equalTo: widthAnchor),
             cardView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cardView.heightAnchor.constraint(equalToConstant: 84)
+        ])
+        NSLayoutConstraint.activate([
+            addProductButton.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 24),
+            addProductButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            addProductButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.48),
+            addProductButton.heightAnchor.constraint(equalToConstant: 36)
+        ])
+        NSLayoutConstraint.activate([
+            bestSellerButton.centerYAnchor.constraint(equalTo: addProductButton.centerYAnchor),
+            bestSellerButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bestSellerButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.48),
+            bestSellerButton.heightAnchor.constraint(equalTo: addProductButton.heightAnchor)
         ])
     }
 }
