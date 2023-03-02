@@ -35,7 +35,7 @@ final class FFStorageMainView: UIView {
         tf.leftViewMode = .always
         tf.leftView = imageContainer
         tf.textColor = UIColor(white: 0, alpha: 0.2)
-        tf.placeholder = "Start typing..."
+        tf.attributedPlaceholder = NSAttributedString(string: "Start typing...", attributes: [NSAttributedString.Key.foregroundColor: UIColor(white: 0, alpha: 0.2)])
         tf.font = .poppins(.regular, size: 14)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isContextMenuInteractionEnabled = false
@@ -72,6 +72,18 @@ final class FFStorageMainView: UIView {
         var button = ActualGradientButton(isGradient: false, title: "Best sellers", nil)
         return button
     }()
+    
+    
+    var goodsTableView: UITableView = {
+        var table = UITableView(frame: .zero, style: .plain)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.clipsToBounds = true
+        table.layer.cornerRadius = 16
+        table.sectionHeaderTopPadding = 0
+        table.isScrollEnabled = false
+        return table
+    }()
   
     //MARK: - UIView Lifecycle
     override init(frame: CGRect) {
@@ -96,14 +108,15 @@ final class FFStorageMainView: UIView {
         addSubview(cardView)
         addSubview(addProductButton)
         addSubview(bestSellerButton)
+        addSubview(goodsTableView)
     }
     
     private func setupElements() {
         searchTextField.delegate = viewModel
         viewModel.delegate = self
         userButton.addAction(viewModel.userAvatarAction, for: .touchUpInside)
-
- 
+        goodsTableView.delegate = viewModel
+        goodsTableView.dataSource = viewModel
     }
     
     //MARK: - Add constraints
@@ -143,6 +156,12 @@ final class FFStorageMainView: UIView {
             bestSellerButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             bestSellerButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.48),
             bestSellerButton.heightAnchor.constraint(equalTo: addProductButton.heightAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            goodsTableView.topAnchor.constraint(equalTo: bestSellerButton.bottomAnchor, constant: 24),
+            goodsTableView.widthAnchor.constraint(equalTo: widthAnchor),
+            goodsTableView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            goodsTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
         ])
     }
 }

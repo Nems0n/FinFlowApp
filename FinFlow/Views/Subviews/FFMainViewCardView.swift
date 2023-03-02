@@ -67,7 +67,6 @@ class FFMainViewCardView: UIView {
     }
     
     //MARK: - Funcs to setup UI
-    
     private func setupSelf() {
         clipsToBounds = true
         layer.cornerRadius = 16

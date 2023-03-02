@@ -8,9 +8,21 @@
 import UIKit
 
 class ActualGradientButton: UIButton {
-    
-    private var gradient: Bool
 
+    private var gradient: Bool
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.gray.cgColor, UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor]
+        gradientLayer.startPoint = CGPoint(x: -0.3, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.cornerRadius = 16
+        layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.isHidden = true
+        return gradientLayer
+    }()
+    
     override func layoutSubviews() {
           super.layoutSubviews()
           gradientLayer.frame = bounds
@@ -20,7 +32,7 @@ class ActualGradientButton: UIButton {
             if gradient {
                 gradientLayer.isHidden = isHighlighted ? false : true
             } else {
-                backgroundColor = isHighlighted ? UIColor.appColor(.systemAccentThree)?.withAlphaComponent(0.1) : UIColor.white
+                backgroundColor = isHighlighted ? UIColor.appColor(.systemAccentThree)?.withAlphaComponent(0.15) : UIColor.white
             }
         }
     }
@@ -45,17 +57,4 @@ class ActualGradientButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-      private lazy var gradientLayer: CAGradientLayer = {
-          let gradientLayer = CAGradientLayer()
-          gradientLayer.frame = self.bounds
-          gradientLayer.colors = [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.gray.cgColor, UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor]
-          gradientLayer.startPoint = CGPoint(x: -0.5, y: 0)
-          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-          gradientLayer.cornerRadius = 16
-          layer.insertSublayer(gradientLayer, at: 0)
-          gradientLayer.isHidden = true
-          return gradientLayer
-      }()
-
 }
