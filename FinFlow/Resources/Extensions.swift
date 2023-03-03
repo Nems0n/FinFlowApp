@@ -67,7 +67,21 @@ extension UIView {
         gradientLayerView.layer.insertSublayer(gradient, at: 0)
         layer.insertSublayer(gradientLayerView.layer, at: 0)
     }
+    
+    
 
 }
 
 
+extension UIButton {
+    func setHeaderButton(title: String, image: UIImage?) {
+        self.setTitle(title, for: .normal)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel?.font = .poppins(.regular, size: 12)
+        self.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)
+        self.setImage(image?.withTintColor(.appColor(.systemBG)?.withAlphaComponent(0.6) ?? .gray, renderingMode: .alwaysOriginal), for: .normal)
+        self.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .small), forImageIn: .normal)
+        self.semanticContentAttribute = .forceRightToLeft
+//        self.sizeToFit()
+    }
+}

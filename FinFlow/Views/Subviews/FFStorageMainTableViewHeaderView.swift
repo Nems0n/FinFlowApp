@@ -18,9 +18,41 @@ class FFStorageMainTableViewHeaderView: UIView {
         return label
     }()
     
+    let filterButtonsView: UIView = {
+        let view = UIView()
+        view.alpha =  0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var priceButton: UIButton = {
+        let button = UIButton()
+        button.setHeaderButton(title: "Price", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        return button
+    }()
+    
+    lazy var categoryButton: UIButton = {
+        let button = UIButton()
+        button.setHeaderButton(title: "Category", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        return button
+    }()
+    
+    lazy var stockButton: UIButton = {
+        let button = UIButton()
+        button.setHeaderButton(title: "Supplier", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        return button
+    }()
+    
+    lazy var supplierButton: UIButton = {
+        let button = UIButton()
+        button.setHeaderButton(title: "Supplier", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+//        button.contentHorizontalAlignment = .left
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.frame.size.height = 84
+        
         addSubviews()
         createConstraints()
     }
@@ -40,6 +72,11 @@ class FFStorageMainTableViewHeaderView: UIView {
     
     private func addSubviews() {
         addSubview(mainTitle)
+        addSubview(filterButtonsView)
+        addSubview(priceButton)
+        addSubview(categoryButton)
+        addSubview(stockButton)
+        addSubview(supplierButton)
     }
     
     private func createConstraints() {
@@ -47,8 +84,38 @@ class FFStorageMainTableViewHeaderView: UIView {
             mainTitle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             mainTitle.heightAnchor.constraint(equalToConstant: 24),
             mainTitle.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            mainTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+            mainTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
         ])
+        
+        NSLayoutConstraint.activate([
+            filterButtonsView.widthAnchor.constraint(equalTo: widthAnchor, constant: -32),
+            filterButtonsView.heightAnchor.constraint(equalToConstant: 20),
+            filterButtonsView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            filterButtonsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            priceButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            priceButton.heightAnchor.constraint(equalTo: filterButtonsView.heightAnchor),
+            priceButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            priceButton.bottomAnchor.constraint(equalTo: filterButtonsView.bottomAnchor),
+            
+            categoryButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            categoryButton.heightAnchor.constraint(equalTo: filterButtonsView.heightAnchor),
+            categoryButton.leadingAnchor.constraint(equalTo: priceButton.trailingAnchor),
+            categoryButton.bottomAnchor.constraint(equalTo: filterButtonsView.bottomAnchor),
+            
+            stockButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            stockButton.heightAnchor.constraint(equalTo: filterButtonsView.heightAnchor),
+            stockButton.leadingAnchor.constraint(equalTo: categoryButton.trailingAnchor),
+            stockButton.bottomAnchor.constraint(equalTo: filterButtonsView.bottomAnchor),
+            
+            supplierButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            supplierButton.heightAnchor.constraint(equalTo: filterButtonsView.heightAnchor),
+            supplierButton.leadingAnchor.constraint(equalTo: stockButton.trailingAnchor),
+            supplierButton.bottomAnchor.constraint(equalTo: filterButtonsView.bottomAnchor)
+        ])
+        
     }
     
 }
