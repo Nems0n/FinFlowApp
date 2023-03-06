@@ -37,9 +37,9 @@ extension UIFont {
 }
 //MARK: - Quick way to create CAGradientLayer for UIView
 extension UIView {
-    func setGradient(colors: [CGColor], angle: Float) {
-        let gradientLayerView: UIView = UIView(frame: CGRect(x:0, y: 0, width: bounds.width, height: bounds.height))
-        let gradient: CAGradientLayer = CAGradientLayer()
+    func setGradient(colors: [CGColor], angle: Float, gradientLayerView: UIView, gradient: CAGradientLayer) {
+//        let gradientLayerView: UIView = UIView(frame: CGRect(x:0, y: 0, width: bounds.width, height: bounds.height))
+//        let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = gradientLayerView.bounds
         gradient.colors = colors
 
@@ -67,21 +67,16 @@ extension UIView {
         gradientLayerView.layer.insertSublayer(gradient, at: 0)
         layer.insertSublayer(gradientLayerView.layer, at: 0)
     }
-    
-    
-
 }
-
 
 extension UIButton {
     func setHeaderButton(title: String, image: UIImage?) {
-        self.setTitle(title, for: .normal)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel?.font = .poppins(.regular, size: 12)
-        self.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)
-        self.setImage(image?.withTintColor(.appColor(.systemBG)?.withAlphaComponent(0.6) ?? .gray, renderingMode: .alwaysOriginal), for: .normal)
-        self.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .small), forImageIn: .normal)
-        self.semanticContentAttribute = .forceRightToLeft
-//        self.sizeToFit()
+        setTitle(title, for: .normal)
+        translatesAutoresizingMaskIntoConstraints = false
+        titleLabel?.font = .poppins(.regular, size: 12)
+        setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)
+        setImage(image?.withTintColor(.appColor(.systemBG)?.withAlphaComponent(0.6) ?? .gray, renderingMode: .alwaysOriginal), for: .normal)
+        setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .small), forImageIn: .normal)
+        semanticContentAttribute = .forceRightToLeft
     }
 }

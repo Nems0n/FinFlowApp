@@ -9,6 +9,9 @@ import UIKit
 
 class FFStorageMainTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
+    let gradientLayerView: UIView = UIView()
+    let gradientLayer = CAGradientLayer()
+    
     lazy var mainTitle: UILabel = {
         lazy var label = UILabel()
         label.text = "All goods"
@@ -63,8 +66,9 @@ class FFStorageMainTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        gradientLayerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
         setGradient(colors: [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.gray.cgColor,
-                             UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor], angle: 90)
+                             UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor], angle: 90, gradientLayerView: gradientLayerView, gradient: gradientLayer)
         clipsToBounds = true
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

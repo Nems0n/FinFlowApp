@@ -10,6 +10,10 @@ import UIKit
 class FFMainViewCardView: UIView {
 
     //MARK: - UI Objects
+    
+    let gradientLayerView: UIView = UIView()
+    let gradientLayer = CAGradientLayer()
+    
     let mainTitle: UILabel = {
         let label = UILabel()
         label.text = "Total amount of goods in stock"
@@ -59,7 +63,8 @@ class FFMainViewCardView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setGradient(colors: bgColorsArray, angle: 60)
+        gradientLayerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        setGradient(colors: bgColorsArray, angle: 60, gradientLayerView: gradientLayerView, gradient: gradientLayer)
     }
     
     required init?(coder: NSCoder) {
