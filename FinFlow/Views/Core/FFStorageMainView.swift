@@ -78,6 +78,7 @@ final class FFStorageMainView: UIView {
         var table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(FFStorageMainTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0

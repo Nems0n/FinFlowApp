@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FFStorageMainTableViewHeaderView: UIView {
+class FFStorageMainTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
     lazy var mainTitle: UILabel = {
         lazy var label = UILabel()
@@ -33,29 +33,33 @@ class FFStorageMainTableViewHeaderView: UIView {
     
     lazy var categoryButton: UIButton = {
         let button = UIButton()
-        button.setHeaderButton(title: "Category", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        button.setHeaderButton(title: "Category", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
         return button
     }()
     
     lazy var stockButton: UIButton = {
         let button = UIButton()
-        button.setHeaderButton(title: "Supplier", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        button.setHeaderButton(title: "Stock", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
         return button
     }()
     
     lazy var supplierButton: UIButton = {
         let button = UIButton()
         button.setHeaderButton(title: "Supplier", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
-//        button.contentHorizontalAlignment = .left
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         addSubviews()
         createConstraints()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -65,10 +69,7 @@ class FFStorageMainTableViewHeaderView: UIView {
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     private func addSubviews() {
         addSubview(mainTitle)

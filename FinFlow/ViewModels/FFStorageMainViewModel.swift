@@ -37,7 +37,7 @@ extension FFStorageMainViewModel: UITextFieldDelegate, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = FFStorageMainTableViewHeaderView()
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header")
         return view
     }
     

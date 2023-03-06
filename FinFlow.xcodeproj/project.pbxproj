@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E09B40429B024BA0088978E /* FFGoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */; };
-		4E09B40629B02E520088978E /* FFStorageMainTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderView.swift */; };
+		4E09B40629B02E520088978E /* FFStorageMainTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderFooterView.swift */; };
 		4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */; };
 		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
 		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableViewCell.swift; sourceTree = "<group>"; };
-		4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageMainTableViewHeaderView.swift; sourceTree = "<group>"; };
+		4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageMainTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardView.swift */,
-				4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderView.swift */,
+				4E09B40529B02E520088978E /* FFStorageMainTableViewHeaderFooterView.swift */,
 				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
 				4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */,
 			);
@@ -295,7 +295,7 @@
 				4E4AE6C829A966BA009DAC64 /* FFStorageMainView.swift in Sources */,
 				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardView.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageMainViewModel.swift in Sources */,
-				4E09B40629B02E520088978E /* FFStorageMainTableViewHeaderView.swift in Sources */,
+				4E09B40629B02E520088978E /* FFStorageMainTableViewHeaderFooterView.swift in Sources */,
 				4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
