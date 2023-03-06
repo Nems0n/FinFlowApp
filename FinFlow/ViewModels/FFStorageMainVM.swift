@@ -32,7 +32,7 @@ extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .gray
+//        cell.backgroundColor = .gray
         return cell
     }
     

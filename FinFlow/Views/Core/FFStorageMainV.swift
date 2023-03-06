@@ -73,16 +73,17 @@ final class FFStorageMainV: UIView {
         return button
     }()
     
-    
     var goodsTableView: UITableView = {
         var table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(FFGoodsTableViewCell.self, forCellReuseIdentifier: "cell")
         table.register(FFGoodsTableTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0
         table.isScrollEnabled = false
+        table.layer.borderWidth = 1
+        table.layer.borderColor = UIColor.appColor(.systemBorder)?.cgColor
         return table
     }()
   
