@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FFMainViewCardView: UIView {
+class FFMainViewCardV: UIView {
 
     //MARK: - UI Objects
     

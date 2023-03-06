@@ -1,5 +1,5 @@
 //
-//  FFAdminViewController.swift
+//  FFPromoViewController.swift
 //  FinFlow
 //
 //  Created by Vlad Todorov on 21.02.23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FFAdminViewController: UIViewController {
+final class FFPromoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

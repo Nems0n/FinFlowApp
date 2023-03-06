@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class FFStorageViewController: UIViewController {
+final class FFStorageVC: UIViewController {
     
-    var mainView = FFStorageMainView()
+    var mainView = FFStorageMainV()
     
     //MARK: - VC Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +45,7 @@ final class FFStorageViewController: UIViewController {
 }
 
 //MARK: - Extensions
-extension FFStorageViewController: FFStorageMainViewDelegate {
+extension FFStorageVC: FFStorageMainVDelegate {
     func searchBarTouched() {
         navigationController?.navigationBar.isHidden = false
         DispatchQueue.main.async {
@@ -54,7 +54,7 @@ extension FFStorageViewController: FFStorageMainViewDelegate {
     }
 }
 
-extension FFStorageViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false
     }

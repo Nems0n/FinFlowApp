@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FFStorageMainTableViewHeaderFooterView: UITableViewHeaderFooterView {
+class FFGoodsTableTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
     let gradientLayerView: UIView = UIView()
     let gradientLayer = CAGradientLayer()

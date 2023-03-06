@@ -8,18 +8,18 @@ import Foundation
 import UIKit
 
 //MARK: - Protocols
-protocol FFStorageMainViewDelegate: AnyObject {
+protocol FFStorageMainVDelegate: AnyObject {
     func searchBarTouched()
 }
 
-final class FFStorageMainView: UIView {
+final class FFStorageMainV: UIView {
     //MARK: - UI Objects
-    public weak var delegate: FFStorageMainViewDelegate?
+    public weak var delegate: FFStorageMainVDelegate?
     
-    private let viewModel = FFStorageMainViewModel()
+    private let viewModel = FFStorageMainVM()
     
     let searchController: UISearchController = {
-        let resultVC = FFStorageSearchResultViewController()
+        let resultVC = FFStorageSearchResultVC()
         let sc = UISearchController(searchResultsController: resultVC)
         return sc
     }()
@@ -61,7 +61,7 @@ final class FFStorageMainView: UIView {
         return button
     }()
     
-    var cardView = FFMainViewCardView()
+    var cardView = FFMainViewCardV()
     
     var addProductButton: ActualGradientButton = {
         var button = ActualGradientButton(isGradient: true, title: "Add new product", UIImage(systemName: "plus"))
@@ -78,7 +78,7 @@ final class FFStorageMainView: UIView {
         var table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        table.register(FFStorageMainTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        table.register(FFGoodsTableTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0
@@ -168,7 +168,7 @@ final class FFStorageMainView: UIView {
 }
 
 //MARK: - Extensions
-extension FFStorageMainView: FFStorageMainViewModelDelegate {
+extension FFStorageMainV: FFStorageMainVMDelegate {
     func didTapSearhBar() {
         delegate?.searchBarTouched()
         DispatchQueue.main.async {

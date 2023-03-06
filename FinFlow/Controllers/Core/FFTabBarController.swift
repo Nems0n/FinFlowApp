@@ -19,10 +19,10 @@ final class FFTabBarController: UITabBarController {
     }
     
     private func setUpTabs() {
-        let storageVC = FFStorageViewController()
-        let financeVC = FFFinanceViewController()
-        let promoVC = FFPromoViewController()
-        let adminVC = FFAdminViewController()
+        let storageVC = FFStorageVC()
+        let financeVC = FFFinanceVC()
+        let promoVC = FFPromoVC()
+        let adminVC = FFAdminVC()
 
         let navStorage = UINavigationController(rootViewController: storageVC)
         let navFinance = UINavigationController(rootViewController: financeVC)

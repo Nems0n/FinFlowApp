@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-protocol FFStorageMainViewModelDelegate: AnyObject {
+protocol FFStorageMainVMDelegate: AnyObject {
     func didTapSearhBar() 
 }
 
-final class FFStorageMainViewModel: NSObject {
-    public weak var delegate: FFStorageMainViewModelDelegate?
+final class FFStorageMainVM: NSObject {
+    public weak var delegate: FFStorageMainVMDelegate?
     public var userAvatarAction = UIAction { _ in
         print("button touched")
     }
 }
 
-extension FFStorageMainViewModel: UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     //MARK: - SearchBar
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.delegate?.didTapSearhBar()

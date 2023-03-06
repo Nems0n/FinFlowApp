@@ -1,20 +1,19 @@
 //
-//  FFStorageSearchResultViewController.swift
+//  FFAdminViewController.swift
 //  FinFlow
 //
-//  Created by Vlad Todorov on 28.02.23.
+//  Created by Vlad Todorov on 21.02.23.
 //
 
 import UIKit
 
-class FFStorageSearchResultViewController: UIViewController {
+final class FFAdminVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
+        
     }
     
-
 
 }
