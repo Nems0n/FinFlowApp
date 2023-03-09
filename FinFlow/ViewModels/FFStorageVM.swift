@@ -8,17 +8,14 @@
 import Foundation
 import UIKit
 
-protocol FFStorageMainVMDelegate: AnyObject {
-    func didTapSearhBar() 
-}
-
-final class FFStorageMainVM: NSObject {
-    public weak var delegate: FFStorageMainVMDelegate?
+final class FFStorageVM: NSObject {
     public var userAvatarAction = UIAction { _ in
         print("button touched")
     }
     
-    var cellDataSource: [FFProductCellVM]?
+    var buttonHasPressed: Binder<Bool> = Binder(false)
+    
+    var cellDataSource: Binder<[FFProductCellVM?]> = Binder([])
     
     var dataSource: [Product] = {
         var array = [Product]()
@@ -30,21 +27,27 @@ final class FFStorageMainVM: NSObject {
     }()
     
     func mapCellData() {
-        self.cellDataSource = self.dataSource.compactMap({FFProductCellVM(product: $0)})
+        self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
+    }
+    
+     func userAvatarTouched() {
+         self.buttonHasPressed = Binder(true)
+    }
+    
+    func addNewProduct() {
+        let newProduct = Product(id: 2345, productName: "34256", price: 235, amount: 2345, backgroundColor: .black.withAlphaComponent(0.15))
+        self.dataSource.append(newProduct)
+//        mapCellData()
     }
 }
 
-extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
-    //MARK: - SearchBar
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        self.delegate?.didTapSearhBar()
-        return true
-    }
+/*extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+
     //MARK: - TableViewProtocols
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         mapCellData()
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FFProductTableViewCell.identifier, for: indexPath) as? FFProductTableViewCell else {
@@ -57,17 +60,18 @@ extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableView
         cell.setupCell(viewModel: cellVM)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier)
         return view
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 84
     }
 
-    
+
 }
 
 
+*/
