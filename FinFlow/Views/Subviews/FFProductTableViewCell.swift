@@ -7,17 +7,24 @@
 
 import UIKit
 
-class FFGoodsTableViewCell: UITableViewCell {
+class FFProductTableViewCell: UITableViewCell {
+    
+    public static var identifier: String {
+        get {
+            return String(describing: self)
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        backgroundColor = .lightGray
     }
 
+    func setupCell(viewModel: FFProductCellVM) {
+        self.backgroundColor = viewModel.backgroundColor
+    }
 }

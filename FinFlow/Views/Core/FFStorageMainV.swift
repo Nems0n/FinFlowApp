@@ -76,8 +76,8 @@ final class FFStorageMainV: UIView {
     var goodsTableView: UITableView = {
         var table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(FFGoodsTableViewCell.self, forCellReuseIdentifier: "cell")
-        table.register(FFGoodsTableTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        table.register(FFProductTableViewCell.self, forCellReuseIdentifier: FFProductTableViewCell.identifier)
+        table.register(FFProductTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FFProductTableViewHeader.identifier)
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E09B40429B024BA0088978E /* FFGoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */; };
-		4E09B40629B02E520088978E /* FFGoodsTableTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40529B02E520088978E /* FFGoodsTableTableViewHeaderFooterView.swift */; };
+		4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40329B024BA0088978E /* FFProductTableViewCell.swift */; };
+		4E09B40629B02E520088978E /* FFProductTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09B40529B02E520088978E /* FFProductTableViewHeader.swift */; };
 		4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */; };
 		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
 		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
@@ -28,11 +28,13 @@
 		4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */; };
 		4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */; };
 		4EF93F4429A6877100BF9AB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF93F4329A6877100BF9AB3 /* User.swift */; };
+		4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDD29B7CBAC00B9D086 /* Product.swift */; };
+		4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableViewCell.swift; sourceTree = "<group>"; };
-		4E09B40529B02E520088978E /* FFGoodsTableTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		4E09B40329B024BA0088978E /* FFProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductTableViewCell.swift; sourceTree = "<group>"; };
+		4E09B40529B02E520088978E /* FFProductTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductTableViewHeader.swift; sourceTree = "<group>"; };
 		4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFMainViewCardV.swift; sourceTree = "<group>"; };
 		4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualGradientButton.swift; sourceTree = "<group>"; };
 		4EF93F4329A6877100BF9AB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4EFF7CDD29B7CBAC00B9D086 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductCellVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4EF93F4329A6877100BF9AB3 /* User.swift */,
+				4EFF7CDD29B7CBAC00B9D086 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				4E90E33929AADE0700311C14 /* FFStorageMainVM.swift */,
+				4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,9 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */,
-				4E09B40529B02E520088978E /* FFGoodsTableTableViewHeaderFooterView.swift */,
+				4E09B40529B02E520088978E /* FFProductTableViewHeader.swift */,
 				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
-				4E09B40329B024BA0088978E /* FFGoodsTableViewCell.swift */,
+				4E09B40329B024BA0088978E /* FFProductTableViewCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -285,17 +291,19 @@
 				4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
-				4E09B40429B024BA0088978E /* FFGoodsTableViewCell.swift in Sources */,
+				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
+				4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */,
 				4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */,
 				4EF93F4429A6877100BF9AB3 /* User.swift in Sources */,
 				4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */,
 				4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */,
+				4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */,
 				4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */,
 				4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */,
 				4E4AE6C829A966BA009DAC64 /* FFStorageMainV.swift in Sources */,
 				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageMainVM.swift in Sources */,
-				4E09B40629B02E520088978E /* FFGoodsTableTableViewHeaderFooterView.swift in Sources */,
+				4E09B40629B02E520088978E /* FFProductTableViewHeader.swift in Sources */,
 				4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

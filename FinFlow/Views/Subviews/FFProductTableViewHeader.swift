@@ -7,7 +7,13 @@
 
 import UIKit
 
-class FFGoodsTableTableViewHeaderFooterView: UITableViewHeaderFooterView {
+class FFProductTableViewHeader: UITableViewHeaderFooterView {
+    
+    public static var identifier: String {
+        get {
+            return String(describing: self)
+        }
+    }
 
     let gradientLayerView: UIView = UIView()
     let gradientLayer = CAGradientLayer()
