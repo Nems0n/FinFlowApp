@@ -15,7 +15,10 @@ final class FFStorageVM: NSObject {
     
     var buttonHasPressed: Binder<Bool> = Binder(false)
     
+//    var priceSortButtonPressed: Binder<Bool> = Binder(false)
+    
     var cellDataSource: Binder<[FFProductCellVM?]> = Binder([])
+//    var cellDataSource: [FFProductCellVM?] = []
     
     var dataSource: [Product] = {
         var array = [Product]()
@@ -37,41 +40,6 @@ final class FFStorageVM: NSObject {
     func addNewProduct() {
         let newProduct = Product(id: 2345, productName: "34256", price: 235, amount: 2345, backgroundColor: .black.withAlphaComponent(0.15))
         self.dataSource.append(newProduct)
-//        mapCellData()
     }
 }
 
-/*extension FFStorageMainVM: UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
-
-    //MARK: - TableViewProtocols
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        mapCellData()
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FFProductTableViewCell.identifier, for: indexPath) as? FFProductTableViewCell else {
-            return UITableViewCell()
-        }
-        guard let cellVM = cellDataSource?[indexPath.row] else {
-            return UITableViewCell()
-        }
-        print(cellVM)
-        cell.setupCell(viewModel: cellVM)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier)
-        return view
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 84
-    }
-
-
-}
-
-
-*/

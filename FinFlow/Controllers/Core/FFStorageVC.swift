@@ -97,6 +97,7 @@ final class FFStorageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
+        setupBindings()
         addSubviews()
         createConstraints()
     }
@@ -123,19 +124,17 @@ final class FFStorageVC: UIViewController {
         goodsTableView.dataSource = self
         addProductButton.addAction(UIAction(handler: { _ in
             self.viewModel.addNewProduct()
-            self.viewModel.mapCellData()
-            
-                self.goodsTableView.reloadData()
+            self.goodsTableView.reloadData()
             
         }), for: .touchUpInside)
     }
     
     //MARK: - Methods
-    private func setupBindings() {
-        viewModel.cellDataSource.bind { array in
-            print(array)
+    func setupBindings() {
+        viewModel.cellDataSource.bind { [weak self] array in
+            self?.dataArray = array
         }
-        
+
     }
    
     //MARK: - Add constraints
