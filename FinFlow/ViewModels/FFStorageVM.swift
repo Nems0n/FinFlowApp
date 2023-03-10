@@ -14,6 +14,7 @@ final class FFStorageVM: NSObject {
     }
     
     var buttonHasPressed: Binder<Bool> = Binder(false)
+    var isDataReloaded: Binder<Bool> = Binder(false)
     
 //    var priceSortButtonPressed: Binder<Bool> = Binder(false)
     
@@ -40,6 +41,11 @@ final class FFStorageVM: NSObject {
     func addNewProduct() {
         let newProduct = Product(id: 2345, productName: "34256", price: 235, amount: 2345, backgroundColor: .black.withAlphaComponent(0.15))
         self.dataSource.append(newProduct)
+        print("action in vm")
+        self.isDataReloaded = Binder(true)
+        print(self.isDataReloaded.value)
+//        self.dataSource = self.dataSource.reversed()
+        mapCellData()
     }
 }
 

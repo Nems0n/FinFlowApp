@@ -14,6 +14,8 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
             return String(describing: self)
         }
     }
+    
+    let viewModel = FFStorageVM()
 
     let gradientLayerView: UIView = UIView()
     let gradientLayer = CAGradientLayer()
@@ -60,7 +62,10 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
+        priceButton.addAction(UIAction(handler: { _ in
+            print("touch detected")
+            self.viewModel.addNewProduct()
+        }), for: .touchUpInside)
         addSubviews()
         createConstraints()
     }

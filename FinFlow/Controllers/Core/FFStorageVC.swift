@@ -74,20 +74,21 @@ final class FFStorageVC: UIViewController {
     }()
     
     lazy var goodsTableView: UITableView = {
-        var table = UITableView(frame: .zero, style: .plain)
+        var table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(FFProductTableViewCell.self, forCellReuseIdentifier: FFProductTableViewCell.identifier)
         table.register(FFProductTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FFProductTableViewHeader.identifier)
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0
-        table.isScrollEnabled = false
+        table.isScrollEnabled = true
         table.layer.borderWidth = 1
         table.layer.borderColor = UIColor.appColor(.systemBorder)?.cgColor
+        table.rowHeight = 72
         return table
     }()
     
-    var dataArray: [FFProductCellVM?]?
+    var dataArray = [FFProductCellVM?]()
     //MARK: - VC Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -96,9 +97,13 @@ final class FFStorageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.mapCellData()
         setupElements()
         setupBindings()
         addSubviews()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            self.revertArrayAction()
+//        }
         createConstraints()
     }
     
@@ -132,9 +137,25 @@ final class FFStorageVC: UIViewController {
     //MARK: - Methods
     func setupBindings() {
         viewModel.cellDataSource.bind { [weak self] array in
-            self?.dataArray = array
+            guard let self = self else { return }
+            self.dataArray = array
+            print(self.dataArray.count)
+            self.goodsTableView.reloadData()
         }
-
+        
+        viewModel.isDataReloaded.bind { bool in
+            DispatchQueue.main.async {
+                if bool {
+                    print("hey")
+                }
+            }
+        }
+    }
+    
+    func revertArrayAction() {
+        self.dataArray = self.dataArray.reversed()
+        self.goodsTableView.reloadData()
+        
     }
    
     //MARK: - Add constraints
@@ -199,9 +220,7 @@ extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     func willDismissSearchController(_ searchController: UISearchController) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
 }
-
 extension FFStorageVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         navigationController?.navigationBar.isHidden = false
@@ -215,16 +234,16 @@ extension FFStorageVC: UITextFieldDelegate {
 
 extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataSource.count
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.mapCellData()
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FFProductTableViewCell.identifier, for: indexPath) as? FFProductTableViewCell else {
             return UITableViewCell()
         }
-        guard let cellVM = viewModel.cellDataSource.value[indexPath.row] else { return UITableViewCell() }
-        cell.setupCell(viewModel: cellVM)
+        
+        guard self.dataArray.indices.contains(indexPath.row), let cellVMM = self.dataArray[indexPath.row] else { return UITableViewCell() }
+        cell.setupCell(viewModel: cellVMM)
         return cell
     }
     
