@@ -9,7 +9,7 @@ import UIKit
 
 final class FFStorageVC: UIViewController {
     //MARK: - UI Elements
-    private let viewModel = FFStorageVM()
+    var viewModel: FFStorageVM = FFStorageVM()
     
     private let interfaceGridView: UIView = {
         let view = UIView()
@@ -61,7 +61,21 @@ final class FFStorageVC: UIViewController {
         return button
     }()
     
-    lazy var cardView = FFMainViewCardV()
+    private let cardVContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowColor = UIColor.appColor(.systemAccentOne)?.cgColor
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 12
+        view.layer.shadowOpacity = 0.15
+        view.layer.masksToBounds = false
+        return view
+    }()
+    
+    lazy var cardView: FFMainViewCardV = {
+        let view = FFMainViewCardV()
+        return view
+    }()
     
     lazy var addProductButton: ActualGradientButton = {
         let button = ActualGradientButton(isGradient: true, title: "Add new product", UIImage(systemName: "plus"))
@@ -71,6 +85,17 @@ final class FFStorageVC: UIViewController {
     lazy var bestSellerButton: ActualGradientButton = {
         var button = ActualGradientButton(isGradient: false, title: "Best sellers", nil)
         return button
+    }()
+    
+    private let tableContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowColor = UIColor.appColor(.systemAccentOne)?.cgColor
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 12
+        view.layer.shadowOpacity = 0.15
+        view.layer.masksToBounds = false
+        return view
     }()
     
     lazy var goodsTableView: UITableView = {
@@ -85,6 +110,7 @@ final class FFStorageVC: UIViewController {
         table.layer.borderWidth = 1
         table.layer.borderColor = UIColor.appColor(.systemBorder)?.cgColor
         table.rowHeight = 72
+        table.backgroundColor = .white
         return table
     }()
     
@@ -99,12 +125,13 @@ final class FFStorageVC: UIViewController {
         super.viewDidLoad()
         viewModel.mapCellData()
         setupElements()
-        setupBindings()
         addSubviews()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            self.revertArrayAction()
-//        }
         createConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupBindings()
     }
     
     //MARK: - Setup view
@@ -113,24 +140,31 @@ final class FFStorageVC: UIViewController {
         searchTextField.addSubview(underlineBorder)
         view.addSubview(searchTextField)
         view.addSubview(userButton)
-        view.addSubview(cardView)
+        view.addSubview(cardVContainerView)
+        cardVContainerView.addSubview(cardView)
         view.addSubview(addProductButton)
         view.addSubview(bestSellerButton)
-        view.addSubview(goodsTableView)
+        view.addSubview(tableContainerView)
+        tableContainerView.addSubview(goodsTableView)
     }
     
     private func setupElements() {
         navigationItem.searchController = searchController
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.searchController?.delegate = self
         navigationItem.searchController?.searchResultsUpdater = self
         searchTextField.delegate = self
         goodsTableView.delegate = self
         goodsTableView.dataSource = self
+        
         addProductButton.addAction(UIAction(handler: { _ in
             self.viewModel.addNewProduct()
             self.goodsTableView.reloadData()
             
+        }), for: .touchUpInside)
+        
+        userButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.viewModel.priceTouch()
         }), for: .touchUpInside)
     }
     
@@ -139,23 +173,8 @@ final class FFStorageVC: UIViewController {
         viewModel.cellDataSource.bind { [weak self] array in
             guard let self = self else { return }
             self.dataArray = array
-            print(self.dataArray.count)
             self.goodsTableView.reloadData()
         }
-        
-        viewModel.isDataReloaded.bind { bool in
-            DispatchQueue.main.async {
-                if bool {
-                    print("hey")
-                }
-            }
-        }
-    }
-    
-    func revertArrayAction() {
-        self.dataArray = self.dataArray.reversed()
-        self.goodsTableView.reloadData()
-        
     }
    
     //MARK: - Add constraints
@@ -185,10 +204,14 @@ final class FFStorageVC: UIViewController {
             underlineBorder.leftAnchor.constraint(equalTo: searchTextField.leftAnchor)
         ])
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 24),
-            cardView.trailingAnchor.constraint(equalTo: interfaceGridView.trailingAnchor),
-            cardView.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
-            cardView.heightAnchor.constraint(equalToConstant: 84)
+            cardVContainerView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 24),
+            cardVContainerView.trailingAnchor.constraint(equalTo: interfaceGridView.trailingAnchor),
+            cardVContainerView.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
+            cardVContainerView.heightAnchor.constraint(equalToConstant: 84),
+            cardView.topAnchor.constraint(equalTo: cardVContainerView.topAnchor),
+            cardView.bottomAnchor.constraint(equalTo: cardVContainerView.bottomAnchor),
+            cardView.leadingAnchor.constraint(equalTo: cardVContainerView.leadingAnchor),
+            cardView.trailingAnchor.constraint(equalTo: cardVContainerView.trailingAnchor)
         ])
         NSLayoutConstraint.activate([
             addProductButton.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 24),
@@ -203,15 +226,27 @@ final class FFStorageVC: UIViewController {
             bestSellerButton.heightAnchor.constraint(equalTo: addProductButton.heightAnchor)
         ])
         NSLayoutConstraint.activate([
-            goodsTableView.topAnchor.constraint(equalTo: bestSellerButton.bottomAnchor, constant: 24),
-            goodsTableView.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
-            goodsTableView.centerXAnchor.constraint(equalTo: interfaceGridView.centerXAnchor),
-            goodsTableView.bottomAnchor.constraint(equalTo: interfaceGridView.bottomAnchor, constant: -24)
+            tableContainerView.topAnchor.constraint(equalTo: bestSellerButton.bottomAnchor, constant: 24),
+            tableContainerView.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
+            tableContainerView.centerXAnchor.constraint(equalTo: interfaceGridView.centerXAnchor),
+            tableContainerView.bottomAnchor.constraint(equalTo: interfaceGridView.bottomAnchor, constant: -24),
+            goodsTableView.topAnchor.constraint(equalTo: tableContainerView.topAnchor),
+            goodsTableView.bottomAnchor.constraint(equalTo: tableContainerView.bottomAnchor),
+            goodsTableView.leadingAnchor.constraint(equalTo: tableContainerView.leadingAnchor),
+            goodsTableView.trailingAnchor.constraint(equalTo: tableContainerView.trailingAnchor)
         ])
+    }
+    
+    //MARK: - Objc Methods
+    @objc func priceTouched() {
+        self.dataArray.reverse()
+        DispatchQueue.main.async {
+            self.goodsTableView.reloadData()
+        }
     }
 }
 
-//MARK: - Extensions
+//MARK: - Extension for SearchController
 extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false
@@ -221,6 +256,7 @@ extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
         self.navigationController?.navigationBar.isHidden = true
     }
 }
+//MARK: - Extension for TextField
 extension FFStorageVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         navigationController?.navigationBar.isHidden = false
@@ -231,7 +267,7 @@ extension FFStorageVC: UITextFieldDelegate {
         return true
     }
 }
-
+//MARK: - Extension for TableView ...(separate later)
 extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
@@ -239,16 +275,23 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FFProductTableViewCell.identifier, for: indexPath) as? FFProductTableViewCell else {
-            return UITableViewCell()
+            let cell = UITableViewCell()
+            cell.backgroundColor = .white
+            return cell
         }
         
         guard self.dataArray.indices.contains(indexPath.row), let cellVMM = self.dataArray[indexPath.row] else { return UITableViewCell() }
         cell.setupCell(viewModel: cellVMM)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier)
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier) as? FFProductTableViewHeader else {
+            return UIView()
+        }
+        view.priceButton.addTarget(self, action: #selector(priceTouched), for: .touchUpInside)
+
         return view
     }
     
@@ -257,3 +300,4 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     }
 
 }
+

@@ -16,6 +16,7 @@ extension UIColor {
         case systemGradientBlue = "systemGradientBlue"
         case systemBorder = "systemBorder"
         case systemAccentThree = "systemAccentThree"
+        case systemAccentOne = "systemAccentOne"
     }
     static func appColor(_ name: AssetsColor) -> UIColor? {
         return UIColor(named: name.rawValue)

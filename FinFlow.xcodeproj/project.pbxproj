@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				4EF93F4329A6877100BF9AB3 /* User.swift */,
-				4EB5DDE129BA03FA00C9B92D /* Binder.swift */,
 				4EFF7CDD29B7CBAC00B9D086 /* Product.swift */,
 			);
 			path = Models;
@@ -192,6 +191,8 @@
 				4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */,
 				4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */,
 				4E83D5E629A44E0600D68939 /* Extensions.swift */,
+				4EB5DDE129BA03FA00C9B92D /* Binder.swift */,
+				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -208,7 +209,6 @@
 			children = (
 				4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */,
 				4E09B40529B02E520088978E /* FFProductTableViewHeader.swift */,
-				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
 				4E09B40329B024BA0088978E /* FFProductTableViewCell.swift */,
 			);
 			path = Subviews;
@@ -450,6 +450,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +478,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -13,5 +13,4 @@ struct Product {
     let productName: String
     let price: Float
     let amount: Int
-    let backgroundColor: UIColor
 }

@@ -64,7 +64,7 @@ class FFMainViewCardV: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
-        setGradient(colors: bgColorsArray, angle: 60, gradientLayerView: gradientLayerView, gradient: gradientLayer)
+        setGradient(colors: bgColorsArray, angle: 90, gradientLayerView: gradientLayerView, gradient: gradientLayer)
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +73,7 @@ class FFMainViewCardV: UIView {
     
     //MARK: - Funcs to setup UI
     private func setupSelf() {
-        clipsToBounds = true
+        layer.masksToBounds = true
         layer.cornerRadius = 16
         layer.borderWidth = 1
         layer.borderColor = UIColor.appColor(.systemBorder)?.cgColor
@@ -105,6 +105,5 @@ class FFMainViewCardV: UIView {
             dateLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
     }
-    
 }
  

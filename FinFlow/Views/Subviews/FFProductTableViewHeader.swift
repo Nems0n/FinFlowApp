@@ -8,6 +8,7 @@
 import UIKit
 
 class FFProductTableViewHeader: UITableViewHeaderFooterView {
+    //MARK: - UI Objects
     
     public static var identifier: String {
         get {
@@ -60,21 +61,18 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
         return button
     }()
     
+    lazy var sortButtonsArray = [UIButton]()
+    
+    //MARK: - Init
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        priceButton.addAction(UIAction(handler: { _ in
-            print("touch detected")
-            self.viewModel.addNewProduct()
-        }), for: .touchUpInside)
         addSubviews()
         createConstraints()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
@@ -83,9 +81,9 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
         clipsToBounds = true
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
 
-    
+    }
+    //MARK: - Setup view
     private func addSubviews() {
         addSubview(mainTitle)
         addSubview(filterButtonsView)
@@ -95,6 +93,7 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
         addSubview(supplierButton)
     }
     
+    //MARK: - Create Constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
             mainTitle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),

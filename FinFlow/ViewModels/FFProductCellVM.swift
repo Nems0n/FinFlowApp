@@ -11,10 +11,12 @@ import UIKit
 class FFProductCellVM {
     
     var id: Int
-    var backgroundColor: UIColor
+    var name: String
+    var price: Float
     
     init(product: Product) {
         self.id = product.id
-        self.backgroundColor = product.backgroundColor
+        self.name = product.productName
+        self.price = product.price
     }
 }
