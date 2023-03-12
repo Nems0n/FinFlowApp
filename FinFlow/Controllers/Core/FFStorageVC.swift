@@ -103,6 +103,7 @@ final class FFStorageVC: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(FFProductTableViewCell.self, forCellReuseIdentifier: FFProductTableViewCell.identifier)
         table.register(FFProductTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FFProductTableViewHeader.identifier)
+        table.register(FFProductTableViewFooterV.self, forHeaderFooterViewReuseIdentifier: FFProductTableViewFooterV.identifier)
         table.clipsToBounds = true
         table.layer.cornerRadius = 16
         table.sectionHeaderTopPadding = 0
@@ -111,6 +112,7 @@ final class FFStorageVC: UIViewController {
         table.layer.borderColor = UIColor.appColor(.systemBorder)?.cgColor
         table.rowHeight = 72
         table.backgroundColor = .white
+        table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
         return table
     }()
     
@@ -133,6 +135,7 @@ final class FFStorageVC: UIViewController {
         super.viewDidAppear(animated)
         setupBindings()
     }
+
     
     //MARK: - Setup view
     private func addSubviews() {
@@ -149,6 +152,7 @@ final class FFStorageVC: UIViewController {
     }
     
     private func setupElements() {
+    
         navigationItem.searchController = searchController
         view.backgroundColor = .systemBackground
         navigationItem.searchController?.delegate = self
@@ -297,6 +301,17 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 84
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewFooterV.identifier) as? FFProductTableViewFooterV else {
+            return UIView()
+        }
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 60
     }
 
 }
