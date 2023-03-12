@@ -15,8 +15,8 @@ class ActualGradientButton: UIButton {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.gray.cgColor, UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor]
-        gradientLayer.startPoint = CGPoint(x: -0.3, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: -0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         gradientLayer.cornerRadius = 16
         layer.insertSublayer(gradientLayer, at: 0)
         gradientLayer.isHidden = true

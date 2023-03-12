@@ -38,7 +38,7 @@ final class FFStorageVM: NSObject {
     
     func priceTouch() {
         self.priceSortButtonPressed.value = true
-        print("pressed Price")
+        print("pressed avatar")
     }
     
     func addNewProduct() {

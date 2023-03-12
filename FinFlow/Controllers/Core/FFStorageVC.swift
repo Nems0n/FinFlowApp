@@ -53,8 +53,8 @@ final class FFStorageVC: UIViewController {
         let button = UIButton()
         if let image = UIImage(named: "testAvatar") {
             button.setImage(image, for: .normal)
+            button.imageView?.contentMode = .scaleAspectFill
         }
-        button.contentMode = .scaleAspectFit
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 12
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -299,15 +299,15 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         return view
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 84
-    }
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewFooterV.identifier) as? FFProductTableViewFooterV else {
             return UIView()
         }
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 84
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

@@ -18,14 +18,18 @@ class FFProductTableViewFooterV: UITableViewHeaderFooterView {
     
     lazy var viewMoreButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
+        button.setTitle("View more", for: .normal)
+        button.titleLabel?.font = .poppins(.regular, size: 12)
+        button.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.8), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.sizeToFit()
         return button
     }()
     //MARK: - View Lifecycle
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
         addSubviews()
         createConstraints()
     }
@@ -35,6 +39,7 @@ class FFProductTableViewFooterV: UITableViewHeaderFooterView {
         clipsToBounds = true
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        viewMoreButton.addBorder(side: .Bottom, color: viewMoreButton.titleLabel?.textColor ?? .black, width: 1)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -48,7 +53,6 @@ class FFProductTableViewFooterV: UITableViewHeaderFooterView {
     //MARK: - Create Constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
-            viewMoreButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
             viewMoreButton.heightAnchor.constraint(equalToConstant: 20),
             viewMoreButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             viewMoreButton.centerXAnchor.constraint(equalTo: centerXAnchor)
