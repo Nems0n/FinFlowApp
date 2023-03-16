@@ -10,10 +10,11 @@ import UIKit
 
 //MARK: - Extension for TableView
 extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
+    /// Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
-    
+    /// Cell for index path
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FFProductTableViewCell.identifier, for: indexPath) as? FFProductTableViewCell else {
             let cell = UITableViewCell()
@@ -25,7 +26,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
+    /// Header ivew
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier) as? FFProductTableViewHeader else {
             return UIView()
@@ -34,20 +35,23 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
 
         return view
     }
-    
+    /// Footer view
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewFooterV.identifier) as? FFProductTableViewFooterV else {
             return UIView()
         }
         return view
     }
-    
+    /// Header height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 84
     }
-    
+    /// Footer height
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 60
     }
-
+    /// Did select cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

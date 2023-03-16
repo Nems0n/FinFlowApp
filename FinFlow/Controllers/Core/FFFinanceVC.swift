@@ -8,7 +8,7 @@
 import UIKit
 
 final class FFFinanceVC: UIViewController {
-
+    var coordinator: FFFinanceCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

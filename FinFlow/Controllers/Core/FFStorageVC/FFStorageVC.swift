@@ -10,6 +10,7 @@ import UIKit
 final class FFStorageVC: UIViewController {
     //MARK: - UI Elements
     var viewModel: FFStorageVM = FFStorageVM()
+    var coordinator: FFStorageCoordinator?
     
     private let interfaceGridView: UIView = {
         let view = UIView()
@@ -118,13 +119,16 @@ final class FFStorageVC: UIViewController {
     
     var dataArray = [FFProductCellVM?]()
     //MARK: - VC Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         viewModel.mapCellData()
         setupElements()
         addSubviews()
@@ -152,6 +156,7 @@ final class FFStorageVC: UIViewController {
     }
     
     private func setupElements() {
+        
         navigationItem.searchController = searchController
         view.backgroundColor = .systemBackground
         navigationItem.searchController?.delegate = self
@@ -169,6 +174,8 @@ final class FFStorageVC: UIViewController {
         userButton.addAction(UIAction(handler: { [weak self] _ in
             self?.viewModel.priceTouch()
         }), for: .touchUpInside)
+        
+        bestSellerButton.addTarget(self, action: #selector(goToDetail), for: .touchUpInside)
     }
     
     //MARK: - Methods
@@ -183,7 +190,7 @@ final class FFStorageVC: UIViewController {
     //MARK: - Add constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
-            interfaceGridView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            interfaceGridView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             interfaceGridView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26),
             interfaceGridView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26),
             interfaceGridView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -247,6 +254,11 @@ final class FFStorageVC: UIViewController {
             self.goodsTableView.reloadData()
         }
     }
+    
+    @objc func goToDetail() {
+        self.coordinator?.coordinateToDetail(with: FFProductTableViewCell())
+    }
+    
 }
 
 //MARK: - Extension for SearchController
@@ -272,3 +284,8 @@ extension FFStorageVC: UITextFieldDelegate {
 }
 
 
+extension FFStorageVC: UIBarPositioningDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}

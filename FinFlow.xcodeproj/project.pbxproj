@@ -12,7 +12,15 @@
 		4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */; };
 		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
 		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
+		4E2A000729BFDB040090B113 /* FFStorageCellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A000629BFDB040090B113 /* FFStorageCellDetailViewController.swift */; };
+		4E2A000929BFDB370090B113 /* FFStorageCellDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A000829BFDB370090B113 /* FFStorageCellDetailCoordinator.swift */; };
 		4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */; };
+		4E5FB26D29BE6A7500A34495 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB26C29BE6A7500A34495 /* AppCoordinator.swift */; };
+		4E5FB26F29BE90C700A34495 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB26E29BE90C700A34495 /* TabBarCoordinator.swift */; };
+		4E5FB27329BE92E000A34495 /* FFStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB27229BE92E000A34495 /* FFStorageCoordinator.swift */; };
+		4E5FB27529BE93F200A34495 /* FFFinanceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB27429BE93F200A34495 /* FFFinanceCoordinator.swift */; };
+		4E5FB27729BE946700A34495 /* FFPromoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB27629BE946700A34495 /* FFPromoCoordinator.swift */; };
+		4E5FB27929BE948E00A34495 /* FFAdminCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB27829BE948E00A34495 /* FFAdminCoordinator.swift */; };
 		4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */; };
 		4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */; };
 		4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E229A4367200D68939 /* FFPromoVC.swift */; };
@@ -23,7 +31,7 @@
 		4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */; };
 		4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */; };
 		4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */; };
-		4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */; };
+		4EBEC3E329A4338C00CB72C5 /* FFTabBarController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E229A4338C00CB72C5 /* FFTabBarController1.swift */; };
 		4EBEC3E829A4338D00CB72C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */; };
 		4EBEC3EB29A4338D00CB72C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */; };
 		4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */; };
@@ -40,7 +48,15 @@
 		4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		4E2A000629BFDB040090B113 /* FFStorageCellDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailViewController.swift; sourceTree = "<group>"; };
+		4E2A000829BFDB370090B113 /* FFStorageCellDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailCoordinator.swift; sourceTree = "<group>"; };
 		4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FFStorageVC+TableView.swift"; sourceTree = "<group>"; };
+		4E5FB26C29BE6A7500A34495 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4E5FB26E29BE90C700A34495 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		4E5FB27229BE92E000A34495 /* FFStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCoordinator.swift; sourceTree = "<group>"; };
+		4E5FB27429BE93F200A34495 /* FFFinanceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceCoordinator.swift; sourceTree = "<group>"; };
+		4E5FB27629BE946700A34495 /* FFPromoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFPromoCoordinator.swift; sourceTree = "<group>"; };
+		4E5FB27829BE948E00A34495 /* FFAdminCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAdminCoordinator.swift; sourceTree = "<group>"; };
 		4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageVC.swift; sourceTree = "<group>"; };
 		4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceVC.swift; sourceTree = "<group>"; };
 		4E83D5E229A4367200D68939 /* FFPromoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFPromoVC.swift; sourceTree = "<group>"; };
@@ -52,7 +68,7 @@
 		4EBEC3DB29A4338C00CB72C5 /* FinFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTabBarController.swift; sourceTree = "<group>"; };
+		4EBEC3E229A4338C00CB72C5 /* FFTabBarController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTabBarController1.swift; sourceTree = "<group>"; };
 		4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EBEC3EA29A4338D00CB72C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBEC3EC29A4338D00CB72C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */,
+				4E2A000629BFDB040090B113 /* FFStorageCellDetailViewController.swift */,
+				4E2A000829BFDB370090B113 /* FFStorageCellDetailCoordinator.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -113,10 +131,22 @@
 			path = FFStorageVC;
 			sourceTree = "<group>";
 		};
+		4E5FB26B29BE6A4D00A34495 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4E5FB26E29BE90C700A34495 /* TabBarCoordinator.swift */,
+				4E5FB27229BE92E000A34495 /* FFStorageCoordinator.swift */,
+				4E5FB27429BE93F200A34495 /* FFFinanceCoordinator.swift */,
+				4E5FB27629BE946700A34495 /* FFPromoCoordinator.swift */,
+				4E5FB27829BE948E00A34495 /* FFAdminCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4E83D5DD29A435FE00D68939 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4EBEC3E229A4338C00CB72C5 /* FFTabBarController.swift */,
+				4EBEC3E229A4338C00CB72C5 /* FFTabBarController1.swift */,
 				4E5FB26929BE610800A34495 /* FFStorageVC */,
 				4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */,
 				4E83D5E229A4367200D68939 /* FFPromoVC.swift */,
@@ -147,6 +177,7 @@
 				4EBEC3F829A4349E00CB72C5 /* Resources */,
 				4EBEC3F729A4349100CB72C5 /* Managers */,
 				4EBEC3F629A4347E00CB72C5 /* APIClient */,
+				4E5FB26B29BE6A4D00A34495 /* Coordinator */,
 				4EBEC3F529A4346C00CB72C5 /* ViewModels */,
 				4EBEC3F429A4346800CB72C5 /* Views */,
 				4EBEC3F329A4345900CB72C5 /* Models */,
@@ -211,6 +242,7 @@
 			children = (
 				4E0DDD6529AC2F9000A5894E /* Fonts */,
 				4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */,
+				4E5FB26C29BE6A7500A34495 /* AppCoordinator.swift */,
 				4EBEC3E029A4338C00CB72C5 /* SceneDelegate.swift */,
 				4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */,
 				4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */,
@@ -293,13 +325,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5FB27729BE946700A34495 /* FFPromoCoordinator.swift in Sources */,
 				4E83D5E529A4368A00D68939 /* FFAdminVC.swift in Sources */,
 				4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */,
+				4E5FB27529BE93F200A34495 /* FFFinanceCoordinator.swift in Sources */,
+				4E5FB27929BE948E00A34495 /* FFAdminCoordinator.swift in Sources */,
+				4E5FB27329BE92E000A34495 /* FFStorageCoordinator.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
 				4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */,
-				4EBEC3E329A4338C00CB72C5 /* FFTabBarController.swift in Sources */,
+				4E5FB26F29BE90C700A34495 /* TabBarCoordinator.swift in Sources */,
+				4E5FB26D29BE6A7500A34495 /* AppCoordinator.swift in Sources */,
+				4EBEC3E329A4338C00CB72C5 /* FFTabBarController1.swift in Sources */,
 				4EF93F4429A6877100BF9AB3 /* User.swift in Sources */,
 				4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */,
 				4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */,
@@ -308,7 +346,9 @@
 				4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */,
 				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageVM.swift in Sources */,
+				4E2A000729BFDB040090B113 /* FFStorageCellDetailViewController.swift in Sources */,
 				4E09B40629B02E520088978E /* FFProductTableViewHeader.swift in Sources */,
+				4E2A000929BFDB370090B113 /* FFStorageCellDetailCoordinator.swift in Sources */,
 				4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */,
 				4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */,
 				4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */,
