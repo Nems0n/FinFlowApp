@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import XCoordinator
 
 enum FinanceRoute: Route {
@@ -15,7 +14,7 @@ enum FinanceRoute: Route {
     case detailOfDetail(UIViewController)
 }
 
-class FFFinanceCoordinatorX: NavigationCoordinator<FinanceRoute> {
+class FFFinanceCoordinator: NavigationCoordinator<FinanceRoute> {
     
     init() {
         super.init(initialRoute: .finance)

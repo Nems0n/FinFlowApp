@@ -13,7 +13,7 @@ enum TabBarRoute: Route {
     case storage, finance, promo
 }
 
-class TabBarCoordinatorX: TabBarCoordinator<TabBarRoute> {
+class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
     
     private let storageRouter: StrongRouter<StorageRoute>
     private let financeRouter: StrongRouter<FinanceRoute>
@@ -21,16 +21,16 @@ class TabBarCoordinatorX: TabBarCoordinator<TabBarRoute> {
     private let adminRouter: StrongRouter<AdminRoute>
     
     convenience init() {
-        let storageCoordinator = FFStorageCoordinatorX()
+        let storageCoordinator = FFStorageCoordinator()
         storageCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Storage", image: UIImage(systemName: "shippingbox"), tag: 0)
         
-        let financeCoordinator = FFFinanceCoordinatorX()
+        let financeCoordinator = FFFinanceCoordinator()
         financeCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Finance", image: UIImage(systemName: "dollarsign.circle"), tag: 1)
         
-        let promoCoordinator = FFPromoCoordinatorX()
+        let promoCoordinator = FFPromoCoordinator()
         promoCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "note.text"), tag: 2)
         
-        let adminCoordinator = FFAdminCoordinatorX()
+        let adminCoordinator = FFAdminCoordinator()
         adminCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Admin", image: UIImage(systemName: "person.circle"), tag: 3)
         
         self.init(storageRouter: storageCoordinator.strongRouter,

@@ -12,7 +12,7 @@ enum PromoRoute: Route {
     case promo
 }
 
-class FFPromoCoordinatorX: NavigationCoordinator<PromoRoute> {
+class FFPromoCoordinator: NavigationCoordinator<PromoRoute> {
     
     lazy var promoVC = FFPromoVC()
     

@@ -12,7 +12,7 @@ enum AdminRoute: Route {
     case admin
 }
 
-class FFAdminCoordinatorX: NavigationCoordinator<AdminRoute> {
+class FFAdminCoordinator: NavigationCoordinator<AdminRoute> {
     
     lazy var adminVC = FFAdminVC()
     

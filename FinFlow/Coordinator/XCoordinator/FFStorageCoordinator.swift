@@ -13,7 +13,7 @@ enum StorageRoute: Route {
     case detail(UIViewController)
 }
 
-class FFStorageCoordinatorX: NavigationCoordinator<StorageRoute> {
+class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
     
     init() {
         super.init(initialRoute: .storage)

@@ -8,7 +8,7 @@
 import UIKit
 
 final class FFPromoVC: UIViewController {
-    var coordinator: FFPromoCoordinatorX?
+    var coordinator: FFPromoCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

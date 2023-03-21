@@ -12,7 +12,7 @@ enum AppRoute: Route {
     case main
 }
 
-class AppCoordinatorX: NavigationCoordinator<AppRoute> {
+class AppCoordinator: NavigationCoordinator<AppRoute> {
     
     init() {
         super.init(initialRoute: .main)
@@ -22,7 +22,7 @@ class AppCoordinatorX: NavigationCoordinator<AppRoute> {
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .main:
-            let tabBarCoordinator = TabBarCoordinatorX()
+            let tabBarCoordinator = MainTabBarCoordinator()
             
             return .set([tabBarCoordinator])
         }

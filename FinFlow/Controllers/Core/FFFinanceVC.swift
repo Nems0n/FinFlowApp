@@ -8,7 +8,7 @@
 import UIKit
 
 final class FFFinanceVC: UIViewController {
-    var coordinator: FFFinanceCoordinatorX?
+    var coordinator: FFFinanceCoordinator?
     
     let mainButton: UIButton = {
         let button = UIButton(configuration: .tinted())

@@ -9,7 +9,7 @@ import UIKit
 
 class FFFinanceDetailVC: UIViewController {
     
-    var coordinator: FFFinanceCoordinatorX?
+    var coordinator: FFFinanceCoordinator?
     
     private let mainButton: UIButton = {
         let button = UIButton()

@@ -10,7 +10,7 @@ import UIKit
 final class FFStorageVC: UIViewController {
     //MARK: - UI Elements
     var viewModel: FFStorageVM = FFStorageVM()
-    var coordinator: FFStorageCoordinatorX?
+    var coordinator: FFStorageCoordinator?
     
     private let interfaceGridView: UIView = {
         let view = UIView()
