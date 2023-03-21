@@ -8,7 +8,7 @@
 import UIKit
 
 final class FFAdminVC: UIViewController {
-    var coordinator: FFAdminCoordinator?
+    var coordinator: FFAdminCoordinatorX?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

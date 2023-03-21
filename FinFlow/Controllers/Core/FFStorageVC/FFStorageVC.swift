@@ -10,7 +10,7 @@ import UIKit
 final class FFStorageVC: UIViewController {
     //MARK: - UI Elements
     var viewModel: FFStorageVM = FFStorageVM()
-    var coordinator: FFStorageCoordinator?
+    var coordinator: FFStorageCoordinatorX?
     
     private let interfaceGridView: UIView = {
         let view = UIView()
@@ -123,7 +123,7 @@ final class FFStorageVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidLoad() {
@@ -139,6 +139,11 @@ final class FFStorageVC: UIViewController {
         super.viewDidAppear(animated)
         setupBindings()
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.navigationBar.isHidden = false
+//    }
 
     
     //MARK: - Setup view
@@ -256,7 +261,10 @@ final class FFStorageVC: UIViewController {
     }
     
     @objc func goToDetail() {
-        self.coordinator?.coordinateToDetail(with: FFProductTableViewCell())
+        let detailVC = FFStorageCellDetailVC()
+        navigationController?.navigationBar.isHidden = false
+
+        coordinator?.trigger(.detail(detailVC))
     }
     
 }
@@ -268,13 +276,13 @@ extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 //MARK: - Extension for TextField
 extension FFStorageVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
         DispatchQueue.main.async {
             self.searchTextField.resignFirstResponder()
             self.navigationItem.searchController?.searchBar.becomeFirstResponder()

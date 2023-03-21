@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class FFStorageCellDetailCoordinator: Coordinator  {
-    
-    var rootViewController: UINavigationController
-    
-    init(rootViewController: UINavigationController) {
-        self.rootViewController = rootViewController
-    }
-    
-    func start() {
-        let storageCellDetailVC = FFStorageCellDetailViewController()
-        storageCellDetailVC.coordinator = self
-        rootViewController.pushViewController(storageCellDetailVC, animated: true)
-    }
-}
+//class FFStorageCellDetailCoordinator  {
+//    
+//    var rootViewController: UINavigationController
+//    
+//    init(rootViewController: UINavigationController) {
+//        self.rootViewController = rootViewController
+//    }
+//    
+//    func start() {
+//        let storageCellDetailVC = FFStorageCellDetailVC()
+//        storageCellDetailVC.coordinator = self
+//        rootViewController.pushViewController(storageCellDetailVC, animated: true)
+//    }
+//}
