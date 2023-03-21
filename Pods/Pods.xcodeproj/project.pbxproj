@@ -109,12 +109,12 @@
 		9A8F47940A61183AC5B1179AF68450DD /* TransitionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionAnimation.swift; path = Sources/XCoordinator/TransitionAnimation.swift; sourceTree = "<group>"; };
 		9BD086BDF9AFA3386C3311CB6E957324 /* NavigationAnimationDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationAnimationDelegate.swift; path = Sources/XCoordinator/NavigationAnimationDelegate.swift; sourceTree = "<group>"; };
 		9C65FB6D57AA5A719F781B0B4C9C6C5D /* Pods-FinFlow.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FinFlow.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A3B4FEDAF349648EF1C85E5CDCFA6DA0 /* Pods-FinFlow-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FinFlow-umbrella.h"; sourceTree = "<group>"; };
 		A4B66E6174280BCCD912BC94698C4AD5 /* UIPageViewController+Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIPageViewController+Transition.swift"; path = "Sources/XCoordinator/UIPageViewController+Transition.swift"; sourceTree = "<group>"; };
 		AC2BE06C69A3F78DBCF247C03BB1A7CB /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Transition.swift"; path = "Sources/XCoordinator/UINavigationController+Transition.swift"; sourceTree = "<group>"; };
 		AD6D7929A9E2A2FCCFF68B3A23BA24B0 /* Pods-FinFlow-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FinFlow-Info.plist"; sourceTree = "<group>"; };
-		AE2F0770B1A46488FA79A0502487459C /* XCoordinator */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XCoordinator; path = XCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2F0770B1A46488FA79A0502487459C /* XCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21B7E1B7CEB919779B5316255D54B22 /* XCoordinator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XCoordinator.release.xcconfig; sourceTree = "<group>"; };
 		B593F91C75E189F94FCA504B60700EA8 /* XCoordinator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCoordinator-umbrella.h"; sourceTree = "<group>"; };
 		B7DE0D4B7B1A3E0AF223C9A89E3A1C38 /* DeepLinking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeepLinking.swift; path = Sources/XCoordinator/DeepLinking.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				71A95BFABA685B1EA162C19BE60255D6 /* Pods-FinFlow */,
-				AE2F0770B1A46488FA79A0502487459C /* XCoordinator */,
+				AE2F0770B1A46488FA79A0502487459C /* XCoordinator.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,7 +260,6 @@
 				63640AAF50DC8BB8DFF77A02D52D4239 /* Core */,
 				33196D160A2FAC6BD88D2E83E4247993 /* Support Files */,
 			);
-			name = XCoordinator;
 			path = XCoordinator;
 			sourceTree = "<group>";
 		};
@@ -364,7 +363,7 @@
 			);
 			name = XCoordinator;
 			productName = XCoordinator;
-			productReference = AE2F0770B1A46488FA79A0502487459C /* XCoordinator */;
+			productReference = AE2F0770B1A46488FA79A0502487459C /* XCoordinator.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -501,7 +500,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/XCoordinator/XCoordinator-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/XCoordinator/XCoordinator-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -700,7 +699,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/XCoordinator/XCoordinator-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/XCoordinator/XCoordinator-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
