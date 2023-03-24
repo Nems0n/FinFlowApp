@@ -19,7 +19,7 @@ struct Product {
 }
 
 
-enum Category {
+enum Category: String {
     case dairy
     case fruit
     case vegetables

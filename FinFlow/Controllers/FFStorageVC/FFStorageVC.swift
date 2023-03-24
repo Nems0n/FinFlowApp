@@ -9,8 +9,7 @@ import UIKit
 
 final class FFStorageVC: UIViewController {
     //MARK: - UI Elements
-    var viewModel: FFStorageVM = FFStorageVM()
-    var coordinator: FFStorageCoordinator?
+    var viewModel: FFStorageVM?
     
     private let interfaceGridView: UIView = {
         let view = UIView()
@@ -129,7 +128,7 @@ final class FFStorageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.mapCellData()
+        viewModel?.mapCellData()
         setupElements()
         addSubviews()
         createConstraints()
@@ -139,13 +138,7 @@ final class FFStorageVC: UIViewController {
         super.viewDidAppear(animated)
         setupBindings()
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.isHidden = false
-//    }
 
-    
     //MARK: - Setup view
     private func addSubviews() {
         view.addSubview(interfaceGridView)
@@ -171,27 +164,31 @@ final class FFStorageVC: UIViewController {
         goodsTableView.dataSource = self
         
         addProductButton.addAction(UIAction(handler: { _ in
-            self.viewModel.addNewProduct()
+            self.viewModel?.addNewProduct()
             self.goodsTableView.reloadData()
             
         }), for: .touchUpInside)
         
         userButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.viewModel.priceTouch()
+            self?.viewModel?.priceTouch()
         }), for: .touchUpInside)
         
         bestSellerButton.addTarget(self, action: #selector(goToDetail), for: .touchUpInside)
     }
     
     //MARK: - Methods
-    func setupBindings() {
-        viewModel.cellDataSource.bind { [weak self] array in
+    private func setupBindings() {
+        viewModel?.cellDataSource.bind { [weak self] array in
             guard let self = self else { return }
             self.dataArray = array
             self.goodsTableView.reloadData()
         }
     }
-   
+    
+    private func cellDidTap(with cell: UITableViewCell) {
+        
+    }
+    
     //MARK: - Add constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
@@ -261,10 +258,9 @@ final class FFStorageVC: UIViewController {
     }
     
     @objc func goToDetail() {
-        let detailVC = FFStorageCellDetailVC()
-        navigationController?.navigationBar.isHidden = false
-
-        coordinator?.trigger(.detail(detailVC))
+//        let detailVC = FFStorageCellDetailVC()
+//        navigationController?.navigationBar.isHidden = false
+//        coordinator?.trigger(.detail(detailVC))
     }
     
 }

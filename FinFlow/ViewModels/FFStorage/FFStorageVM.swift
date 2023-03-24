@@ -14,6 +14,8 @@ final class FFStorageVM: NSObject {
     public var userAvatarAction = UIAction { _ in
         print("button touched")
     }
+    
+    weak var coordinator: FFStorageCoordinator?
 
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
@@ -32,20 +34,24 @@ final class FFStorageVM: NSObject {
     }()
     
     //MARK: - Methods
-    func mapCellData() {
+    public func mapCellData() {
         self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
     }
     
-    func priceTouch() {
+    public func priceTouch() {
         self.priceSortButtonPressed.value = true
         print("pressed avatar")
     }
     
-    func addNewProduct() {
+    public func addNewProduct() {
         let newProduct = Product(id: 2345, productName: "Super Mega Greenish Red Apple Pro Bundle From My Heart", price: 235, amount: 2345, category: .cereal, supplier: "METRO")
         self.dataSource.append(newProduct)
         self.isDataReloaded = Binder(true)
         mapCellData()
+    }
+    
+    public func cellDidTap(with viewModel: AnyObject) {
+        coordinator?.trigger(.detail(viewModel))
     }
 }
 

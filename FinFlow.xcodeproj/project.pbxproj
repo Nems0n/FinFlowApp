@@ -23,6 +23,7 @@
 		4E9E8CA529C642900021940F /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */; };
 		4E9E8CA729C6454E0021940F /* FFStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */; };
 		4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */; };
+		4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */; };
 		4EB5DDE229BA03FA00C9B92D /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5DDE129BA03FA00C9B92D /* Binder.swift */; };
 		4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */; };
 		4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCoordinator.swift; sourceTree = "<group>"; };
 		4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceCoordinator.swift; sourceTree = "<group>"; };
+		4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailVM.swift; sourceTree = "<group>"; };
 		4EB5DDE129BA03FA00C9B92D /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
 		4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageSearchResultVC.swift; sourceTree = "<group>"; };
 		4EBEC3DB29A4338C00CB72C5 /* FinFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 			children = (
 				4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */,
 				4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */,
+				4E0DDD6429ABC05C00A5894E /* Other */,
 			);
 			path = FFStorageVC;
 			sourceTree = "<group>";
@@ -136,21 +139,57 @@
 		4E5FB26B29BE6A4D00A34495 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				4EFC790F29C520E7004A1069 /* XCoordinator */,
+				4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */,
+				4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */,
+				4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */,
+				4EC8C5C229CA6205008F5412 /* FFPromoCoordinator.swift */,
+				4EC8C5C429CA6396008F5412 /* FFAdminCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		4E83D5DD29A435FE00D68939 /* Core */ = {
+		4EAD06FC29CCA1A600B13274 /* FFFinanceVC */ = {
 			isa = PBXGroup;
 			children = (
-				4E5FB26929BE610800A34495 /* FFStorageVC */,
 				4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */,
 				4EC8C5C029C9E95B008F5412 /* FFFinanceDetailVC.swift */,
+			);
+			path = FFFinanceVC;
+			sourceTree = "<group>";
+		};
+		4EAD06FD29CCA1B300B13274 /* FFPromoVC */ = {
+			isa = PBXGroup;
+			children = (
 				4E83D5E229A4367200D68939 /* FFPromoVC.swift */,
+			);
+			path = FFPromoVC;
+			sourceTree = "<group>";
+		};
+		4EAD06FE29CCA1BF00B13274 /* FFAdminVC */ = {
+			isa = PBXGroup;
+			children = (
 				4E83D5E429A4368A00D68939 /* FFAdminVC.swift */,
 			);
-			path = Core;
+			path = FFAdminVC;
+			sourceTree = "<group>";
+		};
+		4EAD06FF29CD004400B13274 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4EB5DDE129BA03FA00C9B92D /* Binder.swift */,
+				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4EAD070229CD05A200B13274 /* FFStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4E90E33929AADE0700311C14 /* FFStorageVM.swift */,
+				4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */,
+				4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */,
+			);
+			path = FFStorage;
 			sourceTree = "<group>";
 		};
 		4EBEC3D229A4338B00CB72C5 = {
@@ -182,6 +221,7 @@
 				4EBEC3F429A4346800CB72C5 /* Views */,
 				4EBEC3F329A4345900CB72C5 /* Models */,
 				4EBEC3F229A4344900CB72C5 /* Controllers */,
+				4EAD06FF29CD004400B13274 /* Utils */,
 				4EBEC3EC29A4338D00CB72C5 /* Info.plist */,
 			);
 			path = FinFlow;
@@ -190,8 +230,10 @@
 		4EBEC3F229A4344900CB72C5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4E0DDD6429ABC05C00A5894E /* Other */,
-				4E83D5DD29A435FE00D68939 /* Core */,
+				4E5FB26929BE610800A34495 /* FFStorageVC */,
+				4EAD06FC29CCA1A600B13274 /* FFFinanceVC */,
+				4EAD06FD29CCA1B300B13274 /* FFPromoVC */,
+				4EAD06FE29CCA1BF00B13274 /* FFAdminVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -209,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				4E5FB26829BE60ED00A34495 /* StorageView */,
-				4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,8 +258,7 @@
 		4EBEC3F529A4346C00CB72C5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4E90E33929AADE0700311C14 /* FFStorageVM.swift */,
-				4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */,
+				4EAD070229CD05A200B13274 /* FFStorage */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,21 +287,8 @@
 				4EBEC3E729A4338D00CB72C5 /* Assets.xcassets */,
 				4EBEC3E929A4338D00CB72C5 /* LaunchScreen.storyboard */,
 				4E83D5E629A44E0600D68939 /* Extensions.swift */,
-				4EB5DDE129BA03FA00C9B92D /* Binder.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		4EFC790F29C520E7004A1069 /* XCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */,
-				4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */,
-				4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */,
-				4EC8C5C229CA6205008F5412 /* FFPromoCoordinator.swift */,
-				4EC8C5C429CA6396008F5412 /* FFAdminCoordinator.swift */,
-			);
-			path = XCoordinator;
 			sourceTree = "<group>";
 		};
 		C8823E22DD9E8608B02A7F2A /* Pods */ = {
@@ -403,6 +430,7 @@
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
+				4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */,
 				4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */,
 				4EFC791129C520F9004A1069 /* AppCoordinator.swift in Sources */,
 				4EF93F4429A6877100BF9AB3 /* User.swift in Sources */,

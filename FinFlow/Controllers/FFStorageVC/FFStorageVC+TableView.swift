@@ -21,7 +21,15 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .white
             return cell
         }
-        guard self.dataArray.indices.contains(indexPath.row), let cellVMM = self.dataArray[indexPath.row] else { return UITableViewCell() }
+        
+        guard self.dataArray.indices.contains(indexPath.row), let cellVMM = self.dataArray[indexPath.row] else {
+            let cell = UITableViewCell()
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .appColor(.systemAccentOne)?.withAlphaComponent(0.05)
+        cell.selectedBackgroundView = backgroundView
         cell.setupCell(viewModel: cellVMM)
         
         return cell
@@ -52,6 +60,9 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
     }
     /// Did select cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard self.dataArray.indices.contains(indexPath.row), let cellVM = self.dataArray[indexPath.row] else { return }
+        let detailVM = FFStorageCellDetailVM(product: cellVM.product)
+        viewModel?.cellDidTap(with: detailVM)
     }
+    
 }

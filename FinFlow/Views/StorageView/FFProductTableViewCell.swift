@@ -10,6 +10,8 @@ import UIKit
 class FFProductTableViewCell: UITableViewCell {
     //MARK: - Variables
     
+    var coordinator: FFStorageCoordinator?
+    
     public static var identifier: String {
         get {
             return String(describing: self)

@@ -10,7 +10,8 @@ import XCoordinator
 
 enum StorageRoute: Route {
     case storage
-    case detail(UIViewController)
+    case detail(AnyObject)
+    case pop
 }
 
 class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
@@ -22,13 +23,24 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
     override func prepareTransition(for route: StorageRoute) -> NavigationTransition {
         switch route {
         case .storage:
+            let viewModel = FFStorageVM()
+            viewModel.coordinator = self
             let storageVC = FFStorageVC()
-            storageVC.coordinator = self
+            storageVC.viewModel = viewModel
             return .push(storageVC)
-        case .detail(let vc):    
+            
+        case .detail(let vm):
+            guard let viewModel = vm as? FFStorageCellDetailVM else { return .none() }
+            viewModel.coordinator = self
+            let vc = FFStorageCellDetailVC()
+            vc.setupVC(with: viewModel)
             return .push(vc)
-           
+            
+        case .pop:
+            return .pop()
         }
+        
     }
+
     
 }
