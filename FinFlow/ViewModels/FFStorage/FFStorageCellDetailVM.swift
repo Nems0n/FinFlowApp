@@ -19,6 +19,7 @@ class FFStorageCellDetailVM: NSObject {
     var category: Category
     var supplier: String?
     
+    //MARK: - Init
     init(product: Product) {
         self.id = product.id
         self.name = product.productName
@@ -28,6 +29,11 @@ class FFStorageCellDetailVM: NSObject {
         self.supplier = product.supplier
     }
     
+    public func setCoordinator(coordinator: FFStorageCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    //MARK: - Methods
     public func backButtonDidTap() {
         coordinator?.trigger(.pop)
     }

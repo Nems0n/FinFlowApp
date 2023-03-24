@@ -169,11 +169,8 @@ final class FFStorageVC: UIViewController {
             
         }), for: .touchUpInside)
         
-        userButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.viewModel?.priceTouch()
-        }), for: .touchUpInside)
         
-        bestSellerButton.addTarget(self, action: #selector(goToDetail), for: .touchUpInside)
+        bestSellerButton.addTarget(self, action: #selector(bestSellerButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Methods
@@ -181,12 +178,10 @@ final class FFStorageVC: UIViewController {
         viewModel?.cellDataSource.bind { [weak self] array in
             guard let self = self else { return }
             self.dataArray = array
-            self.goodsTableView.reloadData()
+            
+                self.goodsTableView.reloadData()
+            
         }
-    }
-    
-    private func cellDidTap(with cell: UITableViewCell) {
-        
     }
     
     //MARK: - Add constraints
@@ -251,16 +246,15 @@ final class FFStorageVC: UIViewController {
     
     //MARK: - Objc Methods
     @objc func priceTouched() {
-        self.dataArray.reverse()
+//        self.dataArray.reverse()
+        viewModel?.priceTouch()
         DispatchQueue.main.async {
             self.goodsTableView.reloadData()
         }
     }
     
-    @objc func goToDetail() {
-//        let detailVC = FFStorageCellDetailVC()
-//        navigationController?.navigationBar.isHidden = false
-//        coordinator?.trigger(.detail(detailVC))
+    @objc func bestSellerButtonDidTap() {
+
     }
     
 }

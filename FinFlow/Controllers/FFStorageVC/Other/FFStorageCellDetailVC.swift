@@ -10,10 +10,7 @@ import UIKit
 class FFStorageCellDetailVC: UIViewController {
     
     //MARK: - UI Elements
-//    var coordinator: FFStorageCoordinator?
     var viewModel: FFStorageCellDetailVM?
-    
-//    var mainCell: UITableViewCell?
     
     private let gridView: UIView = {
         let view = UIView()
@@ -99,7 +96,7 @@ class FFStorageCellDetailVC: UIViewController {
     private func controllerSetup() {
         view.backgroundColor = .white
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left")?.withTintColor(.black,
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left")?.withTintColor(.appColor(.systemBG) ?? .black,
                                                                                                                           renderingMode: .alwaysOriginal),
                                                                 style: .plain,
                                                                 target: self,

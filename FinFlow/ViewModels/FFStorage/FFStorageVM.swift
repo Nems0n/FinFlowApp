@@ -6,16 +6,11 @@
 //
 
 import Foundation
-import UIKit
-
 
 final class FFStorageVM: NSObject {
     //MARK: - Variables
-    public var userAvatarAction = UIAction { _ in
-        print("button touched")
-    }
     
-    weak var coordinator: FFStorageCoordinator?
+    var coordinator: FFStorageCoordinator?
 
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
@@ -33,14 +28,22 @@ final class FFStorageVM: NSObject {
         return array
     }()
     
+    //MARK: - Injection
+    
+    public func setCoordinator(coordinator: FFStorageCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    
     //MARK: - Methods
     public func mapCellData() {
         self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
     }
     
     public func priceTouch() {
-        self.priceSortButtonPressed.value = true
-        print("pressed avatar")
+        self.cellDataSource.value = self.cellDataSource.value.reversed()
+
+        print("pressed price from StorageVM")
     }
     
     public func addNewProduct() {
@@ -52,6 +55,7 @@ final class FFStorageVM: NSObject {
     
     public func cellDidTap(with viewModel: AnyObject) {
         coordinator?.trigger(.detail(viewModel))
+        
     }
 }
 

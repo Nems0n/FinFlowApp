@@ -22,7 +22,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        guard self.dataArray.indices.contains(indexPath.row), let cellVMM = self.dataArray[indexPath.row] else {
+        guard self.dataArray.indices.contains(indexPath.row), let cellVM = self.dataArray[indexPath.row] else {
             let cell = UITableViewCell()
             cell.isUserInteractionEnabled = false
             return cell
@@ -30,7 +30,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .appColor(.systemAccentOne)?.withAlphaComponent(0.05)
         cell.selectedBackgroundView = backgroundView
-        cell.setupCell(viewModel: cellVMM)
+        cell.setupCell(viewModel: cellVM)
         
         return cell
     }

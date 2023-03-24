@@ -24,14 +24,14 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
         switch route {
         case .storage:
             let viewModel = FFStorageVM()
-            viewModel.coordinator = self
+            viewModel.setCoordinator(coordinator: self)
             let storageVC = FFStorageVC()
             storageVC.viewModel = viewModel
             return .push(storageVC)
             
         case .detail(let vm):
             guard let viewModel = vm as? FFStorageCellDetailVM else { return .none() }
-            viewModel.coordinator = self
+            viewModel.setCoordinator(coordinator: self)
             let vc = FFStorageCellDetailVC()
             vc.setupVC(with: viewModel)
             return .push(vc)
