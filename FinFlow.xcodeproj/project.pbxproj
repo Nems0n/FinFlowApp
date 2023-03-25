@@ -13,6 +13,9 @@
 		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
 		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
 		4E2A000729BFDB040090B113 /* FFStorageCellDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */; };
+		4E2DAA0D29CF9C5600F78C3D /* FFService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0C29CF9C5600F78C3D /* FFService.swift */; };
+		4E2DAA0F29CF9C5D00F78C3D /* FFRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */; };
+		4E2DAA1129CF9C7000F78C3D /* FFEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA1029CF9C7000F78C3D /* FFEndpoint.swift */; };
 		4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */; };
 		4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */; };
 		4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */; };
@@ -52,6 +55,9 @@
 		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailVC.swift; sourceTree = "<group>"; };
+		4E2DAA0C29CF9C5600F78C3D /* FFService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFService.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFService.swift; sourceTree = SOURCE_ROOT; };
+		4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFRequest.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFRequest.swift; sourceTree = SOURCE_ROOT; };
+		4E2DAA1029CF9C7000F78C3D /* FFEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFEndpoint.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFEndpoint.swift; sourceTree = SOURCE_ROOT; };
 		4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FFStorageVC+TableView.swift"; sourceTree = "<group>"; };
 		4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageVC.swift; sourceTree = "<group>"; };
 		4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceVC.swift; sourceTree = "<group>"; };
@@ -266,6 +272,9 @@
 		4EBEC3F629A4347E00CB72C5 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				4E2DAA0C29CF9C5600F78C3D /* FFService.swift */,
+				4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */,
+				4E2DAA1029CF9C7000F78C3D /* FFEndpoint.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 				4E83D5E529A4368A00D68939 /* FFAdminVC.swift in Sources */,
 				4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
+				4E2DAA1129CF9C7000F78C3D /* FFEndpoint.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
 				4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */,
@@ -449,8 +459,10 @@
 				4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */,
 				4EC8C5C129C9E95B008F5412 /* FFFinanceDetailVC.swift in Sources */,
 				4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */,
+				4E2DAA0D29CF9C5600F78C3D /* FFService.swift in Sources */,
 				4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */,
 				4E9E8CA729C6454E0021940F /* FFStorageCoordinator.swift in Sources */,
+				4E2DAA0F29CF9C5D00F78C3D /* FFRequest.swift in Sources */,
 				4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */,
 				4EB5DDE229BA03FA00C9B92D /* Binder.swift in Sources */,
 			);
