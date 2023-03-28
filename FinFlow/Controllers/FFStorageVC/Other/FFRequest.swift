@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - HTTP Methods for FFRequest
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -27,15 +28,23 @@ final class FFRequest {
         return string
     }
     
-    private let httpMethod: HTTPMethod
+    public let httpMethod: String
     
     public var url: URL? {
         return URL(string: UrlString)
     }
     
-    public init(endpoint: FFEndpoint, httpMethod: HTTPMethod) {
+    public var httpBody: Data?
+    
+    //MARK: - Init
+    public init(endpoint: FFEndpoint, httpMethod: HTTPMethod, httpBody: [String: Any]?) {
         self.endpoint = endpoint
-        self.httpMethod = httpMethod
+        self.httpMethod = httpMethod.rawValue
+        
+        guard let bodyObject = httpBody else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: bodyObject)
+        self.httpBody = jsonData
     }
+    
     
 }

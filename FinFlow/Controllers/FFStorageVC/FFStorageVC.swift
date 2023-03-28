@@ -138,7 +138,12 @@ final class FFStorageVC: UIViewController {
         super.viewDidAppear(animated)
         setupBindings()
     }
-
+    
+    //MARK: Injection
+    public func setVM(viewModel: FFStorageVM) {
+        self.viewModel = viewModel
+    }
+    
     //MARK: - Setup view
     private func addSubviews() {
         view.addSubview(interfaceGridView)
@@ -254,7 +259,7 @@ final class FFStorageVC: UIViewController {
     }
     
     @objc func bestSellerButtonDidTap() {
-
+        viewModel?.bestSellerDidTap()
     }
     
 }
