@@ -37,12 +37,12 @@ final class FFRequest {
     public var httpBody: Data?
     
     //MARK: - Init
-    public init(endpoint: FFEndpoint, httpMethod: HTTPMethod, httpBody: [String: Any]?) {
+    public init(endpoint: FFEndpoint, httpMethod: HTTPMethod, httpBody: Encodable?) {
         self.endpoint = endpoint
         self.httpMethod = httpMethod.rawValue
         
         guard let bodyObject = httpBody else { return }
-        let jsonData = try? JSONSerialization.data(withJSONObject: bodyObject)
+        let jsonData = try? JSONEncoder().encode(bodyObject)
         self.httpBody = jsonData
     }
     

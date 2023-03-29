@@ -62,7 +62,6 @@ final class FFService {
             }
             task.resume()
         }
-        
     }
     
     //MARK: - Private
