@@ -23,7 +23,7 @@ final class FFLoginVM: NSObject {
     //MARK: - Methods
     public func loginButtonAction() {
         isActivityIndicator.value = true
-        let loginBody = AuthRequest(email: email, password: password, username: nil, phone: nil)
+        let loginBody = AuthRequestBody(email: email, password: password, username: nil, phone: nil)
         print("request started")
         let request = FFRequest(endpoint: .login, httpMethod: .post, httpBody: loginBody)
         FFService.shared.execute(request, expecting: Token.self) { [weak self] result in

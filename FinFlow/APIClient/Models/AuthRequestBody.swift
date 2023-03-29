@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthRequest: Codable {
+struct AuthRequestBody: Codable {
     let email: String?
     let password: String?
     let username: String?
