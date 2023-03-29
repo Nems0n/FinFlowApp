@@ -19,7 +19,10 @@ class FFLoginVC: UIViewController {
         tf.font = .poppins(.regular, size: 14)
         tf.borderStyle = .roundedRect
         tf.textAlignment = .center
+        tf.autocorrectionType = .no
+        tf.autocapitalizationType = .none
         tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.tag = 0
         return tf
     }()
     
@@ -30,6 +33,9 @@ class FFLoginVC: UIViewController {
         tf.font = .poppins(.regular, size: 14)
         tf.borderStyle = .roundedRect
         tf.textAlignment = .center
+        tf.autocorrectionType = .no
+        tf.autocapitalizationType = .none
+        tf.tag = 1
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -59,8 +65,11 @@ class FFLoginVC: UIViewController {
     //MARK: - Setup view
     private func setupElements() {
         view.backgroundColor = .systemBackground
-        
         loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        dismissKeyboard()
+        setupBindings()
         addSubviews()
     }
     
@@ -75,7 +84,7 @@ class FFLoginVC: UIViewController {
             emailTF.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.7),
             emailTF.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             emailTF.heightAnchor.constraint(equalToConstant: 32),
-            emailTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            emailTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
             
             passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor),
             passwordTF.heightAnchor.constraint(equalTo: emailTF.heightAnchor),
@@ -89,6 +98,22 @@ class FFLoginVC: UIViewController {
         ])
     }
     
+    //MARK: - Methods
+    private func setupBindings() {
+        viewModel?.isActivityIndicator.bind({ [weak self] show in
+            guard let show = show else { return }
+            switch show {
+            case true:
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    FFActivityIndicatorManager.shared.showActivityIndicator(on: self.view)
+                }
+            case false:
+                FFActivityIndicatorManager.shared.stopActivityIndicator()
+            }
+        })
+    }
+    
     //MARK: - Selectors
     @objc private func loginButtonDidTap() {
         viewModel?.email = emailTF.text
@@ -97,4 +122,17 @@ class FFLoginVC: UIViewController {
     }
 
 
+}
+
+extension FFLoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+           nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            loginButtonDidTap()
+        }
+        return true
+    }
 }

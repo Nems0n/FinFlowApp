@@ -16,6 +16,7 @@
 		4E2DAA0D29CF9C5600F78C3D /* FFService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0C29CF9C5600F78C3D /* FFService.swift */; };
 		4E2DAA0F29CF9C5D00F78C3D /* FFRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */; };
 		4E2DAA1129CF9C7000F78C3D /* FFEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA1029CF9C7000F78C3D /* FFEndpoint.swift */; };
+		4E364F6E29D4C19C00DD0840 /* FFActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E364F6D29D4C19C00DD0840 /* FFActivityIndicatorManager.swift */; };
 		4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */; };
 		4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */; };
 		4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */; };
@@ -63,6 +64,7 @@
 		4E2DAA0C29CF9C5600F78C3D /* FFService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFService.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFService.swift; sourceTree = SOURCE_ROOT; };
 		4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFRequest.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFRequest.swift; sourceTree = SOURCE_ROOT; };
 		4E2DAA1029CF9C7000F78C3D /* FFEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFEndpoint.swift; path = FinFlow/Controllers/FFStorageVC/Other/FFEndpoint.swift; sourceTree = SOURCE_ROOT; };
+		4E364F6D29D4C19C00DD0840 /* FFActivityIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		4E5FB26629BE199400A34495 /* FFStorageVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FFStorageVC+TableView.swift"; sourceTree = "<group>"; };
 		4E83D5DE29A4364E00D68939 /* FFStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageVC.swift; sourceTree = "<group>"; };
 		4E83D5E029A4365D00D68939 /* FFFinanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceVC.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		4EBEC3F729A4349100CB72C5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4E364F6D29D4C19C00DD0840 /* FFActivityIndicatorManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4EFB7DCA29D3B213002DA792 /* AuthRequest.swift in Sources */,
 				4E2DAA1129CF9C7000F78C3D /* FFEndpoint.swift in Sources */,
+				4E364F6E29D4C19C00DD0840 /* FFActivityIndicatorManager.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
 				4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */,

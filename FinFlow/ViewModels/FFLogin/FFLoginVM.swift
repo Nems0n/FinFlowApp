@@ -13,6 +13,8 @@ final class FFLoginVM: NSObject {
     var email: String?
     var password: String?
     
+    var isActivityIndicator: Binder<Bool?> = Binder(nil)
+    
     //Injection
     public func setCoordinator(coordinator: AppCoordinator) {
         self.coordinator = coordinator
@@ -20,10 +22,12 @@ final class FFLoginVM: NSObject {
     
     //MARK: - Methods
     public func loginButtonAction() {
+        isActivityIndicator.value = true
         let loginBody = AuthRequest(email: email, password: password, username: nil, phone: nil)
         print("request started")
         let request = FFRequest(endpoint: .login, httpMethod: .post, httpBody: loginBody)
         FFService.shared.execute(request, expecting: Token.self) { [weak self] result in
+            self?.isActivityIndicator.value = false
             switch result {
             case .success(let token):
                 
