@@ -112,6 +112,20 @@ class FFLoginVC: UIViewController {
                 FFActivityIndicatorManager.shared.stopActivityIndicator()
             }
         })
+        
+        viewModel?.isRequestFailed.bind({ [weak self] showAlert in
+            guard let self = self else { return }
+            if showAlert {
+                FFAlertManager.showInvalidLoginAlert(on: self)
+            }
+        })
+        
+        viewModel?.isConnectionLost.bind({ [weak self] lost in
+            guard let self = self else { return }
+            if lost {
+                FFAlertManager.showLostConnectionAlert(on: self)
+            }
+        })
     }
     
     //MARK: - Selectors

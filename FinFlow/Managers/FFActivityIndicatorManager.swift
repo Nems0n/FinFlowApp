@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class FFActivityIndicatorManager {
+final class FFActivityIndicatorManager {
 
     static let shared = FFActivityIndicatorManager()
 
@@ -17,7 +17,7 @@ class FFActivityIndicatorManager {
     private var activityIndicatorView: UIActivityIndicatorView?
 
 
-    func showActivityIndicator(on view: UIView) {
+    public func showActivityIndicator(on view: UIView) {
     
         if container == nil && loadingView == nil && activityIndicatorView == nil {
             container = UIView()
@@ -45,7 +45,7 @@ class FFActivityIndicatorManager {
         activityIndicatorView.startAnimating()
     }
 
-    func stopActivityIndicator() {
+    public func stopActivityIndicator() {
         activityIndicatorView?.stopAnimating()
         activityIndicatorView?.removeFromSuperview()
         activityIndicatorView = nil

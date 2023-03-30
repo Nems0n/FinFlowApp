@@ -8,14 +8,17 @@
 import Foundation
 
 final class FFLoginVM: NSObject {
+    //MARK: - Variables
     var coordinator: AppCoordinator?
     
     var email: String?
     var password: String?
     
     var isActivityIndicator: Binder<Bool?> = Binder(nil)
+    var isRequestFailed: Binder<Bool> = Binder(false)
+    var isConnectionLost: Binder<Bool> = Binder(false)
     
-    //Injection
+    //MARK: - Injection
     public func setCoordinator(coordinator: AppCoordinator) {
         self.coordinator = coordinator
     }
@@ -37,7 +40,13 @@ final class FFLoginVM: NSObject {
                     self?.coordinator?.trigger(.main)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                let description = error.localizedDescription
+                if description.contains("The request timed out.") {
+                    self?.isConnectionLost.value = true
+                } else {
+                    self?.isRequestFailed.value = true
+                    print(error.localizedDescription)
+                }
             }
         }
     }

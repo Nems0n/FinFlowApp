@@ -20,20 +20,24 @@ final class FFService {
     
     //MARK: - Send API Call
     public func execute<T: Codable>(_ request: FFRequest, expecting type: T.Type?, completion: @escaping (Result<T, Error>) -> Void) {
+        
         guard let urlRequest = self.request(from: request) else {
             completion(.failure(FFServiceError.failedToCreateRequest ))
             return
         }
+        // Config for URLSession
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 5
+        let session = URLSession(configuration: sessionConfig)
         
+        //MARK: - "GET" Request
         if urlRequest.httpMethod == HTTPMethod.get.rawValue {
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+            let task = session.dataTask(with: urlRequest) { data, _, error in
                 guard let data = data, error == nil else {
                     completion(.failure(error ?? FFServiceError.failedToGetData))
                     return
                 }
-                
-                //Decode response
-                
+                // Decode response
                 do {
                     guard let type = type.self else { return }
                     let result = try JSONDecoder().decode(type, from: data)
@@ -42,17 +46,17 @@ final class FFService {
                     completion(.failure(error))
                 }
             }
-            
             task.resume()
         }
         
-        if urlRequest.httpMethod == HTTPMethod.post.rawValue || type.self != nil {
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        //MARK: - "POST" Request
+        if urlRequest.httpMethod == HTTPMethod.post.rawValue && type.self != nil {
+            let task = session.dataTask(with: urlRequest) { data, response, error in
                 guard let data = data, error == nil else {
                     completion(.failure(error ?? FFServiceError.failedToPostData))
                     return
                 }
-                
+                // Decode response
                 do {
                     let result = try JSONDecoder().decode(type.self!, from: data)
                     completion(.success(result))
