@@ -41,22 +41,8 @@ final class FFStorageVM: NSObject {
     }
     
     public func bestSellerDidTap() {
-        let email = "gafamududu45@gmail.com"
-        let password = "11111111"
-        let body = ["email": email, "password": password]
-        let request = FFRequest(endpoint: .login, httpMethod: .post, httpBody: body)
         print("tapped")
         
-        FFService.shared.execute(request, expecting: Token.self) { result in
-            switch result {
-            case .success(let token):
-                let refresh = token.refreshToken
-                let access = token.accessToken
-                print("Refresh token: ", refresh)
-                print("Access token: ", access)
-            case .failure(let error): print(error.localizedDescription)
-            }
-        }
     }
     
     public func priceTouch() {

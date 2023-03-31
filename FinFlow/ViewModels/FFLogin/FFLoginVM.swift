@@ -28,15 +28,18 @@ final class FFLoginVM: NSObject {
         isActivityIndicator.value = true
         let loginBody = AuthRequestBody(email: email, password: password, username: nil, phone: nil)
         print("request started")
+        
+        
         let request = FFRequest(endpoint: .login, httpMethod: .post, httpBody: loginBody)
-        FFService.shared.execute(request, expecting: Token.self) { [weak self] result in
+        FFService.shared.execute(request, expecting: TokenJWT.self) { [weak self] result in
             self?.isActivityIndicator.value = false
             switch result {
             case .success(let token):
                 
                 DispatchQueue.main.async {
                     
-                    print(token)
+//                    print(token)
+                    FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
                     self?.coordinator?.trigger(.main)
                 }
             case .failure(let error):

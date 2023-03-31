@@ -24,6 +24,7 @@
 		4E83D5E529A4368A00D68939 /* FFAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E429A4368A00D68939 /* FFAdminVC.swift */; };
 		4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83D5E629A44E0600D68939 /* Extensions.swift */; };
 		4E84FF9329D588FB00120A52 /* FFAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84FF9229D588FB00120A52 /* FFAlertManager.swift */; };
+		4E84FF9529D60D1B00120A52 /* FFKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84FF9429D60D1B00120A52 /* FFKeychainManager.swift */; };
 		4E90E33A29AADE0700311C14 /* FFStorageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90E33929AADE0700311C14 /* FFStorageVM.swift */; };
 		4E9E8CA529C642900021940F /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */; };
 		4E9E8CA729C6454E0021940F /* FFStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */; };
@@ -42,7 +43,7 @@
 		4ECD52B929AEE381003EC3C6 /* ActualGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */; };
 		4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED496A629BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift */; };
 		4EF93F4429A6877100BF9AB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF93F4329A6877100BF9AB3 /* User.swift */; };
-		4EFB7DBF29D375A6002DA792 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DBE29D375A6002DA792 /* Token.swift */; };
+		4EFB7DBF29D375A6002DA792 /* TokenJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DBE29D375A6002DA792 /* TokenJWT.swift */; };
 		4EFB7DC229D387AC002DA792 /* FFLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DC129D387AC002DA792 /* FFLoginVC.swift */; };
 		4EFB7DC529D387F7002DA792 /* FFLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DC429D387F7002DA792 /* FFLoginVM.swift */; };
 		4EFB7DC729D388DA002DA792 /* FFLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DC629D388DA002DA792 /* FFLoginCoordinator.swift */; };
@@ -73,6 +74,7 @@
 		4E83D5E429A4368A00D68939 /* FFAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAdminVC.swift; sourceTree = "<group>"; };
 		4E83D5E629A44E0600D68939 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E84FF9229D588FB00120A52 /* FFAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAlertManager.swift; sourceTree = "<group>"; };
+		4E84FF9429D60D1B00120A52 /* FFKeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFKeychainManager.swift; sourceTree = "<group>"; };
 		4E90E33929AADE0700311C14 /* FFStorageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageVM.swift; sourceTree = "<group>"; };
 		4E9E8CA429C642900021940F /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCoordinator.swift; sourceTree = "<group>"; };
@@ -93,7 +95,7 @@
 		4ECD52B829AEE381003EC3C6 /* ActualGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualGradientButton.swift; sourceTree = "<group>"; };
 		4ED496A629BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductTableViewFooterV.swift; sourceTree = "<group>"; };
 		4EF93F4329A6877100BF9AB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4EFB7DBE29D375A6002DA792 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		4EFB7DBE29D375A6002DA792 /* TokenJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenJWT.swift; sourceTree = "<group>"; };
 		4EFB7DC129D387AC002DA792 /* FFLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLoginVC.swift; sourceTree = "<group>"; };
 		4EFB7DC429D387F7002DA792 /* FFLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLoginVM.swift; sourceTree = "<group>"; };
 		4EFB7DC629D388DA002DA792 /* FFLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLoginCoordinator.swift; sourceTree = "<group>"; };
@@ -264,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				4EF93F4329A6877100BF9AB3 /* User.swift */,
-				4EFB7DBE29D375A6002DA792 /* Token.swift */,
 				4EFF7CDD29B7CBAC00B9D086 /* Product.swift */,
 			);
 			path = Models;
@@ -303,6 +304,7 @@
 			children = (
 				4E364F6D29D4C19C00DD0840 /* FFActivityIndicatorManager.swift */,
 				4E84FF9229D588FB00120A52 /* FFAlertManager.swift */,
+				4E84FF9429D60D1B00120A52 /* FFKeychainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -341,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				4EFB7DC929D3B213002DA792 /* AuthRequestBody.swift */,
+				4EFB7DBE29D375A6002DA792 /* TokenJWT.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -483,12 +486,13 @@
 				4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4EFB7DCA29D3B213002DA792 /* AuthRequestBody.swift in Sources */,
+				4E84FF9529D60D1B00120A52 /* FFKeychainManager.swift in Sources */,
 				4E2DAA1129CF9C7000F78C3D /* FFEndpoint.swift in Sources */,
 				4E364F6E29D4C19C00DD0840 /* FFActivityIndicatorManager.swift in Sources */,
 				4E83D5E729A44E0600D68939 /* Extensions.swift in Sources */,
 				4E09B40429B024BA0088978E /* FFProductTableViewCell.swift in Sources */,
 				4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */,
-				4EFB7DBF29D375A6002DA792 /* Token.swift in Sources */,
+				4EFB7DBF29D375A6002DA792 /* TokenJWT.swift in Sources */,
 				4E84FF9329D588FB00120A52 /* FFAlertManager.swift in Sources */,
 				4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */,
 				4EFC791129C520F9004A1069 /* AppCoordinator.swift in Sources */,

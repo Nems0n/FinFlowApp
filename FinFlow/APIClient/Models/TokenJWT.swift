@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Token: Codable {
+struct TokenJWT: Codable {
     let accessToken: String
     let refreshToken: String
     
