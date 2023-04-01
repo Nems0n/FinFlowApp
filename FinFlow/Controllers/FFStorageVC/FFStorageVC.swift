@@ -210,8 +210,8 @@ final class FFStorageVC: UIViewController {
         })
     }
     //MARK: - Objc Methods
-    @objc func priceTouched() {
-        viewModel?.priceTouch()
+    @objc func priceSortDidTap() {
+        viewModel?.sortByPrice()
         DispatchQueue.main.async {
             self.goodsTableView.reloadData()
         }

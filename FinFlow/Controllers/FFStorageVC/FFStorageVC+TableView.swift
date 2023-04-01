@@ -39,7 +39,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier) as? FFProductTableViewHeader else {
             return UIView()
         }
-        view.priceButton.addTarget(self, action: #selector(priceTouched), for: .touchUpInside)
+        view.priceButton.addTarget(self, action: #selector(priceSortDidTap), for: .touchUpInside)
 
         return view
     }

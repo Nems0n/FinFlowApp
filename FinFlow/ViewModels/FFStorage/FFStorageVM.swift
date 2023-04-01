@@ -51,18 +51,10 @@ final class FFStorageVM: NSObject {
         print(dataSource.count)
     }
     
-    public func priceTouch() {
-//        self.cellDataSource.value = self.cellDataSource.value.reversed()
-        if !isPriceDescending {
-            dataSource.sort(by: { $0.price > $1.price })
-            isPriceDescending = true
-        }
-        if isPriceDescending {
-            dataSource.sort(by: { $0.price < $1.price })
-            isPriceDescending = false
-        }
+    public func sortByPrice() {
+        dataSource.sort(by: { isPriceDescending ? $0.price < $1.price : $0.price > $1.price})
+        isPriceDescending.toggle()
         mapCellData()
-        print("pressed price from StorageVM")
     }
     
     public func addNewProduct() {
