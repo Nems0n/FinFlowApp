@@ -208,6 +208,16 @@ final class FFStorageVC: UIViewController {
                 self?.tableRefreshControl.endRefreshing()
             }
         })
+        
+        viewModel?.isConnectionFailed.bind({ [weak self] failed in
+            self?.tableRefreshControl.endRefreshing()
+            if failed {
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    FFAlertManager.showLostConnectionAlert(on: self)
+                }
+            }
+        })
     }
     //MARK: - Objc Methods
     @objc func priceSortDidTap() {

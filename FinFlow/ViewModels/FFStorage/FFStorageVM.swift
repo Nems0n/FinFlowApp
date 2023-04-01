@@ -14,6 +14,7 @@ final class FFStorageVM: NSObject {
 
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
+    var isConnectionFailed: Binder<Bool> = Binder(false)
     
     var priceSortButtonPressed: Binder<Bool> = Binder(false)
     
@@ -82,6 +83,7 @@ final class FFStorageVM: NSObject {
                 self.mapCellData()
                 self.isDataReloaded.value = true
             case .failure(let error):
+                self?.isConnectionFailed.value = true
                 print(error)
             }
         }
