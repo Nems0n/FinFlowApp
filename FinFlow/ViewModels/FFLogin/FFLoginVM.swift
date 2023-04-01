@@ -35,10 +35,7 @@ final class FFLoginVM: NSObject {
             self?.isActivityIndicator.value = false
             switch result {
             case .success(let token):
-                
                 DispatchQueue.main.async {
-                    
-//                    print(token)
                     FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
                     self?.coordinator?.trigger(.main)
                 }

@@ -19,14 +19,20 @@ final class FFStorageVM: NSObject {
     
     var cellDataSource: Binder<[FFProductCellVM?]> = Binder([])
     
+    private var isPriceDescending: Bool = false
+    
     var dataSource: [Product] = {
         var array = [Product]()
-        let product1 = Product(id: 235, productName: "Bread Borodinsky", price: 45.0, amount: 5, category: .cereal, supplier: "METRO")
-        let product2 = Product(id: 2564, productName: "Cottage Cheese Premia", price: 120.0, amount: 25, category: .cereal, supplier: "METRO")
-        array.append(product1)
-        array.append(product2)
+
         return array
     }()
+    
+    
+    //MARK: - Init
+    override init() {
+        super.init()
+        getProductsArray()
+    }
     
     //MARK: - Injection
     
@@ -42,12 +48,20 @@ final class FFStorageVM: NSObject {
     
     public func bestSellerDidTap() {
         print("tapped")
-        
+        print(dataSource.count)
     }
     
     public func priceTouch() {
-        self.cellDataSource.value = self.cellDataSource.value.reversed()
-
+//        self.cellDataSource.value = self.cellDataSource.value.reversed()
+        if !isPriceDescending {
+            dataSource.sort(by: { $0.price > $1.price })
+            isPriceDescending = true
+        }
+        if isPriceDescending {
+            dataSource.sort(by: { $0.price < $1.price })
+            isPriceDescending = false
+        }
+        mapCellData()
         print("pressed price from StorageVM")
     }
     
@@ -61,6 +75,24 @@ final class FFStorageVM: NSObject {
     public func cellDidTap(with viewModel: AnyObject) {
         coordinator?.trigger(.detail(viewModel))
         
+    }
+    
+    //MARK: - Private Methods
+    
+    public func getProductsArray() {
+        let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
+        FFService.shared.execute(request, expecting: Company.self) { [weak self] result in
+            switch result {
+            case .success(let company):
+                guard let self = self else { return }
+                let productsArray = company.products
+                self.dataSource = productsArray
+                self.mapCellData()
+                self.isDataReloaded.value = true
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

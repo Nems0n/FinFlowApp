@@ -77,6 +77,10 @@ final class FFService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = ffRequest.httpMethod
         request.httpBody = ffRequest.httpBody
+        let tokenJWT = FFKeychainManager.shared.read(service: .tokenJWT, account: .finFlow, type: TokenJWT.self)
+        if let accessToken = tokenJWT?.accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
         return request
     }
 }

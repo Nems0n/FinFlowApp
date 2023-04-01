@@ -19,7 +19,6 @@ enum KeychainAccount: String {
 final class FFKeychainManager {
     static let shared = FFKeychainManager()
     
-    
     private func save(_ data: Data, service: String, account: String) {
         
         // Create query
@@ -45,7 +44,6 @@ final class FFKeychainManager {
 
                 // Update existing item
                 SecItemUpdate(query, attributesToUpdate)
-            
                 print("updated")
             }
     }

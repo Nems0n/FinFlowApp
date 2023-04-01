@@ -30,6 +30,7 @@
 		4E9E8CA729C6454E0021940F /* FFStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */; };
 		4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */; };
 		4EAD070129CD059700B13274 /* FFStorageCellDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */; };
+		4EAE155B29D72A390047A0E7 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE155A29D72A390047A0E7 /* Company.swift */; };
 		4EB5DDE229BA03FA00C9B92D /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5DDE129BA03FA00C9B92D /* Binder.swift */; };
 		4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */; };
 		4EBEC3DF29A4338C00CB72C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEC3DE29A4338C00CB72C5 /* AppDelegate.swift */; };
@@ -80,6 +81,7 @@
 		4E9E8CA629C6454E0021940F /* FFStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCoordinator.swift; sourceTree = "<group>"; };
 		4E9E8CA829C683F70021940F /* FFFinanceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFFinanceCoordinator.swift; sourceTree = "<group>"; };
 		4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailVM.swift; sourceTree = "<group>"; };
+		4EAE155A29D72A390047A0E7 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		4EB5DDE129BA03FA00C9B92D /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
 		4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageSearchResultVC.swift; sourceTree = "<group>"; };
 		4EBEC3DB29A4338C00CB72C5 /* FinFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,7 @@
 			children = (
 				4EF93F4329A6877100BF9AB3 /* User.swift */,
 				4EFF7CDD29B7CBAC00B9D086 /* Product.swift */,
+				4EAE155A29D72A390047A0E7 /* Company.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */,
 				4E9E8CA529C642900021940F /* MainTabBarCoordinator.swift in Sources */,
 				4EB7E82829AD8177009C902B /* FFStorageSearchResultVC.swift in Sources */,
+				4EAE155B29D72A390047A0E7 /* Company.swift in Sources */,
 				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */,
 				4EFB7DC229D387AC002DA792 /* FFLoginVC.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageVM.swift in Sources */,

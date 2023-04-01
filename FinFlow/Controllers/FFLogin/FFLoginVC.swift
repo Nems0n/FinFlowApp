@@ -37,6 +37,7 @@ class FFLoginVC: UIViewController {
         tf.autocapitalizationType = .none
         tf.tag = 1
         tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.isSecureTextEntry = true
         return tf
     }()
     

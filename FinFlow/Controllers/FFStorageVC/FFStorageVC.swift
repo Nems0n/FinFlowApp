@@ -98,6 +98,12 @@ final class FFStorageVC: UIViewController {
         return view
     }()
     
+    private var tableRefreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = .appColor(.systemBG)?.withAlphaComponent(0.8)
+        return control
+    }()
+    
     lazy var goodsTableView: UITableView = {
         var table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +119,7 @@ final class FFStorageVC: UIViewController {
         table.rowHeight = 72
         table.backgroundColor = .white
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
+        table.refreshControl = tableRefreshControl
         return table
     }()
     
@@ -121,13 +128,13 @@ final class FFStorageVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        setupBindings()
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewModel?.mapCellData()
         setupElements()
         addSubviews()
@@ -136,7 +143,7 @@ final class FFStorageVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupBindings()
+//        setupBindings()
     }
     
     //MARK: Injection
@@ -174,7 +181,7 @@ final class FFStorageVC: UIViewController {
             
         }), for: .touchUpInside)
         
-        
+        tableRefreshControl.addTarget(self, action: #selector(tableRefreshControlAction(sender:)), for: .valueChanged)
         bestSellerButton.addTarget(self, action: #selector(bestSellerButtonDidTap), for: .touchUpInside)
     }
     
@@ -184,9 +191,39 @@ final class FFStorageVC: UIViewController {
             guard let self = self else { return }
             self.dataArray = array
             
-                self.goodsTableView.reloadData()
-            
+            self.goodsTableView.reloadData()
         }
+        
+        viewModel?.isDataReloaded.bind({ [weak self] reloaded in
+            if !reloaded {
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    FFActivityIndicatorManager.shared.showActivityIndicator(on: self.goodsTableView.view)
+                }
+            }
+            if reloaded {
+                DispatchQueue.main.async {
+                    FFActivityIndicatorManager.shared.stopActivityIndicator()
+                }
+                self?.tableRefreshControl.endRefreshing()
+            }
+        })
+    }
+    //MARK: - Objc Methods
+    @objc func priceTouched() {
+        viewModel?.priceTouch()
+        DispatchQueue.main.async {
+            self.goodsTableView.reloadData()
+        }
+    }
+    
+    @objc func bestSellerButtonDidTap() {
+        viewModel?.bestSellerDidTap()
+    }
+    
+    @objc private func tableRefreshControlAction(sender: UIRefreshControl) {
+        viewModel?.getProductsArray()
+//        sender.endRefreshing()
     }
     
     //MARK: - Add constraints
@@ -248,22 +285,7 @@ final class FFStorageVC: UIViewController {
             goodsTableView.trailingAnchor.constraint(equalTo: tableContainerView.trailingAnchor)
         ])
     }
-    
-    //MARK: - Objc Methods
-    @objc func priceTouched() {
-//        self.dataArray.reverse()
-        viewModel?.priceTouch()
-        DispatchQueue.main.async {
-            self.goodsTableView.reloadData()
-        }
-    }
-    
-    @objc func bestSellerButtonDidTap() {
-        viewModel?.bestSellerDidTap()
-    }
-    
 }
-
 //MARK: - Extension for SearchController
 extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {

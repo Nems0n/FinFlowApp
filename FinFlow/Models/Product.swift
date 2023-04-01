@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Product {
+struct Product: Codable {
     let id: Int
     let productName: String
     let price: Float
@@ -19,15 +19,15 @@ struct Product {
 }
 
 
-enum Category: String {
-    case dairy
-    case fruit
-    case vegetables
-    case cereal
-    case meat
-    case fish
-    case grains
-    case sweet
-    case water
-    case snack
+enum Category: String, Codable {
+    case dairy = "DAIRY"
+    case fruit = "FRUIT"
+    case vegetables = "VEGETABLES"
+    case cereal = "CERAL"
+    case meat = "MEAT"
+    case fish = "FISH"
+    case grains = "GRAINS"
+    case sweet = "SWEET"
+    case water = "WATER"
+    case snack = "SNACK"
 }
