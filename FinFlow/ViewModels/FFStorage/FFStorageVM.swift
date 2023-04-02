@@ -14,7 +14,7 @@ final class FFStorageVM: NSObject {
 
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
-    var isConnectionFailed: Binder<Bool> = Binder(false)
+    var isConnectionFailed: Binder<Bool?> = Binder(nil)
     
     var priceSortButtonPressed: Binder<Bool> = Binder(false)
     

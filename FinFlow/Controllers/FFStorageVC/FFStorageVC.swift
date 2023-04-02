@@ -130,6 +130,7 @@ final class FFStorageVC: UIViewController {
         super.viewWillAppear(true)
         setupBindings()
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
     
     override func viewDidLoad() {
@@ -144,6 +145,11 @@ final class FFStorageVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        setupBindings()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.isConnectionFailed.value = nil
     }
     
     //MARK: Injection
@@ -211,7 +217,7 @@ final class FFStorageVC: UIViewController {
         
         viewModel?.isConnectionFailed.bind({ [weak self] failed in
             self?.tableRefreshControl.endRefreshing()
-            if failed {
+            if failed == true {
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     FFAlertManager.showLostConnectionAlert(on: self)
