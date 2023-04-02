@@ -45,7 +45,11 @@ class ActualGradientButton: UIButton {
         self.layer.cornerRadius = 16
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.appColor(.systemAccentThree)?.cgColor
-        self.setTitle(title, for: .normal)
+        var spaceString: String? /// This Used for adding space between image and title
+        if icon != nil {
+            spaceString = "  "
+        }
+        self.setTitle((spaceString ?? "") + title, for: .normal)
         self.titleLabel?.font = .poppins(.regular, size: 12)
         self.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.5), for: .normal)
         

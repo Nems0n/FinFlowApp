@@ -80,6 +80,16 @@ class FFStorageCellDetailVC: UIViewController {
         return label
     }()
     
+    private let promotionButton: ActualGradientButton = {
+        let button = ActualGradientButton(isGradient: false, title: "Add Promotion", UIImage(systemName: "plus"))
+        return button
+    }()
+    
+    private let deleteButton: ActualGradientButton = {
+        let button = ActualGradientButton(isGradient: false, title: "Delete Product", UIImage(systemName: "multiply"))
+        return button
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -106,6 +116,9 @@ class FFStorageCellDetailVC: UIViewController {
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(editButtonDidTap))
+        
+        promotionButton.addTarget(self, action: #selector(addPromotionDidTap), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteProductDidTap), for: .touchUpInside)
     }
     
     private func addSubviews() {
@@ -115,9 +128,11 @@ class FFStorageCellDetailVC: UIViewController {
         view.addSubview(supplierLabel)
         view.addSubview(amountLabel)
         view.addSubview(priceLabel)
+        view.addSubview(promotionButton)
+        view.addSubview(deleteButton)
     }
     
-    //MARK: - Methods
+    //MARK: - Public Methods
     public func setupVC(with viewModel: FFStorageCellDetailVM) {
         self.viewModel = viewModel
 
@@ -135,6 +150,7 @@ class FFStorageCellDetailVC: UIViewController {
         splitColorTextForLabel(amountString: self.priceNumberString, valueString: self.currencyAbbreviation, labelToEdit: priceLabel)
     }
     
+    //MARK: - Private Methods
     private func splitColorTextForLabel(amountString: String?, valueString: String, labelToEdit: UILabel) {
         let attributedText = NSMutableAttributedString(string: labelToEdit.text ?? "")
         attributedText.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], range: getRangeOfSubString(subString: amountString ?? "", fromString: labelToEdit.text ?? ""))
@@ -148,6 +164,15 @@ class FFStorageCellDetailVC: UIViewController {
         let endPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.upperBound)
         let linkRange = NSMakeRange(startPos, endPos - startPos)
         return linkRange
+    }
+    
+    //MARK: - Selectors
+    @objc private func addPromotionDidTap() {
+        print("Added promotion")
+    }
+    
+    @objc private func deleteProductDidTap() {
+        print("Deleted")
     }
     
     //MARK: - Constraints
@@ -174,7 +199,17 @@ class FFStorageCellDetailVC: UIViewController {
             amountLabel.topAnchor.constraint(equalTo: supplierLabel.bottomAnchor, constant: 20),
             
             priceLabel.trailingAnchor.constraint(equalTo: amountLabel.leadingAnchor, constant: -32),
-            priceLabel.topAnchor.constraint(equalTo: amountLabel.topAnchor)
+            priceLabel.topAnchor.constraint(equalTo: amountLabel.topAnchor),
+            
+            promotionButton.leadingAnchor.constraint(equalTo: gridView.leadingAnchor),
+            promotionButton.widthAnchor.constraint(equalTo: gridView.widthAnchor, multiplier: 0.48),
+            promotionButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 40),
+            promotionButton.heightAnchor.constraint(equalToConstant: 36),
+            
+            deleteButton.trailingAnchor.constraint(equalTo: gridView.trailingAnchor),
+            deleteButton.widthAnchor.constraint(equalTo: promotionButton.widthAnchor),
+            deleteButton.heightAnchor.constraint(equalTo: promotionButton.heightAnchor),
+            deleteButton.centerYAnchor.constraint(equalTo: promotionButton.centerYAnchor)
         ])
     }
     
