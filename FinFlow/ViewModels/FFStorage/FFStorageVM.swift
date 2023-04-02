@@ -24,7 +24,7 @@ final class FFStorageVM: NSObject {
     
     var dataSource: [Product] = {
         var array = [Product]()
-
+        
         return array
     }()
     
@@ -83,6 +83,10 @@ final class FFStorageVM: NSObject {
                 self.mapCellData()
                 self.isDataReloaded.value = true
             case .failure(let error):
+                let loginError = error as? FFService.FFServiceError
+                if loginError == FFService.FFServiceError.loginRequired {
+                    self?.coordinator?.output?.goToLogin()
+                }
                 self?.isConnectionFailed.value = true
                 print(error)
             }

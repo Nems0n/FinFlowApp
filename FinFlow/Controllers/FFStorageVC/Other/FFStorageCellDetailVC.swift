@@ -102,7 +102,7 @@ class FFStorageCellDetailVC: UIViewController {
     
     
     //MARK: - UI Setup
-        
+    
     private func controllerSetup() {
         view.backgroundColor = .white
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -135,7 +135,7 @@ class FFStorageCellDetailVC: UIViewController {
     //MARK: - Public Methods
     public func setupVC(with viewModel: FFStorageCellDetailVM) {
         self.viewModel = viewModel
-
+        
         self.nameLabel.text = viewModel.name
         self.categoryLabel.text = viewModel.category.rawValue
         self.supplierLabel.text = viewModel.supplier
@@ -167,6 +167,14 @@ class FFStorageCellDetailVC: UIViewController {
     }
     
     //MARK: - Selectors
+    @objc private func backButtonDidTap() {
+        viewModel?.backButtonDidTap()
+    }
+    
+    @objc private func editButtonDidTap() {
+        
+    }
+    
     @objc private func addPromotionDidTap() {
         print("Added promotion")
     }
@@ -212,14 +220,4 @@ class FFStorageCellDetailVC: UIViewController {
             deleteButton.centerYAnchor.constraint(equalTo: promotionButton.centerYAnchor)
         ])
     }
-    
-    //MARK: - Selectors
-    @objc private func backButtonDidTap() {
-        viewModel?.backButtonDidTap()
-    }
-    
-    @objc private func editButtonDidTap() {
-        
-    }
-
 }

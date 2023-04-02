@@ -15,8 +15,15 @@ enum AppRoute: Route {
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
     
+    private var route: AppRoute
+    
     init() {
-        super.init(initialRoute: .main)
+        if FFKeychainManager.shared.read(service: .tokenJWT, account: .finFlow, type: TokenJWT.self) != nil {
+            route = .main
+        } else {
+            route = .login
+        }
+        super.init(initialRoute: route)
         rootViewController.setNavigationBarHidden(true, animated: false)
     }
     
@@ -25,14 +32,26 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         case .login:
             let viewModel = FFLoginVM()
             viewModel.setCoordinator(coordinator: self)
+            
             let loginVC = FFLoginVC()
+            
             loginVC.setVM(viewModel: viewModel)
             return .push(loginVC)
         case .main:
             let tabBarCoordinator = MainTabBarCoordinator()
+            tabBarCoordinator.output = self
             
             return .set([tabBarCoordinator])
         }
         
+    }
+}
+
+
+extension AppCoordinator: MainTabBarCoordinatorOutput {
+    func goToLogin() {
+        DispatchQueue.main.async {
+            self.trigger(.login)
+        }
     }
 }

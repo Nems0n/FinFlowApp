@@ -13,6 +13,7 @@ class FFLoginVC: UIViewController {
     var viewModel: FFLoginVM?
     
     private let emailTF: UITextField = {
+        
         let tf = UITextField()
         tf.placeholder = "Enter your email"
         tf.textColor = .black

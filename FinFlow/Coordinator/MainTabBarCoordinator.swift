@@ -13,7 +13,13 @@ enum TabBarRoute: Route {
     case storage, finance, promo
 }
 
+protocol MainTabBarCoordinatorOutput: AnyObject {
+    func goToLogin()
+}
+
 class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
+    
+    weak var output: MainTabBarCoordinatorOutput?
     
     private let storageRouter: StrongRouter<StorageRoute>
     private let financeRouter: StrongRouter<FinanceRoute>
@@ -37,6 +43,8 @@ class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
                   financeRouter: financeCoordinator.strongRouter,
                   promoRouter: promoCoordinator.strongRouter,
                   adminRouter: adminCoordinator.strongRouter)
+        
+        storageCoordinator.output = self
     }
     
     init(storageRouter: StrongRouter<StorageRoute>,
@@ -57,3 +65,8 @@ class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
 }
 
 
+extension MainTabBarCoordinator: FFStorageCoordinatorOutput {
+    func goToLogin() {
+        output?.goToLogin()
+    }
+}

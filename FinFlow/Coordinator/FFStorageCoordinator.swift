@@ -11,10 +11,17 @@ import XCoordinator
 enum StorageRoute: Route {
     case storage
     case detail(AnyObject)
+    case login
     case pop
 }
 
+protocol FFStorageCoordinatorOutput: AnyObject {
+    func goToLogin()
+}
+
 class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
+    
+    weak var output: FFStorageCoordinatorOutput?
     
     init() {
         super.init(initialRoute: .storage)
@@ -36,6 +43,9 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
             vc.setupVC(with: viewModel)
             return .push(vc)
             
+        case .login:
+            output?.goToLogin()
+            return .none()
         case .pop:
             return .pop()
         }
