@@ -134,7 +134,9 @@ class FFLoginVC: UIViewController {
     @objc private func loginButtonDidTap() {
         viewModel?.email = emailTF.text
         viewModel?.password = passwordTF.text
-        viewModel?.loginButtonAction()
+        Task {
+            await viewModel?.loginButtonAction()
+        }
     }
 
 

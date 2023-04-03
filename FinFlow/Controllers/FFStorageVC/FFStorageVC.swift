@@ -196,8 +196,12 @@ final class FFStorageVC: UIViewController {
         viewModel?.cellDataSource.bind { [weak self] array in
             guard let self = self else { return }
             self.dataArray = array
-            
             self.goodsTableView.reloadData()
+            var amount = Int()
+            self.dataArray.forEach({ vm in
+                amount += vm?.amount ?? 0
+            })
+            self.cardView.amountLabel.text = String(amount)
         }
         
         viewModel?.isDataReloaded.bind({ [weak self] reloaded in
@@ -238,7 +242,9 @@ final class FFStorageVC: UIViewController {
     }
     
     @objc private func tableRefreshControlAction(sender: UIRefreshControl) {
-        viewModel?.getProductsArray()
+        Task {
+            await viewModel?.getProductsArray()
+        }
 //        sender.endRefreshing()
     }
     

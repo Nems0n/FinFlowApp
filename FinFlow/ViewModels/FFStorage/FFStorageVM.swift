@@ -32,13 +32,16 @@ final class FFStorageVM: NSObject {
     //MARK: - Init
     override init() {
         super.init()
-        getProductsArray()
+        Task {
+            await getProductsArray()
+        }
     }
     
     //MARK: - Injection
     
     public func setCoordinator(coordinator: FFStorageCoordinator) {
         self.coordinator = coordinator
+        
     }
     
     
@@ -72,24 +75,21 @@ final class FFStorageVM: NSObject {
     
     //MARK: - Private Methods
     
-    public func getProductsArray() {
+    public func getProductsArray() async {
         let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
-        FFService.shared.execute(request, expecting: Company.self) { [weak self] result in
-            switch result {
-            case .success(let company):
-                guard let self = self else { return }
-                let productsArray = company.products
-                self.dataSource = productsArray
-                self.mapCellData()
-                self.isDataReloaded.value = true
-            case .failure(let error):
-                let loginError = error as? FFService.FFServiceError
-                if loginError == FFService.FFServiceError.loginRequired {
-                    self?.coordinator?.output?.goToLogin()
-                }
-                self?.isConnectionFailed.value = true
-                print(error)
+        do {
+            let company = try await FFService.shared.execute(request, expecting: Company.self)
+            guard let productsArray = company?.products else { return }
+            self.dataSource = productsArray
+            self.mapCellData()
+            self.isDataReloaded.value = true
+        } catch(let error) {
+            let loginError = error as? FFService.FFServiceError
+            if loginError == FFService.FFServiceError.loginRequired {
+                self.coordinator?.output?.goToLogin()
             }
+            self.isConnectionFailed.value = true
+            print(error)
         }
     }
 }

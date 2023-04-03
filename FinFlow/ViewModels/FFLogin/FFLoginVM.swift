@@ -24,29 +24,17 @@ final class FFLoginVM: NSObject {
     }
     
     //MARK: - Methods
-    public func loginButtonAction() {
+    public func loginButtonAction() async {
         isActivityIndicator.value = true
         let loginBody = AuthRequestBody(email: email, password: password, username: nil, phone: nil)
-        print("request started")
-        
-        
         let request = FFRequest(endpoint: .login, httpMethod: .post, httpBody: loginBody)
-        FFService.shared.execute(request, expecting: TokenJWT.self) { [weak self] result in
-            self?.isActivityIndicator.value = false
-            switch result {
-            case .success(let token):
-                DispatchQueue.main.async {
-                    FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
-                    self?.coordinator?.trigger(.main)
-                }
-            case .failure(let error):
-                let description = error.localizedDescription
-                if description.contains("The request timed out.") {
-                    self?.isConnectionLost.value = true
-                } else {
-                    self?.isRequestFailed.value = true
-                    print(error.localizedDescription)
-                }
+        do {
+            guard let token = try await FFService.shared.execute(request, expecting: TokenJWT.self) else { return }
+            FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
+            await self.coordinator?.trigger(.main)
+        } catch(let error) {
+            if error.localizedDescription.contains("The request timed out.") {
+                self.isConnectionLost.value = true
             }
         }
     }
