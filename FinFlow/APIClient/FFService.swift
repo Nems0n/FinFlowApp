@@ -50,7 +50,6 @@ final class FFService {
                     FFService.shared.execute(request, expecting: TokenJWT.self, authorization: .refresh) { result in
                         switch result {
                         case .success(let token):
-                            print(token)
                             FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
                         case .failure(_): getRequestError = FFServiceError.loginRequired
                             
@@ -80,13 +79,7 @@ final class FFService {
         if urlRequest.httpMethod == HTTPMethod.post.rawValue && type.self != nil {
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 let response = response as? HTTPURLResponse
-                
-                guard let data = data, error == nil else {
-                    completion(.failure(error ?? FFServiceError.failedToPostData))
-                    return
-                }
-                // Decode response
-                
+                var getRequestError = error
                 if response?.statusCode == 423 {
                     
                     let token = FFKeychainManager.shared.read(service: .tokenJWT, account: .finFlow, type: TokenJWT.self)
@@ -94,12 +87,18 @@ final class FFService {
                     FFService.shared.execute(request, expecting: TokenJWT.self, authorization: .refresh) { result in
                         switch result {
                         case .success(let token):
-                            print(token)
                             FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
-                        case .failure(let error): print(error.localizedDescription)
+                        case .failure(_): getRequestError = FFServiceError.loginRequired
                         }
                     }
                 }
+                
+                guard let data = data, error == nil else {
+                    completion(.failure(getRequestError ?? FFServiceError.failedToPostData))
+                    return
+                }
+                // Decode response
+                
                 
                 do {
                     let result = try JSONDecoder().decode(type.self!, from: data)

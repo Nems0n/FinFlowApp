@@ -45,6 +45,4 @@ final class FFRequest {
         let jsonData = try? JSONEncoder().encode(bodyObject)
         self.httpBody = jsonData
     }
-    
-    
 }
