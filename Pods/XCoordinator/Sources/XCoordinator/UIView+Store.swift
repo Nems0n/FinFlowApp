@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f3f08b55c6918646ead18d63062879213e44d7e2e5ae99554dce85ae21056ad3
-size 1142
+//
+//  UIView+Store.swift
+//  XCoordinator
+//
+//  Created by Stefan Kofler on 19.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
+//
+
+import UIKit
+
+private var associatedObjectHandle: UInt8 = 0
+
+extension UIView {
+
+    var strongReferences: [Any] {
+        get {
+            objc_getAssociatedObject(self, &associatedObjectHandle) as? [Any] ?? []
+        }
+        set {
+            objc_setAssociatedObject(self, &associatedObjectHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
+extension UIView {
+
+    @discardableResult
+    func removePreviewingContext<TransitionType: TransitionProtocol>(for _: TransitionType.Type)
+        -> UIViewControllerPreviewing? {
+        guard let existingContextIndex = strongReferences
+            .firstIndex(where: { $0 is CoordinatorPreviewingDelegateObject<TransitionType> }),
+            let contextDelegate = strongReferences
+                .remove(at: existingContextIndex) as? CoordinatorPreviewingDelegateObject<TransitionType>,
+            let context = contextDelegate.context else {
+                return nil
+        }
+        return context
+    }
+
+}

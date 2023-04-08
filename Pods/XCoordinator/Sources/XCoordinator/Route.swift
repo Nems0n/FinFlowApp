@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:13e2a1433811ec0195e27e2d150766650e8e072bec5f2907fddf5c5f80375362
-size 392
+//
+//  Route.swift
+//  XCoordinator
+//
+//  Created by Stefan Kofler on 30.04.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
+//
+
+import UIKit
+
+///
+/// This is the protocol your route types need to conform to.
+///
+/// - Note:
+///     It has no requirements, although the use of enums is encouraged to make your
+///     navigation code type safe.
+///
+public protocol Route {}

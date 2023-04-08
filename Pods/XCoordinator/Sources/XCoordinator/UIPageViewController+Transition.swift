@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70fe04c28559fda84674c5e13860388fdaf6b34d4ab84ec5e80beea60bd5e96b
-size 626
+//
+//  UIPageViewController+Transition.swift
+//  XCoordinator
+//
+//  Created by Paul Kraft on 30.07.18.
+//  Copyright © 2018 QuickBird Studios. All rights reserved.
+//
+
+import UIKit
+
+extension UIPageViewController {
+    func set(_ viewControllers: [UIViewController],
+             direction: UIPageViewController.NavigationDirection,
+             with options: TransitionOptions,
+             completion: PresentationHandler?) {
+        setViewControllers(
+            viewControllers,
+            direction: direction,
+            animated: options.animated,
+            completion: { _ in completion?() }
+        )
+    }
+}
