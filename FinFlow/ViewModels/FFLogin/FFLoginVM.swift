@@ -35,6 +35,7 @@ final class FFLoginVM: NSObject {
         } catch(let error) {
             if error.localizedDescription.contains("The request timed out.") {
                 self.isConnectionLost.value = true
+                self.isActivityIndicator.value = false
             }
         }
     }

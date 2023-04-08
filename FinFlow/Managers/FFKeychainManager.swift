@@ -23,10 +23,10 @@ final class FFKeychainManager {
         
         // Create query
         let query = [
-            kSecValueData: data,
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrService: service,
-            kSecAttrAccount: account,
+            kSecValueData as CFString: data as Any,
+            kSecClass as CFString: kSecClassGenericPassword as Any,
+            kSecAttrService as CFString: service as Any,
+            kSecAttrAccount as CFString: account as Any,
         ] as CFDictionary
         
         // Add data in query to keychain
@@ -35,9 +35,9 @@ final class FFKeychainManager {
         if status == errSecDuplicateItem {
                 // Item already exist, thus update it.
                 let query = [
-                    kSecAttrService: service,
-                    kSecAttrAccount: account,
-                    kSecClass: kSecClassGenericPassword,
+                    kSecAttrService as CFString: service as Any,
+                    kSecAttrAccount as CFString: account as Any,
+                    kSecClass as CFString: kSecClassGenericPassword as Any,
                 ] as CFDictionary
 
                 let attributesToUpdate = [kSecValueData: data] as CFDictionary
@@ -51,10 +51,10 @@ final class FFKeychainManager {
     private func read(service: String, account: String) -> Data? {
         
         let query = [
-            kSecAttrService: service,
-            kSecAttrAccount: account,
-            kSecClass: kSecClassGenericPassword,
-            kSecReturnData: true
+            kSecAttrService as CFString: service as Any,
+            kSecAttrAccount as CFString: account as Any,
+            kSecClass as CFString: kSecClassGenericPassword as Any,
+            kSecReturnData as CFString: true
         ] as CFDictionary
         
         var result: AnyObject?
