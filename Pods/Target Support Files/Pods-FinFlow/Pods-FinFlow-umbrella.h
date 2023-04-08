@@ -1,16 +1,3 @@
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#else
-#ifndef FOUNDATION_EXPORT
-#if defined(__cplusplus)
-#define FOUNDATION_EXPORT extern "C"
-#else
-#define FOUNDATION_EXPORT extern
-#endif
-#endif
-#endif
-
-
-FOUNDATION_EXPORT double Pods_FinFlowVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_FinFlowVersionString[];
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1ec738c01cb0568b552846832c008610e8557173ace2803115effb5bb452eb4b
+size 316

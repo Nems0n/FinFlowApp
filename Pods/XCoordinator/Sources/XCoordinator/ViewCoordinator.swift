@@ -1,28 +1,3 @@
-//
-//  ViewCoordinator.swift
-//  XCoordinator
-//
-//  Created by Paul Kraft on 29.07.18.
-//  Copyright © 2018 QuickBird Studios. All rights reserved.
-//
-
-import UIKit
-
-///
-/// ViewTransition offers transitions common to any `UIViewController` rootViewController.
-///
-public typealias ViewTransition = Transition<UIViewController>
-
-///
-/// ViewCoordinator is a base class for custom coordinators with a `UIViewController` rootViewController.
-///
-open class ViewCoordinator<RouteType: Route>: BaseCoordinator<RouteType, ViewTransition> {
-
-    // MARK: Initialization
-
-    public override init(rootViewController: RootViewController, initialRoute: RouteType? = nil) {
-        super.init(rootViewController: rootViewController,
-                   initialRoute: initialRoute)
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:841dd16b00ed73b283547054979a169c716fdc4824478f0100c566e025db0b10
+size 780

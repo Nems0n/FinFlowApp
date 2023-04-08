@@ -1,21 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Pods-FinFlow.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>XCoordinator.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict/>
-</dict>
-</plist>
+version https://git-lfs.github.com/spec/v1
+oid sha256:c2bfcdfdce953b476504af18c58c67b9a9db9fa169bcf71c68f24d63d59e4234
+size 460
