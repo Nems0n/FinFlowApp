@@ -1,18 +1,28 @@
 PODS:
+  - Realm (10.38.0):
+    - Realm/Headers (= 10.38.0)
+  - Realm/Headers (10.38.0)
+  - RealmSwift (10.38.0):
+    - Realm (= 10.38.0)
   - XCoordinator (2.2.1):
     - XCoordinator/Core (= 2.2.1)
   - XCoordinator/Core (2.2.1)
 
 DEPENDENCIES:
+  - RealmSwift (~> 10)
   - XCoordinator (~> 2.0)
 
 SPEC REPOS:
   trunk:
+    - Realm
+    - RealmSwift
     - XCoordinator
 
 SPEC CHECKSUMS:
+  Realm: 5902885dd1d5e71b0b020830caab937ecdf5bf07
+  RealmSwift: 0fc037d6c32c7c4fc9362892380f380114ecdcf0
   XCoordinator: 2cf9f72e10998b7a4a4bbeac3d07e071ea82fca3
 
-PODFILE CHECKSUM: a6b39712d1fddfad3d62f6e76854958cd55720ec
+PODFILE CHECKSUM: 7aac828fa4bae371fb70d907a7fd75895f1d070a
 
 COCOAPODS: 1.12.0
