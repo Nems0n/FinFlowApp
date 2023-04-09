@@ -135,8 +135,6 @@ final class FFStorageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel?.mapCellData()
         setupElements()
         addSubviews()
         createConstraints()

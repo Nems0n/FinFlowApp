@@ -26,7 +26,11 @@ final class FFStorageVM: NSObject {
         var array = [Product]()
         
         return array
-    }()
+    }() {
+        didSet {
+            mapCellData()
+        }
+    }
     
     
     //MARK: - Init
@@ -46,7 +50,7 @@ final class FFStorageVM: NSObject {
     
     
     //MARK: - Methods
-    public func mapCellData() {
+    private func mapCellData() {
         self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
     }
     
@@ -58,14 +62,12 @@ final class FFStorageVM: NSObject {
     public func sortByPrice() {
         dataSource.sort(by: { isPriceDescending ? $0.price < $1.price : $0.price > $1.price})
         isPriceDescending.toggle()
-        mapCellData()
     }
     
     public func addNewProduct() {
         let newProduct = Product(id: 2345, productName: "Super Mega Greenish Red Apple Pro Bundle From My Heart", price: 235, amount: 2345, category: .cereal, supplier: "METRO")
         self.dataSource.append(newProduct)
         self.isDataReloaded = Binder(true)
-        mapCellData()
     }
     
     public func cellDidTap(with viewModel: AnyObject) {
