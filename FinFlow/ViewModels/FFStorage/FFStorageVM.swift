@@ -75,6 +75,24 @@ final class FFStorageVM: NSObject {
     
     //MARK: - Private Methods
     
+//    public func getProductsArray() async {
+//        let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
+//        do {
+//            let company = try await FFService.shared.execute(request, expecting: Company.self)
+//            guard let productsArray = company?.products else { return }
+//            self.dataSource = productsArray
+//            self.mapCellData()
+//            self.isDataReloaded.value = true
+//        } catch(let error) {
+//            let loginError = error as? FFService.FFServiceError
+//            if loginError == FFService.FFServiceError.loginRequired {
+//                self.coordinator?.output?.goToLogin()
+//            }
+//            self.isConnectionFailed.value = true
+//            print(error)
+//        }
+//    }
+    
     public func getProductsArray() async {
         let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
         do {
@@ -89,6 +107,7 @@ final class FFStorageVM: NSObject {
                 self.coordinator?.output?.goToLogin()
             }
             self.isConnectionFailed.value = true
+            self.isDataReloaded.value = true
             print(error)
         }
     }
