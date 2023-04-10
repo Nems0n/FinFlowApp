@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
 final class FFStorageVM: NSObject {
     //MARK: - Variables
     
     var coordinator: FFStorageCoordinator?
+    
+    private var notificationToken: NotificationToken?
 
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
@@ -22,11 +25,7 @@ final class FFStorageVM: NSObject {
     
     private var isPriceDescending: Bool = false
     
-    var dataSource: [Product] = {
-        var array = [Product]()
-        
-        return array
-    }() {
+    var dataSource = [Product]() {
         didSet {
             mapCellData()
         }
@@ -36,10 +35,29 @@ final class FFStorageVM: NSObject {
     //MARK: - Init
     override init() {
         super.init()
+    
+        DispatchQueue.main.async { [weak self] in
+            let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
+            guard let productObjects = companyObject?.products else { return }
+            self?.dataSource = productObjects.map { DataMapper.mapToProduct($0) }
+        }
         Task {
             await getProductsArray()
         }
+       
+        notificationToken = FFRealmManager.shared.realm.observe({ [weak self] notification, realm in
+            guard let self = self else { return }
+            
+            let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
+            guard let productObjects = companyObject?.products else { return }
+            dataSource = productObjects.map { DataMapper.mapToProduct($0) }
+        })
+        
     }
+    
+    deinit {
+           notificationToken?.invalidate()
+       }
     
     //MARK: - Injection
     
@@ -51,12 +69,16 @@ final class FFStorageVM: NSObject {
     
     //MARK: - Methods
     private func mapCellData() {
-        self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
+        if dataSource.isEmpty {
+           let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
+           guard let productObjects = companyObject?.products else { return }
+           dataSource = productObjects.map { DataMapper.mapToProduct($0) }
+       }
+       self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
     }
     
     public func bestSellerDidTap() {
         print("tapped")
-        print(dataSource.count)
     }
     
     public func sortByPrice() {
@@ -65,9 +87,7 @@ final class FFStorageVM: NSObject {
     }
     
     public func addNewProduct() {
-        let newProduct = Product(id: 2345, productName: "Super Mega Greenish Red Apple Pro Bundle From My Heart", price: 235, amount: 2345, category: .cereal, supplier: "METRO")
-        self.dataSource.append(newProduct)
-        self.isDataReloaded = Binder(true)
+        print("added")
     }
     
     public func cellDidTap(with viewModel: AnyObject) {
@@ -77,31 +97,14 @@ final class FFStorageVM: NSObject {
     
     //MARK: - Private Methods
     
-//    public func getProductsArray() async {
-//        let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
-//        do {
-//            let company = try await FFService.shared.execute(request, expecting: Company.self)
-//            guard let productsArray = company?.products else { return }
-//            self.dataSource = productsArray
-//            self.mapCellData()
-//            self.isDataReloaded.value = true
-//        } catch(let error) {
-//            let loginError = error as? FFService.FFServiceError
-//            if loginError == FFService.FFServiceError.loginRequired {
-//                self.coordinator?.output?.goToLogin()
-//            }
-//            self.isConnectionFailed.value = true
-//            print(error)
-//        }
-//    }
-    
     public func getProductsArray() async {
         let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
         do {
-            let company = try await FFService.shared.execute(request, expecting: Company.self)
-            guard let productsArray = company?.products else { return }
-            self.dataSource = productsArray
-            self.mapCellData()
+            guard let company = try await FFService.shared.execute(request, expecting: Company.self) else { return }
+            let companyObject = DataMapper.mapToCompanyObject(company)
+            DispatchQueue.main.async {
+                FFRealmManager.shared.add(companyObject)
+            }
             self.isDataReloaded.value = true
         } catch(let error) {
             let loginError = error as? FFService.FFServiceError
@@ -110,7 +113,12 @@ final class FFStorageVM: NSObject {
             }
             self.isConnectionFailed.value = true
             self.isDataReloaded.value = true
-            print(error)
+//            DispatchQueue.main.async { [weak self] in
+//                let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
+//                guard let productObjects = companyObject?.products else { return }
+//                self?.dataSource = productObjects.map { DataMapper.mapToProduct($0) }
+//            }
+            
         }
     }
 }

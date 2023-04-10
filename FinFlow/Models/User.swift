@@ -9,22 +9,27 @@ import Foundation
 
 struct User: Codable {
     let id: Int
-    let allows: [StorageView]?
+    let name: String
+    let allows: [StorageView]
     let companyId: Int?
     let dateOfCreation: [Int]?
     let email: String
     let role: Roles
     let phoneNumber: String?
-    // чуть позже добавить userImage
+    let company: Int
+    let photos: String?
     
     enum CodingKeys: String, CodingKey {
         case id
+        case name
         case allows
         case companyId = "company_id"
         case dateOfCreation
         case email
         case role
         case phoneNumber = "phone_number"
+        case company
+        case photos
     }
 }
 
@@ -45,6 +50,7 @@ enum Roles: String, Codable {
     case user = "USER"
     case checker = "CHECKER"
     case ladder = "LADDER"
+    case administrator = "ADMINISTRATOR"
 }
 
 /* "storage_view",

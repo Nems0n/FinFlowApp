@@ -9,10 +9,17 @@ import Foundation
 import RealmSwift
 
 class ProductObject: Object {
-    @Persisted var id: Int
+    @Persisted(primaryKey: true) var id: Int
     @Persisted var productName: String
     @Persisted var price: Float
     @Persisted var amount: Int
     @Persisted var category: String
     @Persisted var supplier: String?
+    @Persisted var discount: DiscountObject?
+}
+
+class DiscountObject: Object {
+    @Persisted var startDate: List<Int>
+    @Persisted var endDate: List<Int>
+    @Persisted var discountProperty: Double
 }

@@ -100,6 +100,7 @@ final class FFStorageVC: UIViewController {
     
     private var tableRefreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
+        control.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         control.tintColor = .appColor(.systemBG)?.withAlphaComponent(0.8)
         return control
     }()

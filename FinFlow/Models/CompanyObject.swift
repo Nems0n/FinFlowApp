@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class CompanyObject: Object {
-    @Persisted var id: Int
+    @Persisted(primaryKey: true) var id: Int
     @Persisted var name: String
     @Persisted var dateOfCreation: List<Int>
     @Persisted var inviteLink: String

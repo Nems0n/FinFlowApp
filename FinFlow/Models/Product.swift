@@ -15,7 +15,7 @@ struct Product: Codable {
     let amount: Int
     let category: Category
     let supplier: String?
-//    let discount: Class?
+    let discount: Discount?
 }
 
 
@@ -30,4 +30,9 @@ enum Category: String, Codable {
     case sweet = "SWEET"
     case water = "WATER"
     case snack = "SNACK"
+}
+
+struct Discount: Codable {
+    let startDate, endDate: [Int]
+    let discountProperty: Double
 }

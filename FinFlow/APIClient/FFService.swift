@@ -4,7 +4,6 @@
 //
 //  Created by Vlad Todorov on 25.03.23.
 //
-
 import Foundation
 
 final class FFService {
@@ -60,10 +59,14 @@ final class FFService {
             guard let type = type.self else {
                 throw FFServiceError.wrongExpectedType
             }
-            guard let result = try? JSONDecoder().decode(type, from: data) else {
+            do {
+                let result = try JSONDecoder().decode(type, from: data)
+                // use result here
+                return result
+            } catch let error {
+                print("Error decoding JSON: \(error)")
                 throw FFServiceError.failedToGetData
             }
-            return result
             
             ///"POST" Method
         case HTTPMethod.post.rawValue:
