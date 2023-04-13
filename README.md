@@ -1,6 +1,6 @@
-
-![Logo](/FinFlow/Resources/Assets.xcassets/AppIcon.appiconset/FinFlowMobile.png)
-
+<p align="center">
+<img src="/FinFlow/Resources/Assets.xcassets/AppIcon.appiconset/FinFlowMobile.png"  width="200">
+</p>
 
 # FinFlow
 
