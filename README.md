@@ -5,8 +5,8 @@
 <h1 align="center">FinFlow</h1>
 
 <p align="center">FinFlow iOS app is a dashboard that helps you with your business. With FinFlow, you can easily manage the products, have different statistics and graphs about your storage and finances. FinFlow also includes a sales management feature and an admin page for managing your employees.</p>
-<br> </br>
 
+## 
 
 ## 📸 Screenshots
 
