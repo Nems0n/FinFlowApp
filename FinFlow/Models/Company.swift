@@ -12,7 +12,13 @@ struct Company: Codable {
     let name: String
     let dateOfCreation: [Int]
     let inviteLink: String
-    let revenues: [String?]
+    let revenues: [Revenue]
     let users: [User]
     let products: [Product]
+}
+
+struct Revenue: Codable {
+    let id: Int
+    let date: [Int]
+    let sold: Int
 }

@@ -84,6 +84,22 @@ class DataMapper {
         return product
     }
     
+    private static func mapToRevenueObject(_ revenue: Revenue) -> RevenueObject {
+        let ro = RevenueObject()
+        ro.id = revenue.id
+        ro.date.removeAll()
+        ro.date.append(objectsIn: revenue.date)
+        ro.sold = revenue.sold
+        return ro
+    }
+    
+    private static func mapToRevenue(_ ro: RevenueObject) -> Revenue {
+        let revenue = Revenue(id: ro.id,
+                              date: ro.date.map {$0},
+                              sold: ro.sold)
+        return revenue
+    }
+    
     static func mapToCompanyObject(_ company: Company) -> CompanyObject {
         let co = CompanyObject()
         co.id = company.id
@@ -92,7 +108,7 @@ class DataMapper {
         co.dateOfCreation.append(objectsIn: company.dateOfCreation)
         co.inviteLink = company.inviteLink
         co.revenues.removeAll()
-        co.revenues.append(objectsIn: company.revenues)
+        co.revenues.append(objectsIn: company.revenues.map { DataMapper.mapToRevenueObject($0)} )
         let userObjects = company.users.map { DataMapper.mapToUserObject($0) }
         co.users.append(objectsIn: userObjects)
         let productObjects = company.products.map { DataMapper.mapToProductObject($0) }
@@ -105,7 +121,7 @@ class DataMapper {
                               name: co.name,
                               dateOfCreation: co.dateOfCreation.map { $0 },
                               inviteLink: co.inviteLink,
-                              revenues: co.revenues.map { $0 },
+                              revenues: co.revenues.map { DataMapper.mapToRevenue($0) },
                               users: co.users.map { DataMapper.mapToUser($0) },
                               products: co.products.map { DataMapper.mapToProduct($0)})
         return company
