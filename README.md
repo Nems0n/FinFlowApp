@@ -34,7 +34,7 @@
 
 **Dependency Manager:** CocoaPods
 
-**Backend:** Custom server and database is created by **[my teammate]("https://github.com/CatVshyx")**
+**Backend:** Custom server and database are created by **[my teammate](https://github.com/CatVshyx)**
 ## 🖥️ Cross-Platform app
 
 FinFlow is available on multiple platforms, including **iOS** and **[Windows](https://github.com/CatVshyx)**. The app allows you to access your data and manage your business from anywhere, at any time. Additionally, FinFlow provides offline data storage capabilities, so you can continue to work even without an internet connection.
