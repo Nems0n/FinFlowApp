@@ -1,15 +1,16 @@
+<p align="center">
+<img src="/FinFlow/Resources/Assets.xcassets/AppIcon.appiconset/FinFlowMobile.png"  width="200">
+</p>
 
-![Logo](https://lh3.googleusercontent.com/BB8g-fdiMlTAgIxCq44M0ezk1WZ4sNBCtp3PoECXUGRJqrStA8DacVfjOx2TD1VhL0dB_ikSAXaQviVd1_IKG_S6WCOj9OnntZt22ADznzQA7Sxa3JLRb1B0doK3hUBM9mK9FUn1fP_W3R_6EJU_N21hgXgNg6VwNVZQjS5ZHkSDafHx8GxoVjx4KQcFy8CqsjfACzQkXDsYBILiZ2tPwLK1VZ2xoovZHKGN4hF5YzHoeYfHRJ2nK6BIOYvLXvuPkWqsLcrxwM06uLoYmS8RVWI5mW3zioEcNJzpBPBIlv6T6mAc88icLDR2c2BFFkhW4ofCLzOMb2yyysFTK24_HeD1dkIwm7HuVdORRcaGEtOJg-5KY3OFZoMWSwcymppTJsQMCY7RIPw2IRrybbfcLAorUdXdcM4o8u8Gf1-7GiOiL5AZ4V8TJ7eENmbOqxfeaAjsCrSRNrAdDztlntsZd_kWhmSi2wpMQPRh7u-NuYmdTL0oX6l9xsd6uhFqSJUgpNlfhkTMD4hBmKgewrMnRm4d18Arjt5PkpRDISXLbF_hnA5g9GxdVXPMWVVmxi6hsqOAYv8WZKI_EkTXdnrqR3b3g90Wz1UFpKgA3uxYsYo4__IlAPeUHFsuKLwxSukKoQVgPvifXuPRhccg05WuHCfeQA0XKg0UK_4nLToOUjNiWuWaZXyoo2y3LPiEI110HtjRqgpJbkPw-aon6meI1MZuQgnGwoEDWS7nuXnsxJ1TPATTlAOU0i7DGywLIXR5kp3zlZ6PDEfcZgF9Khfncv624k_VylsTDAkC5FzOYwOfQuWArathxth4UxHACu9QT1d63Q0yYIpql2oX1Cx0xCOCkI7U9y5MwjytoKp1Zhz626rJqxc6vXfQoQaW1U-2TWH1oxpFvYeZ0qDq7X8sE3EgM76UTFudrg_-JnWz_n5LogedQQx4_anRbS_CQNIcfYV8OJo22GU2Letet5ohTUw=w1024-h1024-s-no?authuser=0)
+<h1 align="center">FinFlow</h1>
 
+<p align="center">FinFlow iOS app is a dashboard that helps you with your business. With FinFlow, you can easily manage the products, have different statistics and graphs about your storage and finances. FinFlow also includes a sales management feature and an admin page for managing your employees.</p>
 
-# FinFlow
-
-FinFlow iOS app is a dashboard that helps you with your business. With FinFlow, you can easily manage the products, have different statistics and graphs about your storage and finances. FinFlow also includes a sales management feature and an admin page for managing your employees.
-
+## 
 
 ## 📸 Screenshots
 
-![App Screenshot](https://lh3.googleusercontent.com/wvBNnsRrLP09-RJrLLiKlskjWpjUYfMzjPCMxda5MP1N3DOG3AMpiqgR0avrchrgUaLbbtiHRBuIqXCoFCFZr4L5P4JztRFO-1CIW3UUnm55uC7rZa3QC6Q7dQlji7NOd3KMtoGij8INlFRVO1oMmUkNBSDy2_YrTTjuCGgJeYWazM_Q5CivPGS7pRGPN5AWhpkkfnRrPshGW3LhMfBAY4WWfBPywsS1rvVpP-P061mR-hk0NWtLmbMvoh_OVm2I26fvlhhLicNS_NKyfw3dJeg9DmxPGni_bhqytAxOodA69zpbNx11xQ-VjishbFcThjtzyf3_t7OFNqEIxJOZCdESOgoKAs4-iZmenq71ZoWpXThx-P10dn1RvjaO6oFABMQOiI0xIrQJjT1uZnAxU628eQpjLg8wtWHu7OxFlCn6JmnhdExQ3rnxZeUzJ2lprpShWTJaE6TUsTZtHVCZvKINk2NnxsyiGAx0jV2ASW6u9sKwfLDCIQmJj3Bhpbo6gd9gEBSh__TcEisprz3j6RUDnlME3YjsFf7Qny2od4wDQLvSZfwiT6vN9Hhnr7iDVQTb9KanmRiL60k1z-8M-P4B18W3vEq_84tgVy2MsLgAyaThnNk5e3OZ4K04gJbJj7zjKoEsSoXBuivL2I-j9PziSGWu4p0u2-nw3JJ3RbF_VSwqSFdqqRlr4Cb4nbZjovw-FxIiUM01L7esH586n7zJW1Y0DAhHU074swsbrXUK4Nk0e4RwLHt0s_t5bTaK0vlKc2LYcMMrR0iBKP8tDy4Bk4o1nno3v2JbIH7hBmA_Ee0XbcF5BI1FzXWn2XVSRXpkX9Y2bIy9PMXsAbEH1QA0ToDEpIM9r6wnWvpW6cBnr_UpCPyMjxKxZFntnEihqFRq6z22rnrsUuUkJd_rNp6TQ-AKq5WiV9Cz4LoxcwiTedaoiFfcKc3a7drsZ0BI9eeYQItOZcawXDGgIsa63TU=w296-h640-s-no?authuser=0)
+![App Screenshot](https://lh3.googleusercontent.com/2aLJHBH0rn1eS9dVvLbSEfIkvOqCjeLe-BBuvbma9ZIdlbzRES4LrDbhn_6tf6EqleJY6KWEhhCeKs-iyPxkbcegYEw8LqC6OtYbNRI5K5FA5Zn4lT3JLJsfNNqu7MElpwUy64vHPXQxHvXyF2M-4Pz7AfGeI8fL5gTsQeXLkhSCYvI78D3yAnE6lQUdU0fXBJvEbFksz1D9qJ2_DWLHisknvrRZt60Zhql2KddR8Uh0vXkhWLFyw6i0JfVBEpkh12cFe5atqL185V_XYwSIg2OuaeDkHdqSZXctU5fCxRuQi122HF-IbhwFm-ZhdPgK94Po64w5q2iYeE8H7hwbBGwzBHbDtd0y9A8G3Ri9i1vqymszsbrGSwV5dCHDLtRg85rmp9fPLGx2kkRqvhcNdqkR9TGBYAeIc6fNEr15_KANC09QJrOzlqp9s_iSOMlDr3eaC18RiV8Q--xP2lPraLe47B-NBKkO_M1vzRrPWqlPJpFzA0h5z4F9UHMt4he6xOLE9WCfWdzgqjg1h_NQvta3wwkMfosNDSOzyz-uCiiFxKOllxDyZaSQ-QxlApXNyXJe8C_7m0ziSunyNMlN0f1r7CaOPyPgqhLYryPuGZXzJB-bwIOd-D5zxIJ2b-8aKjY4MlcfpECQbVWcvi4vnX67W2EPXxA_Q0XfDo03YlyOyHzjKvCGiHsv7cvB35PL8vuLXlDT-9LLvuhDr52FUOGa7ubQBHL7EOkPQQY7Vz6rkoQ8-o9wVPHL_X9Y7aUDZdiyMyxM3VDzKuikkyjG2gsxck_WZ_SB18_XBWHguCvRIZA4wGDecIbU7DLIW1h-nAZ6Bd9I6Uklgxg6NeaGDq5p3QrWFn0FQAgdJmGoOxdQpCOXzfUITKpva9HrMj4Id6QsY1DqYh0-5k2LDrWbcpAC-NPc-_bm9qnBZBXxV7yLxhWZOAzEIWXBVKgXlwjTW-vsqn_6MbqgYwtcBHe8=w296-h640-s-no?authuser=0)
 
 
 ## 🔥 Features
@@ -33,7 +34,7 @@ FinFlow iOS app is a dashboard that helps you with your business. With FinFlow, 
 
 **Dependency Manager:** CocoaPods
 
-**Backend:** Custom server and database is created by **[my teammate]("https://github.com/CatVshyx")**
+**Backend:** Custom server and database are created by **[my teammate](https://github.com/CatVshyx)**
 ## 🖥️ Cross-Platform app
 
 FinFlow is available on multiple platforms, including **iOS** and **[Windows](https://github.com/CatVshyx)**. The app allows you to access your data and manage your business from anywhere, at any time. Additionally, FinFlow provides offline data storage capabilities, so you can continue to work even without an internet connection.
