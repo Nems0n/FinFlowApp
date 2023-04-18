@@ -80,13 +80,13 @@ class FFStorageCellDetailVC: UIViewController {
         return label
     }()
     
-    private let promotionButton: ActualGradientButton = {
-        let button = ActualGradientButton(isGradient: false, title: "Add Promotion", UIImage(systemName: "plus"))
+    private let promotionButton: AppGradientButton = {
+        let button = AppGradientButton(isGradient: false, title: "Add Promotion", UIImage(systemName: "plus"))
         return button
     }()
     
-    private let deleteButton: ActualGradientButton = {
-        let button = ActualGradientButton(isGradient: false, title: "Delete Product", UIImage(systemName: "multiply"))
+    private let deleteButton: AppGradientButton = {
+        let button = AppGradientButton(isGradient: false, title: "Delete Product", UIImage(systemName: "multiply"))
         return button
     }()
     

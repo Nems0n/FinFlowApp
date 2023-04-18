@@ -77,13 +77,13 @@ final class FFStorageVC: UIViewController {
         return view
     }()
     
-    lazy var addProductButton: ActualGradientButton = {
-        let button = ActualGradientButton(isGradient: true, title: "Add new product", UIImage(systemName: "plus"))
+    lazy var addProductButton: AppGradientButton = {
+        let button = AppGradientButton(isGradient: true, title: "Add new product", UIImage(systemName: "plus"))
         return button
     }()
     
-    lazy var bestSellerButton: ActualGradientButton = {
-        var button = ActualGradientButton(isGradient: false, title: "Best sellers", nil)
+    lazy var bestSellerButton: AppGradientButton = {
+        var button = AppGradientButton(isGradient: false, title: "Best sellers", nil)
         return button
     }()
     

@@ -33,10 +33,13 @@ final class FFLoginVM: NSObject {
             FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
             await self.coordinator?.trigger(.main)
         } catch(let error) {
-            if error.localizedDescription.contains("The request timed out.") {
-                self.isConnectionLost.value = true
-                self.isActivityIndicator.value = false
-            }
+//            if error.localizedDescription.contains("The request timed out.") {
+//                self.isConnectionLost.value = true
+//                self.isActivityIndicator.value = false
+//            }
+            print(error.localizedDescription)
+            self.isConnectionLost.value = true
+            self.isActivityIndicator.value = false
         }
     }
     

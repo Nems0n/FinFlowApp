@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ActualGradientButton: UIButton {
+class AppGradientButton: UIButton {
 
     private var gradient: Bool
+    private var bgColor: UIColor?
+    private var highlightColor: UIColor?
     
     private lazy var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
@@ -23,28 +25,32 @@ class ActualGradientButton: UIButton {
         return gradientLayer
     }()
     
-    override func layoutSubviews() {
-          super.layoutSubviews()
-          gradientLayer.frame = bounds
-      }
     override var isHighlighted: Bool {
         didSet {
             if gradient {
                 gradientLayer.isHidden = isHighlighted ? false : true
             } else {
-                backgroundColor = isHighlighted ? UIColor.appColor(.systemAccentThree)?.withAlphaComponent(0.15) : UIColor.white
+                backgroundColor = isHighlighted ? highlightColor ?? .white : bgColor ?? .white
             }
         }
     }
     
-    init(isGradient: Bool, title: String, _ icon: UIImage?) {
+    override func layoutSubviews() {
+          super.layoutSubviews()
+          gradientLayer.frame = bounds
+      }
+    
+    init(isGradient: Bool, title: String, _ icon: UIImage?, bgColor: UIColor? = nil, highlight: UIColor? = .appColor(.systemAccentThree)?.withAlphaComponent(0.15), borderColor: UIColor? = .appColor(.systemAccentThree)) {
         self.gradient = isGradient
+        self.bgColor = bgColor
+        self.highlightColor = highlight
         super.init(frame: CGRect.zero)
+        self.backgroundColor = bgColor
         self.translatesAutoresizingMaskIntoConstraints = false
         self.clipsToBounds = true
         self.layer.cornerRadius = 16
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.appColor(.systemAccentThree)?.cgColor
+        self.layer.borderColor = borderColor?.cgColor
         var spaceString: String? /// This Used for adding space between image and title
         if icon != nil {
             spaceString = "  "
@@ -61,4 +67,5 @@ class ActualGradientButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }

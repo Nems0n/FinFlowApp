@@ -12,6 +12,14 @@ class FFLoginVC: UIViewController {
     //MARK: - UI Elements
     var viewModel: FFLoginVM?
     
+    private let logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "finFlowInnerLogo")
+        view.contentMode = .scaleAspectFit
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let emailTF: UITextField = {
         
         let tf = UITextField()
@@ -42,21 +50,37 @@ class FFLoginVC: UIViewController {
         return tf
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton(configuration: .borderedTinted())
-        button.setTitle("Log in", for: .normal)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
+//    private let loginButton: UIButton = {
+//        let button = UIButton(configuration: .borderedTinted())
+//        button.setTitle("Log in", for: .normal)
+//
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+    
+    private let loginButton: AppGradientButton = {
+        let button = AppGradientButton(isGradient: false,
+                                       title: "Log in",
+                                       nil,
+                                       bgColor: .appColor(.systemAccentThree)?.withAlphaComponent(0.2),
+                                       highlight: .appColor(.systemAccentThree)?.withAlphaComponent(0.5),
+                                       borderColor: .appColor(.systemAccentOne)?.withAlphaComponent(0.7))
+
+        button.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)
         return button
     }()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupElements()
         
         createConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     //MARK: - Injection
@@ -76,6 +100,7 @@ class FFLoginVC: UIViewController {
     }
     
     private func addSubviews() {
+        view.addSubview(logoImageView)
         view.addSubview(emailTF)
         view.addSubview(passwordTF)
         view.addSubview(loginButton)
@@ -83,6 +108,10 @@ class FFLoginVC: UIViewController {
     
     private func createConstraints() {
         NSLayoutConstraint.activate([
+            logoImageView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.4),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height * 0.06)),
+            logoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
             emailTF.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.7),
             emailTF.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             emailTF.heightAnchor.constraint(equalToConstant: 32),
@@ -93,8 +122,8 @@ class FFLoginVC: UIViewController {
             passwordTF.centerXAnchor.constraint(equalTo: emailTF.centerXAnchor),
             passwordTF.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 24),
             
-            loginButton.widthAnchor.constraint(equalTo: passwordTF.widthAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 44),
+            loginButton.widthAnchor.constraint(equalTo: logoImageView.widthAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 36),
             loginButton.centerXAnchor.constraint(equalTo: passwordTF.centerXAnchor),
             loginButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 32)
         ])
@@ -116,6 +145,7 @@ class FFLoginVC: UIViewController {
         })
         
         viewModel?.isRequestFailed.bind({ [weak self] showAlert in
+            print("show failed request")
             guard let self = self else { return }
             if showAlert {
                 FFAlertManager.showInvalidLoginAlert(on: self)
@@ -123,6 +153,7 @@ class FFLoginVC: UIViewController {
         })
         
         viewModel?.isConnectionLost.bind({ [weak self] lost in
+            print("show connection lost")
             guard let self = self else { return }
             if lost {
                 FFAlertManager.showLostConnectionAlert(on: self)
