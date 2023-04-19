@@ -126,9 +126,9 @@ final class FFStorageVC: UIViewController {
     
     var dataArray = [FFProductCellVM?]()
     
-    private var categoryArray = [Category]() {
+    private var categorySortArray = [Category]() {
         didSet {
-            viewModel?.categorySort(with: categoryArray)
+            viewModel?.categorySort(with: categorySortArray)
         }
     }
 
@@ -249,9 +249,9 @@ final class FFStorageVC: UIViewController {
     
     private func updateCategoryArray(with item: Category, isAppend: Bool) {
         if isAppend {
-            self.categoryArray.append(item)
+            self.categorySortArray.append(item)
         } else {
-            categoryArray.removeAll { $0 == item }
+            categorySortArray.removeAll { $0 == item }
         }
     }
     
@@ -346,7 +346,7 @@ final class FFStorageVC: UIViewController {
         categoryStates.vegetablesState = false
         categoryStates.waterState = false
         
-        categoryArray.removeAll()
+        categorySortArray.removeAll()
 //        sender.endRefreshing()
     }
     
