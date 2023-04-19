@@ -20,43 +20,37 @@ class FFLoginVC: UIViewController {
         return view
     }()
     
+    private let emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.font = .poppins(.regular, size: 14)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        return label
+    }()
+    
     private let emailTF: UITextField = {
-        
-        let tf = UITextField()
-        tf.placeholder = "Enter your email"
-        tf.textColor = .black
-        tf.font = .poppins(.regular, size: 14)
-        tf.borderStyle = .roundedRect
-        tf.textAlignment = .center
-        tf.autocorrectionType = .no
-        tf.autocapitalizationType = .none
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.tag = 0
+        let tf = AppTextField()
         return tf
+    }()
+    
+    private let passwordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Password"
+        label.font = .poppins(.regular, size: 14)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        return label
     }()
     
     private let passwordTF: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter your password"
-        tf.textColor = .black
-        tf.font = .poppins(.regular, size: 14)
-        tf.borderStyle = .roundedRect
-        tf.textAlignment = .center
-        tf.autocorrectionType = .no
-        tf.autocapitalizationType = .none
-        tf.tag = 1
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.isSecureTextEntry = true
+        let tf = AppTextField(tag: 1, isSecure: true)
         return tf
     }()
-    
-//    private let loginButton: UIButton = {
-//        let button = UIButton(configuration: .borderedTinted())
-//        button.setTitle("Log in", for: .normal)
-//
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
     
     private let loginButton: AppGradientButton = {
         let button = AppGradientButton(isGradient: false,
@@ -67,6 +61,7 @@ class FFLoginVC: UIViewController {
                                        borderColor: .appColor(.systemAccentOne)?.withAlphaComponent(0.7))
 
         button.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)
+        button.titleLabel?.font = .poppins(.medium, size: 12)
         return button
     }()
 
@@ -101,7 +96,9 @@ class FFLoginVC: UIViewController {
     
     private func addSubviews() {
         view.addSubview(logoImageView)
+        view.addSubview(emailLabel)
         view.addSubview(emailTF)
+        view.addSubview(passwordLabel)
         view.addSubview(passwordTF)
         view.addSubview(loginButton)
     }
@@ -112,20 +109,31 @@ class FFLoginVC: UIViewController {
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height * 0.06)),
             logoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            emailTF.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.7),
+            emailLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.7, constant: -16),
+            emailLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+//            emailLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
+            emailLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -((16 + 36))),
+            
+            emailTF.widthAnchor.constraint(equalTo: emailLabel.widthAnchor, constant: 16),
             emailTF.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            emailTF.heightAnchor.constraint(equalToConstant: 32),
-            emailTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
+            emailTF.heightAnchor.constraint(equalToConstant: 36),
+            emailTF.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 4),
+            
+            passwordLabel.widthAnchor.constraint(equalTo: emailLabel.widthAnchor),
+            passwordLabel.centerXAnchor.constraint(equalTo: emailLabel.centerXAnchor),
+            passwordLabel.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 16),
+//            passwordLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: (16 + 36)/2),
             
             passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor),
             passwordTF.heightAnchor.constraint(equalTo: emailTF.heightAnchor),
-            passwordTF.centerXAnchor.constraint(equalTo: emailTF.centerXAnchor),
-            passwordTF.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 24),
+            passwordTF.centerXAnchor.constraint(equalTo: passwordLabel.centerXAnchor),
+            passwordTF.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 4),
             
             loginButton.widthAnchor.constraint(equalTo: logoImageView.widthAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 36),
             loginButton.centerXAnchor.constraint(equalTo: passwordTF.centerXAnchor),
-            loginButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 32)
+//            loginButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 32)
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: (view.frame.height * -0.06))
         ])
     }
     

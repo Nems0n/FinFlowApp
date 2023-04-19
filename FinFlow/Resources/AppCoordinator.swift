@@ -23,7 +23,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         } else {
             route = .login
         }
-        super.init(initialRoute: .login) //route
+        super.init(initialRoute: route) //route
         rootViewController.setNavigationBarHidden(true, animated: false)
     }
     

@@ -12,6 +12,7 @@
 		4E0DDD6929AC2FC300A5894E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */; };
 		4E0DDD6A29AC2FC300A5894E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */; };
 		4E0DDD6B29AC2FC300A5894E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */; };
+		4E1B580B29EF54A3001158A2 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B580A29EF54A3001158A2 /* AppTextField.swift */; };
 		4E2A000729BFDB040090B113 /* FFStorageCellDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */; };
 		4E2DAA0D29CF9C5600F78C3D /* FFService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0C29CF9C5600F78C3D /* FFService.swift */; };
 		4E2DAA0F29CF9C5D00F78C3D /* FFRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */; };
@@ -68,6 +69,7 @@
 		4E0DDD6629AC2FC300A5894E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		4E0DDD6729AC2FC300A5894E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4E0DDD6829AC2FC300A5894E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		4E1B580A29EF54A3001158A2 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFStorageCellDetailVC.swift; sourceTree = "<group>"; };
 		4E2DAA0C29CF9C5600F78C3D /* FFService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFService.swift; path = FinFlow/APIClient/FFService.swift; sourceTree = SOURCE_ROOT; };
 		4E2DAA0E29CF9C5D00F78C3D /* FFRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFRequest.swift; path = FinFlow/APIClient/FFRequest.swift; sourceTree = SOURCE_ROOT; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				4EB5DDE129BA03FA00C9B92D /* Binder.swift */,
+				4E1B580A29EF54A3001158A2 /* AppTextField.swift */,
 				4ECD52B829AEE381003EC3C6 /* AppGradientButton.swift */,
 			);
 			path = Utils;
@@ -547,6 +550,7 @@
 				4E5FB26729BE199400A34495 /* FFStorageVC+TableView.swift in Sources */,
 				4EB5DDE229BA03FA00C9B92D /* Binder.swift in Sources */,
 				4E78DB7929E2038D00A841A4 /* UserObject.swift in Sources */,
+				4E1B580B29EF54A3001158A2 /* AppTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
