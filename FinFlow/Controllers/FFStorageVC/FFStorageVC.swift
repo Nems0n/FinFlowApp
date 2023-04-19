@@ -125,6 +125,24 @@ final class FFStorageVC: UIViewController {
     }()
     
     var dataArray = [FFProductCellVM?]()
+    
+    private var categoryArray = [Category]() {
+        didSet {
+            viewModel?.categorySort(with: categoryArray)
+        }
+    }
+
+    private var categoryStates = (cerealState: false,
+                                  dairyState: false,
+                                  fishState: false,
+                                  fruitState: false,
+                                  grainsState: false,
+                                  meatState: false,
+                                  snackState: false,
+                                  sweetState: false,
+                                  vegetablesState: false,
+                                  waterState: false)
+    
     //MARK: - VC Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,12 +246,84 @@ final class FFStorageVC: UIViewController {
             }
         })
     }
+    
+    private func updateCategoryArray(with item: Category, isAppend: Bool) {
+        if isAppend {
+            self.categoryArray.append(item)
+        } else {
+            categoryArray.removeAll { $0 == item }
+        }
+    }
+    
     //MARK: - Objc Methods
     @objc func priceSortDidTap() {
         viewModel?.sortByPrice()
         DispatchQueue.main.async {
             self.goodsTableView.reloadData()
         }
+    }
+    
+    @objc func categorySortDidTap(sender: Any) {
+        guard let sender = sender as? UIButton else { return }
+        let menu = UIMenu(options: .displayInline, children: [
+            UIDeferredMenuElement.uncached({ [weak self] completion in
+                guard let self = self else { return }
+                let actions = [
+                    UIAction(title: "Cereal", state: self.categoryStates.cerealState ? .on : .off) { _ in
+                        print("cereal")
+                        self.categoryStates.cerealState.toggle()
+                        self.updateCategoryArray(with: .cereal, isAppend: self.categoryStates.cerealState ? true : false)
+                    },
+                    UIAction(title: "Dairy", state: self.categoryStates.dairyState ? .on : .off) { _ in
+                        print("dairy")
+                        self.categoryStates.dairyState.toggle()
+                        self.updateCategoryArray(with: .dairy, isAppend: self.categoryStates.dairyState ? true : false)
+                    },
+                    UIAction(title: "Fish", state: self.categoryStates.fishState ? .on : .off) { _ in
+                        print("fish")
+                        self.categoryStates.fishState.toggle()
+                        self.updateCategoryArray(with: .fish, isAppend: self.categoryStates.fishState ? true : false)
+                    },
+                    UIAction(title: "Fruit", state: self.categoryStates.fruitState ? .on : .off) { _ in
+                        print("fruit")
+                        self.categoryStates.fruitState.toggle()
+                        self.updateCategoryArray(with: .fruit, isAppend: self.categoryStates.fruitState ? true : false)
+                    },
+                    UIAction(title: "Grains", state: self.categoryStates.grainsState ? .on : .off) { _ in
+                        print("grains")
+                        self.categoryStates.grainsState.toggle()
+                        self.updateCategoryArray(with: .grains, isAppend: self.categoryStates.grainsState ? true : false)
+                    },
+                    UIAction(title: "Meat", state: self.categoryStates.meatState ? .on : .off) { _ in
+                        print("meat")
+                        self.categoryStates.meatState.toggle()
+                        self.updateCategoryArray(with: .meat, isAppend: self.categoryStates.meatState ? true : false)
+                    },
+                    UIAction(title: "Snack", state: self.categoryStates.snackState ? .on : .off) { _ in
+                        print("snack")
+                        self.categoryStates.snackState.toggle()
+                        self.updateCategoryArray(with: .snack, isAppend: self.categoryStates.snackState ? true : false)
+                    },
+                    UIAction(title: "Sweet", state: self.categoryStates.sweetState ? .on : .off) { _ in
+                        print("sweet")
+                        self.categoryStates.sweetState.toggle()
+                        self.updateCategoryArray(with: .sweet, isAppend: self.categoryStates.sweetState ? true : false)
+                    },
+                    UIAction(title: "Vegetables", state: self.categoryStates.vegetablesState ? .on : .off) { _ in
+                        print("vegetables")
+                        self.categoryStates.vegetablesState.toggle()
+                        self.updateCategoryArray(with: .vegetables, isAppend: self.categoryStates.vegetablesState ? true : false)
+                    },
+                    UIAction(title: "Water", state: self.categoryStates.waterState ? .on : .off) { _ in
+                        print("water")
+                        self.categoryStates.waterState.toggle()
+                        self.updateCategoryArray(with: .water, isAppend: self.categoryStates.waterState ? true : false)
+                    }
+                ]
+                completion(actions)
+            })
+        ])
+        sender.menu = menu
     }
     
     @objc func bestSellerButtonDidTap() {
@@ -244,6 +334,19 @@ final class FFStorageVC: UIViewController {
         Task {
             await viewModel?.getProductsArray()
         }
+ 
+        categoryStates.cerealState = false
+        categoryStates.dairyState = false
+        categoryStates.fishState = false
+        categoryStates.fruitState = false
+        categoryStates.grainsState = false
+        categoryStates.meatState = false
+        categoryStates.snackState = false
+        categoryStates.sweetState = false
+        categoryStates.vegetablesState = false
+        categoryStates.waterState = false
+        
+        categoryArray.removeAll()
 //        sender.endRefreshing()
     }
     

@@ -46,6 +46,7 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
     lazy var categoryButton: UIButton = {
         let button = UIButton()
         button.setHeaderButton(title: "Category", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        button.showsMenuAsPrimaryAction = true
         return button
     }()
     

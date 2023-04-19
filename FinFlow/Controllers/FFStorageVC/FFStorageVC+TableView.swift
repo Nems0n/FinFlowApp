@@ -34,13 +34,14 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    /// Header ivew
+    /// Header view
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier) as? FFProductTableViewHeader else {
             return UIView()
         }
         view.priceButton.addTarget(self, action: #selector(priceSortDidTap), for: .touchUpInside)
-
+        view.categoryButton.addTarget(self, action: #selector(categorySortDidTap(sender: )), for: .touchUpInside)
+        view.categoryButton.sendActions(for: .touchUpInside)
         return view
     }
     /// Footer view
