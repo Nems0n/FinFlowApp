@@ -328,8 +328,10 @@ final class FFStorageVC: UIViewController {
     
     @objc func stockSortDidTap() {
         viewModel?.sortByStock()
-        
-        
+    }
+    
+    @objc func supplierSortDidTap() {
+        viewModel?.sortBySupplier()
     }
     
     @objc func bestSellerButtonDidTap() {

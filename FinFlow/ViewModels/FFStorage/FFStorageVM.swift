@@ -25,6 +25,7 @@ final class FFStorageVM: NSObject {
     
     private var isPriceDescending: Bool = false
     private var isStockDescending: Bool = false
+    private var isSupplierDescending: Bool = false
     
     var dataSource = [Product]() {
         didSet {
@@ -120,6 +121,14 @@ final class FFStorageVM: NSObject {
         isStockDescending.toggle()
     }
     
+    public func sortBySupplier() {
+        dataSource.sort(by: { first, second in
+            guard first.supplier != nil && second.supplier != nil else { return false }
+            return isSupplierDescending ? first.supplier! < second.supplier! : first.supplier! > second.supplier!
+        })
+        isSupplierDescending.toggle()
+    }
+    
     //MARK: - Private Methods
     
     public func getProductsArray() async {
@@ -138,11 +147,6 @@ final class FFStorageVM: NSObject {
             }
             self.isConnectionFailed.value = true
             self.isDataReloaded.value = true
-//            DispatchQueue.main.async { [weak self] in
-//                let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
-//                guard let productObjects = companyObject?.products else { return }
-//                self?.dataSource = productObjects.map { DataMapper.mapToProduct($0) }
-//            }
             
         }
     }
