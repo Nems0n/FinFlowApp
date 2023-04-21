@@ -15,13 +15,12 @@ import Foundation
     case resetPassword = "/auth/resetPassword/"
     case info = "/auth/info"
     case refreshToken = "/auth/token/refresh"
-
+    
     //MARK: - Endpoints requiring JWT token
     case changePassword = "/user/changePassword"
     case changeUserSettings = "/user/changeUserSettings"
     case getMe = "/user/getMe"
     case uploadUserPhoto = "/user/uploadUserPhoto"
-//    case getPhoto = "/user/photo/**"
     case createCompany = "/company/createCompany"
     case removeCompany = "/company/removeCompany"
     case joinByCode = "/company/joinByCode"
@@ -36,5 +35,7 @@ import Foundation
     case addDiscount = "/res/addDiscount"
     case editDiscount = "/res/editDiscount"
     case deleteDiscount = "/res/deleteDiscount"
-
+    
 }
+
+

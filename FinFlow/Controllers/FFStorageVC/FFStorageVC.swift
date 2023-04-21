@@ -258,9 +258,9 @@ final class FFStorageVC: UIViewController {
     //MARK: - Objc Methods
     @objc func priceSortDidTap() {
         viewModel?.sortByPrice()
-        DispatchQueue.main.async {
-            self.goodsTableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            self.goodsTableView.reloadData()
+//        }
     }
     
     @objc func categorySortDidTap(sender: Any) {
@@ -324,6 +324,12 @@ final class FFStorageVC: UIViewController {
             })
         ])
         sender.menu = menu
+    }
+    
+    @objc func stockSortDidTap() {
+        viewModel?.sortByStock()
+        
+        
     }
     
     @objc func bestSellerButtonDidTap() {

@@ -42,6 +42,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         view.priceButton.addTarget(self, action: #selector(priceSortDidTap), for: .touchUpInside)
         view.categoryButton.addTarget(self, action: #selector(categorySortDidTap(sender: )), for: .touchUpInside)
         view.categoryButton.sendActions(for: .touchUpInside)
+        view.stockButton.addTarget(self, action: #selector(stockSortDidTap), for: .touchUpInside)
         return view
     }
     /// Footer view

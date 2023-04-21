@@ -77,7 +77,7 @@ extension UIButton {
     }
     
     func setHeaderButton(title: String, image: UIImage?) {
-        setTitle(title, for: .normal)
+        setTitle(title + " ", for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.font = .poppins(.regular, size: 12)
         setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.6), for: .normal)

@@ -24,6 +24,7 @@ final class FFStorageVM: NSObject {
     var cellDataSource: Binder<[FFProductCellVM?]> = Binder([])
     
     private var isPriceDescending: Bool = false
+    private var isStockDescending: Bool = false
     
     var dataSource = [Product]() {
         didSet {
@@ -39,9 +40,11 @@ final class FFStorageVM: NSObject {
         super.init()
     
         DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
             guard let productObjects = companyObject?.products else { return }
-            self?.dataSource = productObjects.map { DataMapper.mapToProduct($0) }
+            self.realmDataSource = productObjects.map { DataMapper.mapToProduct($0) }
+            self.dataSource = self.realmDataSource
         }
         Task {
             await getProductsArray()
@@ -82,12 +85,10 @@ final class FFStorageVM: NSObject {
     
     public func bestSellerDidTap() {
         print("tapped")
+        print(dataSource.count)
+        print(realmDataSource.count)
     }
     
-    public func sortByPrice() {
-        dataSource.sort(by: { isPriceDescending ? $0.price < $1.price : $0.price > $1.price})
-        isPriceDescending.toggle()
-    }
     
     public func addNewProduct() {
         print("added")
@@ -98,6 +99,12 @@ final class FFStorageVM: NSObject {
         
     }
     
+    //MARK: - Sort Methods
+    public func sortByPrice() {
+        dataSource.sort(by: { isPriceDescending ? $0.price < $1.price : $0.price > $1.price})
+        isPriceDescending.toggle()
+    }
+    
     public func categorySort(with states: [Category]) {
         guard !states.isEmpty else { return dataSource = realmDataSource }
         let matchingCategories = Set(realmDataSource.map {$0.category}).intersection(Set(states))
@@ -106,6 +113,11 @@ final class FFStorageVM: NSObject {
             } else {
                 dataSource = realmDataSource.filter({ matchingCategories.contains($0.category)})
             }
+    }
+    
+    public func sortByStock() {
+        dataSource.sort(by: { isStockDescending ? $0.amount < $1.amount : $0.amount > $1.amount})
+        isStockDescending.toggle()
     }
     
     //MARK: - Private Methods

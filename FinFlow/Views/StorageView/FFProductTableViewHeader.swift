@@ -16,7 +16,6 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
         }
     }
     
-    let viewModel = FFStorageVM()
 
     let gradientLayerView: UIView = UIView()
     let gradientLayer = CAGradientLayer()
@@ -52,7 +51,7 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
     
     lazy var stockButton: UIButton = {
         let button = UIButton()
-        button.setHeaderButton(title: "Stock", image: UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
+        button.setHeaderButton(title: "Stock", image: UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .thin)))
         return button
     }()
     
