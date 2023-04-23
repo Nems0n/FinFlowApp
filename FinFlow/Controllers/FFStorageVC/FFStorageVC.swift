@@ -53,8 +53,8 @@ final class FFStorageVC: UIViewController {
         let button = UIButton()
         if let image = UIImage(named: "testAvatar") {
             button.setImage(image, for: .normal)
-            button.imageView?.contentMode = .scaleAspectFill
         }
+        button.imageView?.contentMode = .scaleAspectFill
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 12
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -258,9 +258,6 @@ final class FFStorageVC: UIViewController {
     //MARK: - Objc Methods
     @objc func priceSortDidTap() {
         viewModel?.sortByPrice()
-//        DispatchQueue.main.async {
-//            self.goodsTableView.reloadData()
-//        }
     }
     
     @objc func categorySortDidTap(sender: Any) {

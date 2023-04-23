@@ -15,6 +15,8 @@ final class FFStorageVM: NSObject {
     
     private var notificationToken: NotificationToken?
 
+//    var userImage: Binder<UIImage>
+    
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
     var isConnectionFailed: Binder<Bool?> = Binder(nil)
@@ -22,6 +24,7 @@ final class FFStorageVM: NSObject {
     var priceSortButtonPressed: Binder<Bool> = Binder(false)
     
     var cellDataSource: Binder<[FFProductCellVM?]> = Binder([])
+    
     
     private var isPriceDescending: Bool = false
     private var isStockDescending: Bool = false
@@ -149,6 +152,12 @@ final class FFStorageVM: NSObject {
             self.isDataReloaded.value = true
             
         }
+    }
+    
+    public func getUser() async {
+        let request = FFRequest(endpoint: .getMe, httpMethod: .get, httpBody: nil)
+        
+    
     }
 }
 
