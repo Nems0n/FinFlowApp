@@ -51,9 +51,9 @@ final class FFStorageVC: UIViewController {
     
     lazy var userButton: UIButton = {
         let button = UIButton()
-        if let image = UIImage(named: "testAvatar") {
-            button.setImage(image, for: .normal)
-        }
+//        if let image = UIImage(named: "testAvatar") {
+//            button.setImage(image, for: .normal)
+//        }
         button.imageView?.contentMode = .scaleAspectFill
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 12
@@ -245,6 +245,12 @@ final class FFStorageVC: UIViewController {
                 }
             }
         })
+        
+        viewModel?.userImageData.bind({ [weak self] data in
+            guard let data = data else { return }
+            let image = UIImage(data: data)
+            self?.userButton.setImage(image, for: .normal)
+        })
     }
     
     private func updateCategoryArray(with item: Category, isAppend: Bool) {
@@ -338,6 +344,7 @@ final class FFStorageVC: UIViewController {
     @objc private func tableRefreshControlAction(sender: UIRefreshControl) {
         Task {
             await viewModel?.getProductsArray()
+            await viewModel?.getUser()
         }
  
         categoryStates.cerealState = false

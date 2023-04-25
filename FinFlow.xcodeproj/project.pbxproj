@@ -49,7 +49,6 @@
 		4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */; };
 		4ECD52B929AEE381003EC3C6 /* AppGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD52B829AEE381003EC3C6 /* AppGradientButton.swift */; };
 		4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED496A629BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift */; };
-		4EE7EC9E29F5F24100289B10 /* FFImageCacherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE7EC9D29F5F24100289B10 /* FFImageCacherManager.swift */; };
 		4EF93F4429A6877100BF9AB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF93F4329A6877100BF9AB3 /* User.swift */; };
 		4EFB7DBF29D375A6002DA792 /* TokenJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DBE29D375A6002DA792 /* TokenJWT.swift */; };
 		4EFB7DC229D387AC002DA792 /* FFLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DC129D387AC002DA792 /* FFLoginVC.swift */; };
@@ -109,7 +108,6 @@
 		4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFMainViewCardV.swift; sourceTree = "<group>"; };
 		4ECD52B829AEE381003EC3C6 /* AppGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGradientButton.swift; sourceTree = "<group>"; };
 		4ED496A629BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductTableViewFooterV.swift; sourceTree = "<group>"; };
-		4EE7EC9D29F5F24100289B10 /* FFImageCacherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFImageCacherManager.swift; sourceTree = "<group>"; };
 		4EF93F4329A6877100BF9AB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4EFB7DBE29D375A6002DA792 /* TokenJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenJWT.swift; sourceTree = "<group>"; };
 		4EFB7DC129D387AC002DA792 /* FFLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLoginVC.swift; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 				4E84FF9229D588FB00120A52 /* FFAlertManager.swift */,
 				4E84FF9429D60D1B00120A52 /* FFKeychainManager.swift */,
 				4E78DB7629E1B5BF00A841A4 /* FFRealmManager.swift */,
-				4EE7EC9D29F5F24100289B10 /* FFImageCacherManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -529,7 +526,6 @@
 				4EC8C5C529CA6396008F5412 /* FFAdminCoordinator.swift in Sources */,
 				4EBEC3E129A4338C00CB72C5 /* SceneDelegate.swift in Sources */,
 				4EFB7DC529D387F7002DA792 /* FFLoginVM.swift in Sources */,
-				4EE7EC9E29F5F24100289B10 /* FFImageCacherManager.swift in Sources */,
 				4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */,
 				4E83D5E129A4365D00D68939 /* FFFinanceVC.swift in Sources */,
 				4E9E8CA529C642900021940F /* MainTabBarCoordinator.swift in Sources */,

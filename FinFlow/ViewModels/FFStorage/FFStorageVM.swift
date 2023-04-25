@@ -15,7 +15,8 @@ final class FFStorageVM: NSObject {
     
     private var notificationToken: NotificationToken?
 
-//    var userImage: Binder<UIImage>
+//    var userImage: Binder<UIImage> = Binder(UIImage(named: "testAvatzar") ?? UIImage())
+    var userImageData: Binder<Data?> = Binder(UserDefaults.standard.data(forKey: "userImage"))
     
     var buttonHasPressed: Binder<Bool> = Binder(false)
     var isDataReloaded: Binder<Bool> = Binder(false)
@@ -52,8 +53,10 @@ final class FFStorageVM: NSObject {
         }
         Task {
             await getProductsArray()
-            
+            await getUser()
+            await loadUserImage()
         }
+        
         notificationToken = FFRealmManager.shared.realm.observe({ [weak self] notification, realm in
             guard let self = self else { return }
             
@@ -79,11 +82,6 @@ final class FFStorageVM: NSObject {
     
     //MARK: - Methods
     private func mapCellData() {
-//        if dataSource.isEmpty {
-//           let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
-//           guard let productObjects = companyObject?.products else { return }
-//           dataSource = productObjects.map { DataMapper.mapToProduct($0) }
-//       }
        self.cellDataSource.value = self.dataSource.compactMap({FFProductCellVM(product: $0)})
     }
     
@@ -157,7 +155,36 @@ final class FFStorageVM: NSObject {
     public func getUser() async {
         let request = FFRequest(endpoint: .getMe, httpMethod: .get, httpBody: nil)
         
+        do {
+            guard let user = try await FFService.shared.execute(request, expecting: User.self) else { return }
+            let userObject = DataMapper.mapToUserObject(user)
+            DispatchQueue.main.async {
+                FFRealmManager.shared.add(userObject)
+            }
+            
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
+    }
     
+    @MainActor func loadUserImage() async {
+        guard let uo = FFRealmManager.shared.fetch(UserObject.self), let photos = (DataMapper.mapToUser(uo)).photos else {
+            return
+        }
+        
+        do {
+            guard let requestURL = FFRequest(endpoint: .getImage, httpMethod: .get, httpBody: nil).url?.absoluteString,
+                  let imageURL = URL(string: requestURL + photos) else {
+                return
+            }
+ 
+            let (imageData, _) = try await URLSession.shared.data(from: imageURL)
+            guard let imageJpegData = UIImage(data: imageData)?.jpegData(compressionQuality: 0.5) else { return }
+            UserDefaults.standard.set(imageJpegData, forKey: "userImage")
+            userImageData.value = UserDefaults.standard.data(forKey: "userImage")
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
     }
 }
 

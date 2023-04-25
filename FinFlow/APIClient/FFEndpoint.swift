@@ -15,7 +15,7 @@ import Foundation
     case resetPassword = "/auth/resetPassword/"
     case info = "/auth/info"
     case refreshToken = "/auth/token/refresh"
-    case getImage = "auth/media/"
+    case getImage = "/auth/media/"
     
     //MARK: - Endpoints requiring JWT token
     case changePassword = "/user/changePassword"

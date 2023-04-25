@@ -23,7 +23,7 @@ class DataMapper {
         uo.email = user.email
         uo.role = user.role.rawValue
         uo.phoneNumber = user.phoneNumber
-        
+        uo.photos = user.photos
         return uo
     }
     
