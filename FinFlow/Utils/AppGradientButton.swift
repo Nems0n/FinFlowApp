@@ -40,7 +40,7 @@ class AppGradientButton: UIButton {
           gradientLayer.frame = bounds
       }
     
-    init(isGradient: Bool, title: String, _ icon: UIImage?, bgColor: UIColor? = nil, highlight: UIColor? = .appColor(.systemAccentThree)?.withAlphaComponent(0.15), borderColor: UIColor? = .appColor(.systemAccentThree)) {
+    init(isGradient: Bool, title: String?, _ icon: UIImage?, bgColor: UIColor? = nil, highlight: UIColor? = .appColor(.systemAccentThree)?.withAlphaComponent(0.15), borderColor: UIColor? = .appColor(.systemAccentThree)) {
         self.gradient = isGradient
         self.bgColor = bgColor
         self.highlightColor = highlight
@@ -51,14 +51,15 @@ class AppGradientButton: UIButton {
         self.layer.cornerRadius = 16
         self.layer.borderWidth = 1
         self.layer.borderColor = borderColor?.cgColor
-        var spaceString: String? /// This Used for adding space between image and title
-        if icon != nil {
-            spaceString = "  "
+        if let title = title {
+            var spaceString: String? /// This Used for adding space between image and title
+            if icon != nil {
+                spaceString = "  "
+            }
+            self.setTitle((spaceString ?? "") + title, for: .normal)
+            self.titleLabel?.font = .poppins(.regular, size: 12)
+            self.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.5), for: .normal)
         }
-        self.setTitle((spaceString ?? "") + title, for: .normal)
-        self.titleLabel?.font = .poppins(.regular, size: 12)
-        self.setTitleColor(.appColor(.systemBG)?.withAlphaComponent(0.5), for: .normal)
-        
         guard let image = icon else {return}
         self.setImage(image.withTintColor(.appColor(.systemBG)?.withAlphaComponent(0.5) ?? .gray, renderingMode: .alwaysOriginal), for: .normal)
         self.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .small), forImageIn: .normal)

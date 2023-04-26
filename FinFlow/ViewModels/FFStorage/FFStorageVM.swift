@@ -11,11 +11,10 @@ import RealmSwift
 final class FFStorageVM: NSObject {
     //MARK: - Variables
     
-    var coordinator: FFStorageCoordinator?
+    private var coordinator: FFStorageCoordinator?
     
     private var notificationToken: NotificationToken?
 
-//    var userImage: Binder<UIImage> = Binder(UIImage(named: "testAvatzar") ?? UIImage())
     var userImageData: Binder<Data?> = Binder(UserDefaults.standard.data(forKey: "userImage"))
     
     var buttonHasPressed: Binder<Bool> = Binder(false)
@@ -38,6 +37,9 @@ final class FFStorageVM: NSObject {
     }
     
     var realmDataSource = [Product]()
+    
+    var searchDataSource: Binder<[Product]> = Binder([])
+    
     
     
     //MARK: - Init
@@ -98,7 +100,6 @@ final class FFStorageVM: NSObject {
     
     public func cellDidTap(with viewModel: AnyObject) {
         coordinator?.trigger(.detail(viewModel))
-        
     }
     
     //MARK: - Sort Methods
@@ -130,7 +131,7 @@ final class FFStorageVM: NSObject {
         isSupplierDescending.toggle()
     }
     
-    //MARK: - Private Methods
+    //MARK: - Public Methods
     
     public func getProductsArray() async {
         let request = FFRequest(endpoint: .getData, httpMethod: .get, httpBody: nil)
@@ -174,9 +175,7 @@ final class FFStorageVM: NSObject {
         
         do {
             guard let requestURL = FFRequest(endpoint: .getImage, httpMethod: .get, httpBody: nil).url?.absoluteString,
-                  let imageURL = URL(string: requestURL + photos) else {
-                return
-            }
+                  let imageURL = URL(string: requestURL + photos) else { return }
  
             let (imageData, _) = try await URLSession.shared.data(from: imageURL)
             guard let imageJpegData = UIImage(data: imageData)?.jpegData(compressionQuality: 0.5) else { return }
@@ -184,6 +183,15 @@ final class FFStorageVM: NSObject {
             userImageData.value = UserDefaults.standard.data(forKey: "userImage")
         } catch(let error) {
             print(error.localizedDescription)
+        }
+    }
+    
+    public func updateSearchController(searchBarText: String?) {
+//        searchDataSource.value = realmDataSource
+        
+        if let searchText = searchBarText?.lowercased() {
+            guard !searchText.isEmpty else { return }
+            self.searchDataSource.value = realmDataSource.filter( { $0.productName.lowercased().contains(searchText)})
         }
     }
 }

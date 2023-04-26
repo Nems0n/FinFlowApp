@@ -8,7 +8,8 @@
 import UIKit
 
 final class FFStorageVC: UIViewController {
-    //MARK: - UI Elements
+    
+    // MARK: - UI Elements
     var viewModel: FFStorageVM?
     
     private let interfaceGridView: UIView = {
@@ -18,11 +19,7 @@ final class FFStorageVC: UIViewController {
         return view
     }()
     
-    private let searchController: UISearchController = {
-        let resultVC = FFStorageSearchResultVC()
-        let sc = UISearchController(searchResultsController: resultVC)
-        return sc
-    }()
+    private var searchController: UISearchController?
     
     let searchTextField: UITextField = {
         let tf = UITextField()
@@ -39,6 +36,7 @@ final class FFStorageVC: UIViewController {
         tf.font = .poppins(.regular, size: 14)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isContextMenuInteractionEnabled = false
+        tf.isHidden = true
         return tf
     }()
     
@@ -49,11 +47,32 @@ final class FFStorageVC: UIViewController {
         return view
     }()
     
+    private var searchButton: UIButton = {
+//        let button = AppGradientButton(isGradient: false, title: "Search", UIImage(systemName: "magnifyingglass"))
+        
+//        let button = AppGradientButton(isGradient: false, title: nil, UIImage(systemName: "magnifyingglass"))
+//        button.layer.cornerRadius = 12
+        
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.masksToBounds = true
+        button.setImage(UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.tintColor = UIColor(white: 0, alpha: 0.4)
+//        button.imageView?.contentMode = .scaleAspectFill
+        button.sizeToFit()
+        return button
+    }()
+    
+    private let logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "finFlowInnerLogo")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     lazy var userButton: UIButton = {
         let button = UIButton()
-//        if let image = UIImage(named: "testAvatar") {
-//            button.setImage(image, for: .normal)
-//        }
         button.imageView?.contentMode = .scaleAspectFill
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 12
@@ -145,13 +164,6 @@ final class FFStorageVC: UIViewController {
     
     //MARK: - VC Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setupBindings()
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
@@ -159,14 +171,21 @@ final class FFStorageVC: UIViewController {
         createConstraints()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        setupBindings()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupBindings()
+        navigationItem.searchController?.searchResultsController?.view.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel?.isConnectionFailed.value = nil
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationItem.searchController?.searchBar.text = nil
     }
     
     //MARK: Injection
@@ -177,8 +196,8 @@ final class FFStorageVC: UIViewController {
     //MARK: - Setup view
     private func addSubviews() {
         view.addSubview(interfaceGridView)
-        searchTextField.addSubview(underlineBorder)
-        view.addSubview(searchTextField)
+        view.addSubview(searchButton)
+        view.addSubview(logoImageView)
         view.addSubview(userButton)
         view.addSubview(cardVContainerView)
         cardVContainerView.addSubview(cardView)
@@ -189,12 +208,17 @@ final class FFStorageVC: UIViewController {
     }
     
     private func setupElements() {
-        
+        setupSearchController()
         navigationItem.searchController = searchController
         view.backgroundColor = .systemBackground
         navigationItem.searchController?.delegate = self
         navigationItem.searchController?.searchResultsUpdater = self
-        searchTextField.delegate = self
+        searchButton.addAction(UIAction(handler: { [weak self] _ in
+            UIView.performWithoutAnimation {
+                self?.navigationController?.setNavigationBarHidden(false, animated: false)
+                self?.searchController?.searchBar.becomeFirstResponder()
+            }
+        }), for: .touchDown)
         goodsTableView.delegate = self
         goodsTableView.dataSource = self
         
@@ -206,6 +230,14 @@ final class FFStorageVC: UIViewController {
         
         tableRefreshControl.addTarget(self, action: #selector(tableRefreshControlAction(sender:)), for: .valueChanged)
         bestSellerButton.addTarget(self, action: #selector(bestSellerButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func setupSearchController() {
+        guard let vm = viewModel else { return }
+        let resultVC = FFStorageSearchResultVC(viewModel: vm)
+        searchController = UISearchController(searchResultsController: resultVC)
+        searchController?.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
     }
     
     //MARK: - Methods
@@ -365,7 +397,7 @@ final class FFStorageVC: UIViewController {
     //MARK: - Add constraints
     private func createConstraints() {
         NSLayoutConstraint.activate([
-            interfaceGridView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            interfaceGridView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 6),
             interfaceGridView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26),
             interfaceGridView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26),
             interfaceGridView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -374,22 +406,22 @@ final class FFStorageVC: UIViewController {
             userButton.trailingAnchor.constraint(equalTo: interfaceGridView.trailingAnchor),
             userButton.topAnchor.constraint(equalTo: interfaceGridView.topAnchor),
             userButton.heightAnchor.constraint(equalToConstant: 40),
-            userButton.widthAnchor.constraint(equalToConstant: 40)
+            userButton.widthAnchor.constraint(equalTo: userButton.heightAnchor)
         ])
         NSLayoutConstraint.activate([
-            searchTextField.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
-            searchTextField.trailingAnchor.constraint(equalTo: userButton.leadingAnchor, constant: -26),
-            searchTextField.heightAnchor.constraint(equalTo: userButton.heightAnchor),
-            searchTextField.topAnchor.constraint(equalTo: userButton.topAnchor)
+            logoImageView.centerXAnchor.constraint(equalTo: interfaceGridView.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: userButton.centerYAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: 24),
         ])
         NSLayoutConstraint.activate([
-            underlineBorder.heightAnchor.constraint(equalToConstant: 1),
-            underlineBorder.widthAnchor.constraint(equalTo: searchTextField.widthAnchor),
-            underlineBorder.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: -1),
-            underlineBorder.leftAnchor.constraint(equalTo: searchTextField.leftAnchor)
+            searchButton.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
+            searchButton.widthAnchor.constraint(equalTo: userButton.widthAnchor, multiplier: 1),
+            searchButton.heightAnchor.constraint(equalTo: searchButton.widthAnchor),
+            searchButton.topAnchor.constraint(equalTo: userButton.topAnchor)
         ])
+
         NSLayoutConstraint.activate([
-            cardVContainerView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 24),
+            cardVContainerView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 24),
             cardVContainerView.trailingAnchor.constraint(equalTo: interfaceGridView.trailingAnchor),
             cardVContainerView.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
             cardVContainerView.heightAnchor.constraint(equalToConstant: 84),
@@ -402,7 +434,8 @@ final class FFStorageVC: UIViewController {
             addProductButton.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 24),
             addProductButton.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
             addProductButton.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor, multiplier: 0.48),
-            addProductButton.heightAnchor.constraint(equalToConstant: 36)
+//            addProductButton.heightAnchor.constraint(equalTo: searchButton.heightAnchor),
+            addProductButton.heightAnchor.constraint(equalToConstant: 36) //36
         ])
         NSLayoutConstraint.activate([
             bestSellerButton.centerYAnchor.constraint(equalTo: addProductButton.centerYAnchor),
@@ -422,29 +455,19 @@ final class FFStorageVC: UIViewController {
         ])
     }
 }
-//MARK: - Extension for SearchController
+// MARK: - Extension for SearchController
 extension FFStorageVC: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false
+        viewModel?.updateSearchController(searchBarText: searchController.searchBar.text)
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
-//MARK: - Extension for TextField
-extension FFStorageVC: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        DispatchQueue.main.async {
-            self.searchTextField.resignFirstResponder()
-            self.navigationItem.searchController?.searchBar.becomeFirstResponder()
-        }
-        return true
-    }
-}
 
-
+// MARK: - Extension for TextField
 extension FFStorageVC: UIBarPositioningDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
