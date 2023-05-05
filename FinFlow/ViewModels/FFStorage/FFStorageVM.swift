@@ -78,7 +78,6 @@ final class FFStorageVM: NSObject {
     
     public func setCoordinator(coordinator: FFStorageCoordinator) {
         self.coordinator = coordinator
-        
     }
     
     
