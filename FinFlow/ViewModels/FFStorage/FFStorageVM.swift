@@ -64,8 +64,8 @@ final class FFStorageVM: NSObject {
             
             let companyObject = FFRealmManager.shared.fetch(CompanyObject.self)
             guard let productObjects = companyObject?.products else { return }
-            realmDataSource = productObjects.map { DataMapper.mapToProduct($0) }
-            dataSource = realmDataSource
+            self.realmDataSource = productObjects.map { DataMapper.mapToProduct($0) }
+            self.dataSource = self.realmDataSource
         })
         
     }

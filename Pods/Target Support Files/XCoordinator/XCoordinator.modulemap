@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7cbc40ef0d34e168bf515e459bea6e84c46bf2badfb87493b19e5cfbe116e590
-size 114
+framework module XCoordinator {
+  umbrella header "XCoordinator-umbrella.h"
+
+  export *
+  module * { export * }
+}
