@@ -59,6 +59,7 @@
 		4EFF7CDE29B7CBAC00B9D086 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDD29B7CBAC00B9D086 /* Product.swift */; };
 		4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */; };
 		8EC699C4B54872EDC20F8DDA /* Pods_FinFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF8D14B127D08F619697282 /* Pods_FinFlow.framework */; };
+		C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		4EFF7CDD29B7CBAC00B9D086 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductCellVM.swift; sourceTree = "<group>"; };
 		A9E7CC11A7FF94B85B4E8A80 /* Pods-FinFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinFlow.release.xcconfig"; path = "Target Support Files/Pods-FinFlow/Pods-FinFlow.release.xcconfig"; sourceTree = "<group>"; };
+		C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */,
+				C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */,
 				4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */,
 			);
 			path = Other;
@@ -541,6 +544,7 @@
 				4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */,
 				4EC8C5C129C9E95B008F5412 /* FFFinanceDetailVC.swift in Sources */,
 				4EFB7DC729D388DA002DA792 /* FFLoginCoordinator.swift in Sources */,
+				C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */,
 				4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */,
 				4E2DAA0D29CF9C5600F78C3D /* FFService.swift in Sources */,
 				4ECD52B929AEE381003EC3C6 /* AppGradientButton.swift in Sources */,

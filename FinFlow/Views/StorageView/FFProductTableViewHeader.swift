@@ -67,7 +67,17 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubviews()
+        clipsToBounds = true
+        layer.cornerRadius = 16
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         createConstraints()
+        
+        if #available(iOS 14.0, *) {
+                var bgConfig = UIBackgroundConfiguration.listPlainCell()
+                bgConfig.backgroundColor = UIColor.clear
+                UITableViewHeaderFooterView.appearance().backgroundConfiguration = bgConfig
+                
+            }
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,11 +88,11 @@ class FFProductTableViewHeader: UITableViewHeaderFooterView {
         gradientLayerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
         setGradient(colors: [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.gray.cgColor,
                              UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.gray.cgColor], angle: 90, gradientLayerView: gradientLayerView, gradient: gradientLayer)
-        clipsToBounds = true
-        layer.cornerRadius = 16
-        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
     }
+    
+
+    
     //MARK: - Setup view
     private func addSubviews() {
         addSubview(mainTitle)

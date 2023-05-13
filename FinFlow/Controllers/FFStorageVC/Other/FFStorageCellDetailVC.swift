@@ -100,12 +100,16 @@ class FFStorageCellDetailVC: UIViewController {
         addConstraints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     //MARK: - UI Setup
     
     private func controllerSetup() {
         view.backgroundColor = .white
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left")?.withTintColor(.appColor(.systemBG) ?? .black,
                                                                                                                           renderingMode: .alwaysOriginal),
                                                                 style: .plain,

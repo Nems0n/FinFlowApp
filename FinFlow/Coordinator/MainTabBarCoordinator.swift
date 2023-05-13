@@ -58,7 +58,13 @@ class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
         self.adminRouter = adminRouter
         
         super.init(tabs: [storageRouter, financeRouter, promoRouter, adminRouter], select: storageRouter)
-        rootViewController.tabBar.backgroundColor = .appColor(.systemBG)
+//        rootViewController.tabBar.backgroundColor = .appColor(.systemBG)
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .appColor(.systemBG)
+          
+        rootViewController.tabBar.standardAppearance = appearance
+        rootViewController.tabBar.scrollEdgeAppearance = rootViewController.tabBar.standardAppearance
         rootViewController.tabBar.unselectedItemTintColor = UIColor(white: 1, alpha: 0.7)
         rootViewController.tabBar.tintColor = .white
     }

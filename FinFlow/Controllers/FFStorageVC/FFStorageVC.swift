@@ -49,16 +49,14 @@ final class FFStorageVC: UIViewController {
     
     private var searchButton: UIButton = {
 //        let button = AppGradientButton(isGradient: false, title: "Search", UIImage(systemName: "magnifyingglass"))
-        
 //        let button = AppGradientButton(isGradient: false, title: nil, UIImage(systemName: "magnifyingglass"))
 //        button.layer.cornerRadius = 12
-        
+//        button.imageView?.contentMode = .scaleAspectFill
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true
         button.setImage(UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.tintColor = UIColor(white: 0, alpha: 0.4)
-//        button.imageView?.contentMode = .scaleAspectFill
         button.sizeToFit()
         return button
     }()
@@ -175,7 +173,16 @@ final class FFStorageVC: UIViewController {
         super.viewWillAppear(true)
         setupBindings()
         navigationItem.searchController?.searchResultsController?.view.isHidden = true
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .clear
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -392,6 +399,11 @@ final class FFStorageVC: UIViewController {
         
         categorySortArray.removeAll()
 //        sender.endRefreshing()
+    }
+    
+    @objc public func viewMoreDidTap() {
+        guard let vm = viewModel else { return }
+        self.viewModel?.viewMoreDidTap(with: vm)
     }
     
     //MARK: - Add constraints

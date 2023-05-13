@@ -51,6 +51,7 @@ extension FFStorageVC: UITableViewDelegate, UITableViewDataSource {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewFooterV.identifier) as? FFProductTableViewFooterV else {
             return UIView()
         }
+        view.viewMoreButton.addTarget(self, action: #selector(viewMoreDidTap), for: .touchUpInside)
         return view
     }
     /// Header height

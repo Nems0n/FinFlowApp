@@ -11,7 +11,7 @@ import RealmSwift
 final class FFStorageVM: NSObject {
     //MARK: - Variables
     
-    private var coordinator: FFStorageCoordinator?
+    var coordinator: FFStorageCoordinator?
     
     private var notificationToken: NotificationToken?
 
@@ -99,6 +99,14 @@ final class FFStorageVM: NSObject {
     
     public func cellDidTap(with viewModel: AnyObject) {
         coordinator?.trigger(.detail(viewModel))
+    }
+    
+    public func viewMoreDidTap(with viewModel: AnyObject) {
+        coordinator?.trigger(.allGoods(viewModel))
+    }
+    
+    public func popViewController() {
+        coordinator?.trigger(.pop)
     }
     
     //MARK: - Sort Methods
