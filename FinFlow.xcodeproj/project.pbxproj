@@ -60,6 +60,7 @@
 		4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */; };
 		8EC699C4B54872EDC20F8DDA /* Pods_FinFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF8D14B127D08F619697282 /* Pods_FinFlow.framework */; };
 		C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */; };
+		C3B057FB2A1020C70088E741 /* FFProductSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B057FA2A1020C70088E741 /* FFProductSortView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductCellVM.swift; sourceTree = "<group>"; };
 		A9E7CC11A7FF94B85B4E8A80 /* Pods-FinFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinFlow.release.xcconfig"; path = "Target Support Files/Pods-FinFlow/Pods-FinFlow.release.xcconfig"; sourceTree = "<group>"; };
 		C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableVC.swift; sourceTree = "<group>"; };
+		C3B057FA2A1020C70088E741 /* FFProductSortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductSortView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				4E09B40529B02E520088978E /* FFProductTableViewHeader.swift */,
+				C3B057FA2A1020C70088E741 /* FFProductSortView.swift */,
 				4E09B40329B024BA0088978E /* FFProductTableViewCell.swift */,
 				4ED496A629BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift */,
 				4ECD52B629AEA0F7003EC3C6 /* FFMainViewCardV.swift */,
@@ -542,6 +545,7 @@
 				4E2A000729BFDB040090B113 /* FFStorageCellDetailVC.swift in Sources */,
 				4E09B40629B02E520088978E /* FFProductTableViewHeader.swift in Sources */,
 				4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */,
+				C3B057FB2A1020C70088E741 /* FFProductSortView.swift in Sources */,
 				4EC8C5C129C9E95B008F5412 /* FFFinanceDetailVC.swift in Sources */,
 				4EFB7DC729D388DA002DA792 /* FFLoginCoordinator.swift in Sources */,
 				C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */,

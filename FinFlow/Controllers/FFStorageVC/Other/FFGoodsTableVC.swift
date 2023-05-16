@@ -10,6 +10,13 @@ import UIKit
 class FFGoodsTableVC: UIViewController {
     
     //MARK: - Variables
+    private let interfaceGridView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var navBarLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.colors = [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.white.cgColor, UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.white.cgColor]
@@ -20,17 +27,25 @@ class FFGoodsTableVC: UIViewController {
     
     var viewModel: FFStorageVM
     
+    private var sortView: FFProductSortView = {
+        let view = FFProductSortView()
+    
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var tableRefreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
         control.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         control.tintColor = .appColor(.systemBG)?.withAlphaComponent(0.8)
+        control.backgroundColor = .appColor(.systemBorder)
         return control
     }()
+    
     
     lazy var mainTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(FFProductTableViewCell.self, forCellReuseIdentifier: FFProductTableViewCell.identifier)
-        view.register(FFProductTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FFProductTableViewHeader.identifier)
         view.isScrollEnabled = true
         view.clipsToBounds = true
         view.layer.borderWidth = 1
@@ -54,6 +69,12 @@ class FFGoodsTableVC: UIViewController {
                                   sweetState: false,
                                   vegetablesState: false,
                                   waterState: false)
+    
+    private var dataSource = [FFProductCellVM?]() {
+        didSet {
+            self.mainTableView.reloadData()
+        }
+    }
     
     private var categorySortArray = [Category]() {
         didSet {
@@ -82,6 +103,7 @@ class FFGoodsTableVC: UIViewController {
         super.viewWillAppear(animated)
         setupNavBar()
         setupLayout()
+        setupBindings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,9 +128,12 @@ class FFGoodsTableVC: UIViewController {
         view.backgroundColor = .white
         mainTableView.delegate = self
         mainTableView.dataSource = self
-//        self.edgesForExtendedLayout = UIRectEdge()
-//        self.extendedLayoutIncludesOpaqueBars = false
-        
+        sortView.priceButton.addTarget(self, action: #selector(priceSortDidTap), for: .touchUpInside)
+        sortView.categoryButton.addTarget(self, action: #selector(categorySortDidTap(sender:)), for: .touchUpInside)
+        sortView.categoryButton.sendActions(for: .touchUpInside)
+        sortView.stockButton.addTarget(self, action: #selector(stockSortDidTap), for: .touchUpInside)
+        sortView.supplierButton.addTarget(self, action: #selector(supplierSortDidTap), for: .touchUpInside)
+        tableRefreshControl.addTarget(self, action: #selector(tableRefreshControlAction(sender:)), for: .valueChanged)
     }
     
     private func setupNavBar() {
@@ -123,7 +148,30 @@ class FFGoodsTableVC: UIViewController {
     }
     
     private func setupSubviews() {
+        view.addSubview(sortView)
         view.addSubview(mainTableView)
+    }
+    
+    private func setupBindings() {
+        viewModel.cellDataSource.bind { [weak self] array in
+            guard let self = self else { return }
+            self.dataSource = array
+        }
+        
+        viewModel.isDataReloaded.bind { [weak self] reloaded in
+            if !reloaded {
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    FFActivityIndicatorManager.shared.showActivityIndicator(on: self.mainTableView.view)
+                }
+            }
+            if reloaded {
+                DispatchQueue.main.async {
+                    FFActivityIndicatorManager.shared.stopActivityIndicator()
+                }
+                self?.tableRefreshControl.endRefreshing()
+            }
+        }
     }
     
     private func getImageFrom(gradientLayer: CAGradientLayer) -> UIImage? {
@@ -223,10 +271,36 @@ class FFGoodsTableVC: UIViewController {
         viewModel.sortBySupplier()
     }
     
+    @objc private func tableRefreshControlAction(sender: UIRefreshControl) {
+        Task {
+            await viewModel.getProductsArray()
+            await viewModel.getUser()
+        }
+ 
+        categoryStates.cerealState = false
+        categoryStates.dairyState = false
+        categoryStates.fishState = false
+        categoryStates.fruitState = false
+        categoryStates.grainsState = false
+        categoryStates.meatState = false
+        categoryStates.snackState = false
+        categoryStates.sweetState = false
+        categoryStates.vegetablesState = false
+        categoryStates.waterState = false
+        
+        categorySortArray.removeAll()
+//        sender.endRefreshing()
+    }
+    
     // MARK: - Constraints
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            mainTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            sortView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            sortView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sortView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            sortView.heightAnchor.constraint(equalToConstant: 45),
+            
+            mainTableView.topAnchor.constraint(equalTo: sortView.bottomAnchor),
             mainTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mainTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -242,7 +316,7 @@ extension FFGoodsTableVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return dataSource.count
     }
     
     /// Cell for row
@@ -255,25 +329,19 @@ extension FFGoodsTableVC: UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .appColor(.systemAccentOne)?.withAlphaComponent(0.05)
         cell.selectedBackgroundView = backgroundView
+        guard self.dataSource.indices.contains(indexPath.row), let cellVM = self.dataSource[indexPath.row] else {
+            let cell = UITableViewCell()
+            cell.isUserInteractionEnabled = false
+            return cell
+        }
+        cell.setupCell(viewModel: cellVM)
         return cell
     }
     
-    /// Header View
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: FFProductTableViewHeader.identifier) as? FFProductTableViewHeader else {
-            return UIView()
-        }
-        view.priceButton.addTarget(self, action: #selector(priceSortDidTap), for: .touchUpInside)
-        view.categoryButton.addTarget(self, action: #selector(categorySortDidTap(sender: )), for: .touchUpInside)
-        view.categoryButton.sendActions(for: .touchUpInside)
-        view.stockButton.addTarget(self, action: #selector(stockSortDidTap), for: .touchUpInside)
-        view.supplierButton.addTarget(self, action: #selector(supplierSortDidTap), for: .touchUpInside)
-        view.layer.cornerRadius = 0
-        return view
-    }
-    
-    /// Header height
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 84
+    /// Did select cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard self.dataSource.indices.contains(indexPath.row), let cellVM = self.dataSource[indexPath.row] else { return }
+        let detailVM = FFStorageCellDetailVM(product: cellVM.product)
+        viewModel.cellDidTap(with: detailVM)
     }
 }

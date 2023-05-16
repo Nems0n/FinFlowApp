@@ -48,10 +48,6 @@ final class FFStorageVC: UIViewController {
     }()
     
     private var searchButton: UIButton = {
-//        let button = AppGradientButton(isGradient: false, title: "Search", UIImage(systemName: "magnifyingglass"))
-//        let button = AppGradientButton(isGradient: false, title: nil, UIImage(systemName: "magnifyingglass"))
-//        button.layer.cornerRadius = 12
-//        button.imageView?.contentMode = .scaleAspectFill
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true

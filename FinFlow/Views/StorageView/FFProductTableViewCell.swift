@@ -106,18 +106,20 @@ class FFProductTableViewCell: UITableViewCell {
     }
     //MARK: - Add constraints
     private func createConstraints() {
+        productPriceLabel.sizeToFit()
         NSLayoutConstraint.activate([
             productTitleLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             productTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             productTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            productPriceLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
-            productPriceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            productPriceLabel.leadingAnchor.constraint(equalTo: productTitleLabel.trailingAnchor, constant: 8),
             
             iconImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+//            productPriceLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
+            productPriceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            productPriceLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -8),
         ])
     }
     
