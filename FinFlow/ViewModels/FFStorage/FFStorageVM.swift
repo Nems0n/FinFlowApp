@@ -94,7 +94,9 @@ final class FFStorageVM: NSObject {
     
     
     public func addNewProduct() {
-        print("added")
+        guard let selfCoordinator = coordinator else { return }
+        let vm = FFAddProductVM(coordinator: selfCoordinator)
+        coordinator?.trigger(.addProduct(vm))
     }
     
     public func cellDidTap(with viewModel: AnyObject) {

@@ -17,6 +17,16 @@ class FFGoodsTableVC: UIViewController {
         return view
     }()
     
+    private var navBarAppearance: UINavigationBarAppearance = {
+        let app = UINavigationBarAppearance()
+        app.titleTextAttributes = [NSAttributedString.Key.font: UIFont.poppins(.bold, size: 16), NSAttributedString.Key.foregroundColor: UIColor.appColor(.systemBG) ?? UIColor.black]
+        app.shadowColor = .clear
+        app.backgroundColor = .white
+        return app
+    }()
+    
+    private var imageForNavBar: UIImage?
+    
     private var navBarLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.colors = [UIColor.appColor(.systemGradientPurple)?.cgColor ?? UIColor.white.cgColor, UIColor.appColor(.systemGradientBlue)?.cgColor ?? UIColor.white.cgColor]
@@ -113,7 +123,11 @@ class FFGoodsTableVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-     
+        let defaultAppearance = UINavigationBarAppearance()
+        defaultAppearance.backgroundColor = .white
+        defaultAppearance.shadowColor = .clear
+        self.navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
+        self.navigationController?.navigationBar.standardAppearance = defaultAppearance
     }
 
     // MARK: - Private methods
@@ -134,17 +148,16 @@ class FFGoodsTableVC: UIViewController {
         sortView.stockButton.addTarget(self, action: #selector(stockSortDidTap), for: .touchUpInside)
         sortView.supplierButton.addTarget(self, action: #selector(supplierSortDidTap), for: .touchUpInside)
         tableRefreshControl.addTarget(self, action: #selector(tableRefreshControlAction(sender:)), for: .valueChanged)
+        
+        navBarLayer.frame = CGRect(x: 0, y: 0, width: navigationController?.navigationBar.bounds.width ?? 0, height: navigationController?.navigationBar.bounds.height ?? 0)
+        let bgImage = getImageFrom(gradientLayer: navBarLayer)
+        imageForNavBar = bgImage
     }
     
     private func setupNavBar() {
-        navBarLayer.frame = CGRect(x: 0, y: 0, width: navigationController?.navigationBar.bounds.width ?? 0, height: navigationController?.navigationBar.bounds.height ?? 0)
-        let bgImage = getImageFrom(gradientLayer: navBarLayer)
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.poppins(.bold, size: 16), NSAttributedString.Key.foregroundColor: UIColor.appColor(.systemBG) ?? UIColor.black]
-        appearance.backgroundImage = bgImage
-        appearance.shadowColor = .clear
-        self.navigationController?.navigationBar.standardAppearance = appearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navBarAppearance.backgroundImage = imageForNavBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        self.navigationController?.navigationBar.standardAppearance = self.navigationController?.navigationBar.scrollEdgeAppearance ?? navBarAppearance
     }
     
     private func setupSubviews() {

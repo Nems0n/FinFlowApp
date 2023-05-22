@@ -25,6 +25,7 @@ class AppTextField: UITextField {
         return bounds.inset(by: padding)
     }
     
+    
     //MARK: - Init
     init(tag: Int = 0, isSecure: Bool = false) {
         super.init(frame: .zero)
@@ -35,6 +36,13 @@ class AppTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        UIView.animate(withDuration: 0.15) { [self] in
+            self.layer.borderColor = isFirstResponder ? UIColor.appColor(.systemAccentOne)?.withAlphaComponent(0.5).cgColor : UIColor.appColor(.systemAccentOne)?.withAlphaComponent(0.2).cgColor
+        }
+        
+    }
+    
     //MARK: - Methods
     private func setup(tag: Int, isSecure: Bool) {
         self.tag = tag
@@ -43,7 +51,7 @@ class AppTextField: UITextField {
         self.clipsToBounds = true
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.appColor(.systemAccentOne)?.withAlphaComponent(0.2).cgColor
+//        self.layer.borderColor = UIColor.appColor(.systemAccentOne)?.withAlphaComponent(0.2).cgColor
         self.backgroundColor = .white
         self.textAlignment = .left
         self.font = .poppins(.regular, size: 14)

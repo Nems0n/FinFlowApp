@@ -60,6 +60,8 @@
 		4EFF7CE029B7CDA500B9D086 /* FFProductCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */; };
 		8EC699C4B54872EDC20F8DDA /* Pods_FinFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF8D14B127D08F619697282 /* Pods_FinFlow.framework */; };
 		C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */; };
+		C376C3452A14009D0090AA0A /* FFAddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376C3442A14009D0090AA0A /* FFAddProductVC.swift */; };
+		C376C3472A1401FB0090AA0A /* FFAddProductVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376C3462A1401FB0090AA0A /* FFAddProductVM.swift */; };
 		C3B057FB2A1020C70088E741 /* FFProductSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B057FA2A1020C70088E741 /* FFProductSortView.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductCellVM.swift; sourceTree = "<group>"; };
 		A9E7CC11A7FF94B85B4E8A80 /* Pods-FinFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinFlow.release.xcconfig"; path = "Target Support Files/Pods-FinFlow/Pods-FinFlow.release.xcconfig"; sourceTree = "<group>"; };
 		C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFGoodsTableVC.swift; sourceTree = "<group>"; };
+		C376C3442A14009D0090AA0A /* FFAddProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAddProductVC.swift; sourceTree = "<group>"; };
+		C376C3462A1401FB0090AA0A /* FFAddProductVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAddProductVM.swift; sourceTree = "<group>"; };
 		C3B057FA2A1020C70088E741 /* FFProductSortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductSortView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +146,7 @@
 				4EB7E82729AD8177009C902B /* FFStorageSearchResultVC.swift */,
 				C32AE7CF2A0680F700855C59 /* FFGoodsTableVC.swift */,
 				4E2A000629BFDB040090B113 /* FFStorageCellDetailVC.swift */,
+				C376C3442A14009D0090AA0A /* FFAddProductVC.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				4E90E33929AADE0700311C14 /* FFStorageVM.swift */,
 				4EFF7CDF29B7CDA500B9D086 /* FFProductCellVM.swift */,
 				4EAD070029CD059700B13274 /* FFStorageCellDetailVM.swift */,
+				C376C3462A1401FB0090AA0A /* FFAddProductVM.swift */,
 			);
 			path = FFStorage;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 			files = (
 				4E83D5E529A4368A00D68939 /* FFAdminVC.swift in Sources */,
 				4E83D5E329A4367200D68939 /* FFPromoVC.swift in Sources */,
+				C376C3472A1401FB0090AA0A /* FFAddProductVM.swift in Sources */,
 				4E83D5DF29A4364E00D68939 /* FFStorageVC.swift in Sources */,
 				4EFB7DCA29D3B213002DA792 /* AuthRequestBody.swift in Sources */,
 				4E84FF9529D60D1B00120A52 /* FFKeychainManager.swift in Sources */,
@@ -539,6 +546,7 @@
 				4EAE155B29D72A390047A0E7 /* Company.swift in Sources */,
 				4ECD52B729AEA0F7003EC3C6 /* FFMainViewCardV.swift in Sources */,
 				4E78DB7D29E2082600A841A4 /* ProductObject.swift in Sources */,
+				C376C3452A14009D0090AA0A /* FFAddProductVC.swift in Sources */,
 				4EFB7DC229D387AC002DA792 /* FFLoginVC.swift in Sources */,
 				4E90E33A29AADE0700311C14 /* FFStorageVM.swift in Sources */,
 				4EC8C5C329CA6205008F5412 /* FFPromoCoordinator.swift in Sources */,

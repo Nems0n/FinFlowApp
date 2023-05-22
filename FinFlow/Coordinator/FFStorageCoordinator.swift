@@ -13,6 +13,7 @@ enum StorageRoute: Route {
     case detail(AnyObject)
     case login
     case allGoods(AnyObject)
+    case addProduct(AnyObject)
     case pop
 }
 
@@ -48,6 +49,11 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
             guard let vm = vm as? FFStorageVM else { return .none() }
             let vc = FFGoodsTableVC(viewModel: vm)
             return .push(vc)
+            
+        case .addProduct(let vm):
+            guard let vm = vm as? FFAddProductVM else { return .none() }
+            let vc = FFAddProductVC(viewModel: vm)
+            return .present(vc)
             
         case .login:
             output?.goToLogin()
