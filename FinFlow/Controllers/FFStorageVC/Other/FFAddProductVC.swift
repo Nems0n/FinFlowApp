@@ -215,7 +215,10 @@ class FFAddProductVC: UIViewController {
             guard let self = self else { return }
             if show == true {
                 Task {
-                    FFAlertManager.showProductAdded(on: self)
+                    let action = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                        self?.viewModel.popViewController()
+                    }
+                    FFAlertManager.showProductAdded(on: self, action: action)
                 }
             }
         }
@@ -224,8 +227,7 @@ class FFAddProductVC: UIViewController {
     // MARK: - Selectors
     @objc private func addButtonDidTap() {
         Task {
-            print(selectedCategory)
-            await viewModel.addNewProduct(name: nameTextField.text ?? "", category: selectedCategory, price: priceTextField.text ?? "", amount: amountTextField.text ?? "", supplier: supplierTextField.text ?? "")
+            await viewModel.addNewProduct(name: nameTextField.text ?? "", category: selectedCategory.uppercased(), price: priceTextField.text ?? "", amount: amountTextField.text ?? "", supplier: supplierTextField.text ?? "")
         }
     }
 

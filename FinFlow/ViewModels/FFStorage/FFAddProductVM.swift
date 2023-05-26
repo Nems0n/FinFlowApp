@@ -36,4 +36,8 @@ final class FFAddProductVM {
             print(error.localizedDescription)
         }
     }
+    
+    public func popViewController() {
+        coordinator.trigger(.dismiss)
+    }
 }

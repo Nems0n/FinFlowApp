@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 final class FFAlertManager {
-    private static func showBasicAlert(on vc: UIViewController, title: String, message: String?) {
+    private static func showBasicAlert(on vc: UIViewController, title: String, message: String?, action: UIAlertAction = UIAlertAction(title: "OK", style: .default)) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            alert.addAction(action)
             vc.present(alert, animated: true)
         }
     }
@@ -38,8 +38,8 @@ extension FFAlertManager {
 
 // MARK: - Show Successfull Alerts
 extension FFAlertManager {
-    public static func showProductAdded(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Success!", message: "You have successfully added a new product.")
+    public static func showProductAdded(on vc: UIViewController, action: UIAlertAction) {
+        self.showBasicAlert(on: vc, title: "Success!", message: "You have successfully added a new product.", action: action)
     }
 }
 

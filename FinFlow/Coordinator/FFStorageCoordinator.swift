@@ -15,6 +15,7 @@ enum StorageRoute: Route {
     case allGoods(AnyObject)
     case addProduct(AnyObject)
     case pop
+    case dismiss
 }
 
 protocol FFStorageCoordinatorOutput: AnyObject {
@@ -60,6 +61,8 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
             return .none()
         case .pop:
             return .pop()
+        case .dismiss:
+            return .dismiss()
         }
         
     }
