@@ -63,6 +63,7 @@
 		C376C3452A14009D0090AA0A /* FFAddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376C3442A14009D0090AA0A /* FFAddProductVC.swift */; };
 		C376C3472A1401FB0090AA0A /* FFAddProductVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376C3462A1401FB0090AA0A /* FFAddProductVM.swift */; };
 		C3B057FB2A1020C70088E741 /* FFProductSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B057FA2A1020C70088E741 /* FFProductSortView.swift */; };
+		C3BCF1262A1C1AC500C65288 /* ProductPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BCF1252A1C1AC500C65288 /* ProductPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		C376C3442A14009D0090AA0A /* FFAddProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAddProductVC.swift; sourceTree = "<group>"; };
 		C376C3462A1401FB0090AA0A /* FFAddProductVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAddProductVM.swift; sourceTree = "<group>"; };
 		C3B057FA2A1020C70088E741 /* FFProductSortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFProductSortView.swift; sourceTree = "<group>"; };
+		C3BCF1252A1C1AC500C65288 /* ProductPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				4EF93F4329A6877100BF9AB3 /* User.swift */,
 				4E78DB7829E2038D00A841A4 /* UserObject.swift */,
 				4EFF7CDD29B7CBAC00B9D086 /* Product.swift */,
+				C3BCF1252A1C1AC500C65288 /* ProductPost.swift */,
 				4E78DB7C29E2082600A841A4 /* ProductObject.swift */,
 				4EAE155A29D72A390047A0E7 /* Company.swift */,
 				4E78DB7A29E2074400A841A4 /* CompanyObject.swift */,
@@ -555,6 +558,7 @@
 				4E9E8CA929C683F70021940F /* FFFinanceCoordinator.swift in Sources */,
 				C3B057FB2A1020C70088E741 /* FFProductSortView.swift in Sources */,
 				4EC8C5C129C9E95B008F5412 /* FFFinanceDetailVC.swift in Sources */,
+				C3BCF1262A1C1AC500C65288 /* ProductPost.swift in Sources */,
 				4EFB7DC729D388DA002DA792 /* FFLoginCoordinator.swift in Sources */,
 				C32AE7D02A0680F700855C59 /* FFGoodsTableVC.swift in Sources */,
 				4ED496A729BD4E9D0042A3F6 /* FFProductTableViewFooterV.swift in Sources */,

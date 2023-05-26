@@ -56,11 +56,18 @@ class FFAddProductVC: UIViewController {
         return label
     }()
     
-    private let categoryTextField: UITextField = {
-        let tf = AppTextField()
-        tf.tag = 1
-        return tf
+    private let categoryPickerView: UIPickerView = {
+        let view = UIPickerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.appColor(.systemAccentOne)?.withAlphaComponent(0.2).cgColor
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .white
+        return view
     }()
+    
+    private var selectedCategory: String = ""
     
     private let priceLabel: UILabel = {
         let label = UILabel()
@@ -86,7 +93,7 @@ class FFAddProductVC: UIViewController {
     
     private let priceTextField: UITextField = {
         let tf = AppTextField()
-        tf.tag = 2
+        tf.tag = 1
         tf.keyboardType = .numberPad
         return tf
     }()
@@ -103,7 +110,7 @@ class FFAddProductVC: UIViewController {
     
     private let amountTextField: UITextField = {
         let tf = AppTextField()
-        tf.tag = 3
+        tf.tag = 2
         tf.keyboardType = .numberPad
         return tf
     }()
@@ -131,7 +138,7 @@ class FFAddProductVC: UIViewController {
     
     private let supplierTextField: UITextField = {
         let tf = AppTextField()
-        tf.tag = 4
+        tf.tag = 3
         return tf
     }()
     
@@ -155,6 +162,7 @@ class FFAddProductVC: UIViewController {
         setupView()
         dismissKeyboard()
         addSubviews()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,10 +174,13 @@ class FFAddProductVC: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         nameTextField.delegate = self
-        categoryTextField.delegate = self
+        categoryPickerView.dataSource = self
+        categoryPickerView.delegate = self
         priceTextField.delegate = self
         amountTextField.delegate = self
         supplierTextField.delegate = self
+        
+        addButton.addTarget(self, action: #selector(addButtonDidTap), for: .touchUpInside)
     }
     
     private func addSubviews() {
@@ -178,7 +189,7 @@ class FFAddProductVC: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(nameTextField)
         view.addSubview(categoryLabel)
-        view.addSubview(categoryTextField)
+        view.addSubview(categoryPickerView)
         view.addSubview(priceLabel)
         view.addSubview(amountLabel)
         view.addSubview(priceTextField)
@@ -188,6 +199,34 @@ class FFAddProductVC: UIViewController {
         view.addSubview(supplierLabel)
         view.addSubview(supplierTextField)
         view.addSubview(addButton)
+    }
+    
+    private func setupBindings() {
+        viewModel.isWrongDataEntered.bind { [weak self] show in
+            guard let self = self else { return }
+            if show == true {
+                Task {
+                    FFAlertManager.showWrongDataAlert(on: self)
+                }
+            }
+        }
+        
+        viewModel.isProductAdded.bind { [weak self] show in
+            guard let self = self else { return }
+            if show == true {
+                Task {
+                    FFAlertManager.showProductAdded(on: self)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Selectors
+    @objc private func addButtonDidTap() {
+        Task {
+            print(selectedCategory)
+            await viewModel.addNewProduct(name: nameTextField.text ?? "", category: selectedCategory, price: priceTextField.text ?? "", amount: amountTextField.text ?? "", supplier: supplierTextField.text ?? "")
+        }
     }
 
     
@@ -217,16 +256,16 @@ class FFAddProductVC: UIViewController {
             categoryLabel.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
             categoryLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 16),
             categoryLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            categoryTextField.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
-            categoryTextField.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
-            categoryTextField.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 4),
-            categoryTextField.heightAnchor.constraint(equalToConstant: 36),
+
+            categoryPickerView.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
+            categoryPickerView.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
+            categoryPickerView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 4),
+            categoryPickerView.heightAnchor.constraint(equalToConstant: 36 * 2.5),
             
             priceLabel.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor, constant: 12),
             priceLabel.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor, multiplier: 0.5),
             priceLabel.heightAnchor.constraint(equalToConstant: 20),
-            priceLabel.topAnchor.constraint(equalTo: categoryTextField.bottomAnchor, constant: 16),
+            priceLabel.topAnchor.constraint(equalTo: categoryPickerView.bottomAnchor, constant: 16),
             
             amountLabel.widthAnchor.constraint(equalTo: priceLabel.widthAnchor, constant: -12),
             amountLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 12),
@@ -234,7 +273,7 @@ class FFAddProductVC: UIViewController {
             amountLabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor),
             
             priceTextField.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
-            priceTextField.widthAnchor.constraint(equalTo: categoryTextField.widthAnchor, multiplier: 0.35),
+            priceTextField.widthAnchor.constraint(equalTo: categoryPickerView.widthAnchor, multiplier: 0.35),
             priceTextField.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 4),
             priceTextField.heightAnchor.constraint(equalToConstant: 36),
             
@@ -259,7 +298,6 @@ class FFAddProductVC: UIViewController {
             supplierTextField.widthAnchor.constraint(equalTo: interfaceGridView.widthAnchor),
             supplierTextField.heightAnchor.constraint(equalToConstant: 36),
             
-//            addButton.topAnchor.constraint(equalTo: supplierTextField.bottomAnchor, constant: 60),
             addButton.bottomAnchor.constraint(equalTo: interfaceGridView.bottomAnchor, constant: -48),
             addButton.leadingAnchor.constraint(equalTo: interfaceGridView.leadingAnchor),
             addButton.trailingAnchor.constraint(equalTo: interfaceGridView.trailingAnchor),
@@ -282,3 +320,34 @@ extension FFAddProductVC: UITextFieldDelegate {
     }
 }
 
+extension FFAddProductVC: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Category.allCases.count
+    }
+
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel? = (view as? UILabel)
+        let categories = Category.allCases
+        if label == nil {
+            label = UILabel()
+            label?.font = .poppins(.regular, size: 18)
+            label?.textAlignment = .center
+        }
+        let category = categories[row].rawValue
+        label?.text = category.capitalized
+        label?.textColor = .appColor(.systemBG)?.withAlphaComponent(0.6)
+        guard let pickerLabel = label else { return UIView() }
+        return pickerLabel
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let category = Category.allCases[row].rawValue
+        selectedCategory = category
+    }
+    
+}

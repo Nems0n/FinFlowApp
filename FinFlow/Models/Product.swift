@@ -19,7 +19,7 @@ struct Product: Codable {
 }
 
 
-enum Category: String, Codable {
+enum Category: String, Codable, CaseIterable {
     case dairy = "DAIRY"
     case fruit = "FRUIT"
     case vegetables = "VEGETABLES"

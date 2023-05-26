@@ -27,7 +27,7 @@ final class FFService {
     
     //MARK: - Send API Call
     
-    public func execute<T: Codable>(_ request: FFRequest, expecting type: T.Type?, authorization: FFServiceAuthType = .bearer) async throws -> T? {
+    public func execute<T/*: Codable*/>(_ request: FFRequest, expecting type: T.Type? = Void.self, authorization: FFServiceAuthType = .bearer) async throws -> T? {
         guard let urlRequest = self.request(from: request, authType: authorization) else {
             throw FFServiceError.failedToCreateRequest
         }
@@ -56,11 +56,11 @@ final class FFService {
                 }
             }
             
-            guard let type = type.self else {
+            guard let type = type.self as? Decodable.Type else {
                 throw FFServiceError.wrongExpectedType
             }
             do {
-                let result = try JSONDecoder().decode(type, from: data)
+                let result = try JSONDecoder().decode(type, from: data) as? T
                 // use result here
                 return result
             } catch let error {
@@ -85,10 +85,10 @@ final class FFService {
                     throw FFServiceError.loginRequired
                 }
             }
-            guard let type = type else {
+            guard let type = type as? Decodable.Type else {
                 return nil
             }
-            guard let result = try? JSONDecoder().decode(type, from: data) else {
+            guard let result = try? JSONDecoder().decode(type, from: data) as? T else {
                 throw FFServiceError.failedToGetData
             }
             return result
