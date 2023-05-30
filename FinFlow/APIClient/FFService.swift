@@ -92,6 +92,31 @@ final class FFService {
                 throw FFServiceError.failedToGetData
             }
             return result
+            
+            ///"DELETE" Method
+        case HTTPMethod.delete.rawValue:
+            let (data, response) = try await session.data(for: urlRequest)
+            /// statusCode 423: JWT Token is expired
+            if (response as? HTTPURLResponse)?.statusCode == 423 {
+                let token = FFKeychainManager.shared.read(service: .tokenJWT, account: .finFlow, type: TokenJWT.self)
+                let request = FFRequest(endpoint: .refreshToken, httpMethod: .post, httpBody: token?.refreshToken)
+                do {
+                    let token = try await FFService.shared.execute(request, expecting: TokenJWT.self, authorization: .refresh)
+                    guard token != nil else {
+                        throw FFServiceError.loginRequired
+                    }
+                    FFKeychainManager.shared.save(token, service: .tokenJWT, account: .finFlow)
+                } catch {
+                    throw FFServiceError.loginRequired
+                }
+            }
+            guard let type = type as? Decodable.Type else {
+                return nil
+            }
+            guard let result = try? JSONDecoder().decode(type, from: data) as? T else {
+                throw FFServiceError.failedToGetData
+            }
+            return result
              
         default: throw FFServiceError.defaultError
         }

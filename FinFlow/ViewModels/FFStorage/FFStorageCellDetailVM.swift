@@ -42,7 +42,7 @@ class FFStorageCellDetailVM: NSObject {
     
     public func deleteProduct() async {
         let product = ProductToDelete(id: id)
-        let request = FFRequest(endpoint: .deleteProduct, httpMethod: .post, httpBody: product)
+        let request = FFRequest(endpoint: .deleteProduct, httpMethod: .delete, httpBody: product)
         do {
             try await FFService.shared.execute(request)
             isShowSuccess.value = true
