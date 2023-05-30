@@ -87,9 +87,7 @@ final class FFStorageVM: NSObject {
     }
     
     public func bestSellerDidTap() {
-        print("tapped")
-        print(dataSource.count)
-        print(realmDataSource.count)
+        coordinator?.trigger(.bestSellers)
     }
     
     

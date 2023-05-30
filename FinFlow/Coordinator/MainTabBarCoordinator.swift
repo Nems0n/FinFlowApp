@@ -22,42 +22,42 @@ class MainTabBarCoordinator: TabBarCoordinator<TabBarRoute> {
     weak var output: MainTabBarCoordinatorOutput?
     
     private let storageRouter: StrongRouter<StorageRoute>
-    private let financeRouter: StrongRouter<FinanceRoute>
-    private let promoRouter: StrongRouter<PromoRoute>
-    private let adminRouter: StrongRouter<AdminRoute>
+//    private let financeRouter: StrongRouter<FinanceRoute>
+//    private let promoRouter: StrongRouter<PromoRoute>
+//    private let adminRouter: StrongRouter<AdminRoute>
     
     convenience init() {
         let storageCoordinator = FFStorageCoordinator()
         storageCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Storage", image: UIImage(systemName: "shippingbox"), tag: 0)
         
-        let financeCoordinator = FFFinanceCoordinator()
-        financeCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Finance", image: UIImage(systemName: "dollarsign.circle"), tag: 1)
+//        let financeCoordinator = FFFinanceCoordinator()
+//        financeCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Finance", image: UIImage(systemName: "dollarsign.circle"), tag: 1)
+//
+//        let promoCoordinator = FFPromoCoordinator()
+//        promoCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "note.text"), tag: 2)
+//
+//        let adminCoordinator = FFAdminCoordinator()
+//        adminCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Admin", image: UIImage(systemName: "person.circle"), tag: 3)
         
-        let promoCoordinator = FFPromoCoordinator()
-        promoCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "note.text"), tag: 2)
-        
-        let adminCoordinator = FFAdminCoordinator()
-        adminCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Admin", image: UIImage(systemName: "person.circle"), tag: 3)
-        
-        self.init(storageRouter: storageCoordinator.strongRouter,
-                  financeRouter: financeCoordinator.strongRouter,
+        self.init(storageRouter: storageCoordinator.strongRouter/*,
+                 financeRouter: financeCoordinator.strongRouter,
                   promoRouter: promoCoordinator.strongRouter,
-                  adminRouter: adminCoordinator.strongRouter)
+                  adminRouter: adminCoordinator.strongRouter*/)
         
         storageCoordinator.output = self
     }
     
-    init(storageRouter: StrongRouter<StorageRoute>,
+    init(storageRouter: StrongRouter<StorageRoute>/*,
          financeRouter: StrongRouter<FinanceRoute>,
          promoRouter: StrongRouter<PromoRoute>,
-         adminRouter: StrongRouter<AdminRoute>) {
+         adminRouter: StrongRouter<AdminRoute>*/) {
         
         self.storageRouter = storageRouter
-        self.financeRouter = financeRouter
-        self.promoRouter = promoRouter
-        self.adminRouter = adminRouter
+//        self.financeRouter = financeRouter
+//        self.promoRouter = promoRouter
+//        self.adminRouter = adminRouter
         
-        super.init(tabs: [storageRouter, financeRouter, promoRouter, adminRouter], select: storageRouter)
+        super.init(tabs: [storageRouter/*, financeRouter, promoRouter, adminRouter*/], select: storageRouter)
 //        rootViewController.tabBar.backgroundColor = .appColor(.systemBG)
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()

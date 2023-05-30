@@ -52,6 +52,7 @@ class FFProductTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
+        separatorInset = UIEdgeInsets.zero
         createConstraints()
     
     }

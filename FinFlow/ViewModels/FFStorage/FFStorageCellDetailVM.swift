@@ -12,6 +12,8 @@ class FFStorageCellDetailVM: NSObject {
     
     var coordinator: FFStorageCoordinator?
     
+    public var isShowSuccess: Binder<Bool?> = Binder(nil)
+    
     var id: Int
     var name: String
     var price: Float
@@ -29,12 +31,24 @@ class FFStorageCellDetailVM: NSObject {
         self.supplier = product.supplier
     }
     
+    //MARK: - Methods
     public func setCoordinator(coordinator: FFStorageCoordinator) {
         self.coordinator = coordinator
     }
     
-    //MARK: - Methods
     public func backButtonDidTap() {
         coordinator?.trigger(.pop)
+    }
+    
+    public func deleteProduct() async {
+        let product = ProductToDelete(id: id)
+        let request = FFRequest(endpoint: .deleteProduct, httpMethod: .post, httpBody: product)
+        do {
+            try await FFService.shared.execute(request)
+            isShowSuccess.value = true
+        } catch(let error) {
+            print(error)
+            isShowSuccess.value = false
+        }
     }
 }

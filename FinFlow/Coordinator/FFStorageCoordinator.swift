@@ -14,6 +14,7 @@ enum StorageRoute: Route {
     case login
     case allGoods(AnyObject)
     case addProduct(AnyObject)
+    case bestSellers
     case pop
     case dismiss
 }
@@ -59,6 +60,12 @@ class FFStorageCoordinator: NavigationCoordinator<StorageRoute> {
         case .login:
             output?.goToLogin()
             return .none()
+            
+        case .bestSellers:
+            let vm = FFBestSellersVM(coordinator: self)
+            let vc = FFBestSellersVC(viewModel: vm)
+            return .push(vc)
+            
         case .pop:
             return .pop()
         case .dismiss:

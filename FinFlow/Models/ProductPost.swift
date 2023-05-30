@@ -14,3 +14,7 @@ struct ProductPost: Codable {
     let amount: Int
     let supplier: String?
 }
+
+struct ProductToDelete: Codable {
+    let id: Int
+}

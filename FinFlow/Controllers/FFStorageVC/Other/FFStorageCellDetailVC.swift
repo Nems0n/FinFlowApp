@@ -97,6 +97,7 @@ class FFStorageCellDetailVC: UIViewController {
         
         controllerSetup()
         addSubviews()
+        setupBindings()
         addConstraints()
     }
     
@@ -137,8 +138,19 @@ class FFStorageCellDetailVC: UIViewController {
         view.addSubview(supplierLabel)
         view.addSubview(amountLabel)
         view.addSubview(priceLabel)
-        view.addSubview(promotionButton)
+//        view.addSubview(promotionButton)
         view.addSubview(deleteButton)
+    }
+    
+    private func setupBindings() {
+        viewModel?.isShowSuccess.bind({ [weak self] isSuccess in
+            guard let success = isSuccess, let self = self else { return }
+            switch success {
+            case true: FFAlertManager.showSuccessfullAction(on: self)
+            case false: FFAlertManager.showLostConnectionAlert(on: self)
+            }
+
+        })
     }
     
     //MARK: - Public Methods
@@ -159,6 +171,7 @@ class FFStorageCellDetailVC: UIViewController {
         splitColorTextForLabel(amountString: self.priceNumberString, valueString: self.currencyAbbreviation, labelToEdit: priceLabel)
     }
     
+    
     //MARK: - Private Methods
     private func splitColorTextForLabel(amountString: String?, valueString: String, labelToEdit: UILabel) {
         let attributedText = NSMutableAttributedString(string: labelToEdit.text ?? "")
@@ -175,6 +188,10 @@ class FFStorageCellDetailVC: UIViewController {
         return linkRange
     }
     
+    private func deleteProduct() async {
+        await viewModel?.deleteProduct()
+    }
+    
     //MARK: - Selectors
     @objc private func backButtonDidTap() {
         viewModel?.backButtonDidTap()
@@ -185,11 +202,16 @@ class FFStorageCellDetailVC: UIViewController {
     }
     
     @objc private func addPromotionDidTap() {
-        print("Added promotion")
+       
     }
     
     @objc private func deleteProductDidTap() {
-        print("Deleted")
+        FFAlertManager.showProductDelete(on: self, action: UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            guard let self = self else { return }
+            Task {
+                await self.deleteProduct()
+            }
+        }))
     }
     
     //MARK: - Constraints
@@ -218,15 +240,15 @@ class FFStorageCellDetailVC: UIViewController {
             priceLabel.trailingAnchor.constraint(equalTo: amountLabel.leadingAnchor, constant: -32),
             priceLabel.topAnchor.constraint(equalTo: amountLabel.topAnchor),
             
-            promotionButton.leadingAnchor.constraint(equalTo: gridView.leadingAnchor),
+            /*promotionButton.leadingAnchor.constraint(equalTo: gridView.leadingAnchor),
             promotionButton.widthAnchor.constraint(equalTo: gridView.widthAnchor, multiplier: 0.48),
             promotionButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 40),
-            promotionButton.heightAnchor.constraint(equalToConstant: 36),
+            promotionButton.heightAnchor.constraint(equalToConstant: 36),*/
             
             deleteButton.trailingAnchor.constraint(equalTo: gridView.trailingAnchor),
-            deleteButton.widthAnchor.constraint(equalTo: promotionButton.widthAnchor),
-            deleteButton.heightAnchor.constraint(equalTo: promotionButton.heightAnchor),
-            deleteButton.centerYAnchor.constraint(equalTo: promotionButton.centerYAnchor)
+            deleteButton.leadingAnchor.constraint(equalTo: gridView.leadingAnchor),
+            deleteButton.heightAnchor.constraint(equalToConstant: 44),
+            deleteButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 40)
         ])
     }
 }
